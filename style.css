@@ -1194,7 +1194,7 @@ button {
 }
 
 /* =========================
-   WORK — PREMIUM SHOWCASE
+   WORK / CLIENTS
 ========================= */
 
 .work {
@@ -1203,222 +1203,109 @@ button {
     overflow: hidden;
 }
 
-
-/* =========================
-   CLIENTS GRID
-========================= */
+.work::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: 10%;
+    right: -250px;
+    background: radial-gradient(
+        circle,
+        rgba(243, 200, 59, 0.035),
+        transparent 70%
+    );
+    pointer-events: none;
+}
 
 .clients-grid {
     display: grid;
-
-    grid-template-columns: repeat(12, 1fr);
-
-    gap: 1px;
-
-    background: var(--line);
-
+    grid-template-columns: repeat(3, 1fr);
     border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-
+    border-left: 1px solid var(--line);
     position: relative;
+    z-index: 2;
 }
 
-
-/* =========================
-   CLIENT CARD
-========================= */
-
 .client-card {
-    height: 360px;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(243,200,59,.025),
-            transparent 55%
-        ),
-        #080808;
+    height: 330px;
+    background: #070707;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
 
     position: relative;
-
     overflow: hidden;
 
     transition:
-        transform .65s cubic-bezier(.16,1,.3,1),
-        background .65s ease;
-
-    isolation: isolate;
+        background .6s ease,
+        transform .6s ease;
 }
 
-
-/* FIRST THREE */
-
-.client-card:nth-child(1),
-.client-card:nth-child(2),
-.client-card:nth-child(3) {
-    grid-column: span 4;
-}
-
-
-/* SECOND ROW */
-
-.client-card:nth-child(4),
-.client-card:nth-child(5),
-.client-card:nth-child(6) {
-    grid-column: span 4;
-}
-
-
-/* =========================
-   BACKGROUND NUMBER
-========================= */
+/* subtle spotlight */
 
 .client-card::before {
-    content: attr(data-number);
-
+    content: "";
     position: absolute;
+    width: 260px;
+    height: 260px;
 
-    top: -35px;
-    right: 20px;
+    top: 50%;
+    left: 50%;
 
-    font-family: "Inter", sans-serif;
+    transform: translate(-50%, -50%);
 
-    font-size: 150px;
+    background: radial-gradient(
+        circle,
+        rgba(243, 200, 59, .07),
+        transparent 70%
+    );
 
-    line-height: 1;
-
-    font-weight: 800;
-
-    color: rgba(255,255,255,.018);
-
-    pointer-events: none;
-
-    transition:
-        transform .8s cubic-bezier(.16,1,.3,1),
-        color .6s ease;
+    opacity: 0;
+    transition: opacity .6s ease;
 }
 
-.client-card:hover::before {
-    transform: translate(-15px, 12px);
-
-    color: rgba(243,200,59,.035);
-}
-
-
-/* =========================
-   GOLD LIGHT
-========================= */
+/* bottom gold line */
 
 .client-card::after {
     content: "";
 
     position: absolute;
-
-    width: 320px;
-    height: 320px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%)
-        scale(.65);
-
-    border-radius: 50%;
-
-    background: var(--gold);
-
-    filter: blur(120px);
-
-    opacity: 0;
-
-    transition:
-        opacity .7s ease,
-        transform .8s cubic-bezier(.16,1,.3,1);
-
-    pointer-events: none;
-
-    z-index: -1;
-}
-
-.client-card:hover::after {
-    opacity: .07;
-
-    transform:
-        translate(-50%, -50%)
-        scale(1);
-}
-
-
-/* =========================
-   LOGO AREA
-========================= */
-
-.client-card img {
-    width: 62%;
-
-    height: 145px;
-
-    object-fit: contain;
-
-    position: relative;
-
-    z-index: 3;
-
-    opacity: .82;
-
-    filter:
-        grayscale(.15)
-        brightness(.92);
-
-    transition:
-        transform .7s cubic-bezier(.16,1,.3,1),
-        opacity .5s ease,
-        filter .5s ease;
-}
-
-.client-card:hover img {
-    transform: scale(1.13);
-
-    opacity: 1;
-
-    filter:
-        grayscale(0)
-        brightness(1);
-}
-
-
-/* =========================
-   TOP LINE
-========================= */
-
-.client-card span::before {
-    content: "";
-
-    position: absolute;
-
-    top: -13px;
+    bottom: 0;
     left: 50%;
 
     width: 0;
-    height: 1px;
+    height: 2px;
 
     background: var(--gold);
 
     transform: translateX(-50%);
 
-    transition:
-        width .5s cubic-bezier(.16,1,.3,1);
+    transition: width .6s ease;
 }
 
-.client-card:hover span::before {
-    width: 35px;
+
+/* =========================
+   LOGO
+========================= */
+
+.client-card img {
+    width: auto;
+    max-width: 70%;
+    height: 150px;
+
+    object-fit: contain;
+
+    position: relative;
+    z-index: 3;
+
+    transition:
+        transform .6s cubic-bezier(.16,1,.3,1),
+        filter .6s ease;
 }
 
 
@@ -1428,76 +1315,65 @@ button {
 
 .client-card span {
     position: absolute;
-
-    bottom: 27px;
+    bottom: 24px;
 
     font-family: "Inter", sans-serif;
-
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 3px;
+    text-transform: uppercase;
 
     color: #555;
 
-    text-transform: uppercase;
+    transition:
+        color .4s ease,
+        transform .4s ease;
 
     z-index: 4;
+}
 
-    transition:
-        color .45s ease;
+
+/* =========================
+   HOVER
+========================= */
+
+.client-card:hover {
+    background: #0a0a0a;
+}
+
+.client-card:hover::before {
+    opacity: 1;
+}
+
+.client-card:hover::after {
+    width: 70px;
+}
+
+.client-card:hover img {
+    transform: scale(1.12);
+
+    filter:
+        drop-shadow(0 0 25px rgba(243,200,59,.12));
 }
 
 .client-card:hover span {
     color: var(--gold);
+    transform: translateY(-3px);
 }
 
 
 /* =========================
-   CARD CORNER
+   SECTION HEADING FIX
 ========================= */
 
-.client-card .card-corner {
-    position: absolute;
-
-    top: 22px;
-    left: 22px;
-
-    width: 20px;
-    height: 20px;
-
-    border-top: 1px solid rgba(255,255,255,.08);
-    border-left: 1px solid rgba(255,255,255,.08);
-
-    opacity: .5;
-
-    transition:
-        width .5s ease,
-        height .5s ease,
-        border-color .5s ease;
+.work .section-head {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 70px;
 }
 
-.client-card:hover .card-corner {
-    width: 32px;
-    height: 32px;
-
-    border-color: rgba(243,200,59,.35);
-}
-
-
-/* =========================
-   CARD HOVER
-========================= */
-
-.client-card:hover {
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(243,200,59,.035),
-            transparent 65%
-        ),
-        #0a0a0a;
-
-    z-index: 3;
+.work .section-head h2 {
+    max-width: 700px;
 }
 
 
@@ -1511,14 +1387,14 @@ button {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .client-card:nth-child(n) {
-        grid-column: span 1;
-    }
-
     .client-card {
-        height: 330px;
+        height: 300px;
     }
 
+    .client-card img {
+        max-width: 68%;
+        height: 135px;
+    }
 }
 
 
@@ -1528,21 +1404,16 @@ button {
         grid-template-columns: 1fr;
     }
 
-    .client-card:nth-child(n) {
-        grid-column: span 1;
-    }
-
     .client-card {
-        height: 320px;
+        height: 280px;
     }
 
     .client-card img {
-        width: 68%;
-        height: 135px;
+        max-width: 65%;
+        height: 130px;
     }
 
 }
-
 
 /* =========================
    ABOUT
