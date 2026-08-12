@@ -795,66 +795,48 @@ button {
 
 
 /* =========================
-   SERVICES — PREMIUM
+   SERVICES — VOX
 ========================= */
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1px;
+    background: var(--line);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-
-    position: relative;
 }
-
-
-/* =========================
-   SERVICE CARD
-========================= */
 
 .service-card {
-    min-height: 430px;
-
-    padding: 38px 32px;
-
-    border-left: 1px solid var(--line);
-
+    min-height: 390px;
+    padding: 38px;
+    background: #070707;
     position: relative;
-
     overflow: hidden;
-
-    background: #050505;
-
     transition:
         transform .55s cubic-bezier(.16,1,.3,1),
-        background .55s ease,
-        border-color .55s ease;
-
-    isolation: isolate;
+        background .5s ease;
 }
 
-.service-card:first-child {
-    border-left: 0;
+/* أول 3 خدمات مميزة */
+
+.service-card:nth-child(1) {
+    grid-column: span 4;
 }
 
-
-/* =========================
-   CARD HOVER
-========================= */
-
-.service-card:hover {
-    background: #0a0a0a;
-
-    transform: translateY(-8px);
-
-    border-color: rgba(243,200,59,.16);
-
-    z-index: 3;
+.service-card:nth-child(2) {
+    grid-column: span 4;
 }
 
-.service-card.featured {
-    background: #080808;
+.service-card:nth-child(3) {
+    grid-column: span 4;
+}
+
+/* باقي الخدمات */
+
+.service-card:nth-child(n+4) {
+    grid-column: span 3;
+    min-height: 330px;
 }
 
 
@@ -867,11 +849,11 @@ button {
 
     position: absolute;
 
-    width: 240px;
-    height: 240px;
+    width: 280px;
+    height: 280px;
 
-    top: -100px;
-    right: -100px;
+    top: -120px;
+    right: -120px;
 
     border-radius: 50%;
 
@@ -881,24 +863,21 @@ button {
 
     opacity: 0;
 
-    transform: scale(.7);
-
     transition:
-        opacity .7s ease,
-        transform .7s cubic-bezier(.16,1,.3,1);
+        opacity .6s ease,
+        transform .7s ease;
 
-    z-index: -1;
+    pointer-events: none;
 }
 
 .service-card:hover::before {
     opacity: .09;
-
-    transform: scale(1.15);
+    transform: scale(1.2);
 }
 
 
 /* =========================
-   BOTTOM GOLD LINE
+   GOLD BOTTOM LINE
 ========================= */
 
 .service-card::after {
@@ -906,8 +885,8 @@ button {
 
     position: absolute;
 
-    bottom: 0;
     left: 0;
+    bottom: 0;
 
     width: 0;
     height: 2px;
@@ -915,10 +894,10 @@ button {
     background: var(--gold);
 
     box-shadow:
-        0 0 18px rgba(243,200,59,.35);
+        0 0 18px rgba(243,200,59,.4);
 
     transition:
-        width .65s cubic-bezier(.16,1,.3,1);
+        width .6s cubic-bezier(.16,1,.3,1);
 }
 
 .service-card:hover::after {
@@ -931,20 +910,19 @@ button {
 ========================= */
 
 .service-number {
-    color: #555;
-
     font-family: "Inter", sans-serif;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+
+    color: #555;
 
     position: relative;
 
-    z-index: 2;
+    z-index: 3;
 
-    transition:
-        color .4s ease;
+    transition: color .4s ease;
 }
 
 .service-card:hover .service-number {
@@ -952,19 +930,21 @@ button {
 }
 
 
-/* LARGE BACKGROUND NUMBER */
+/* =========================
+   HUGE BACKGROUND NUMBER
+========================= */
 
 .service-number::after {
     content: attr(data-number);
 
     position: absolute;
 
-    right: -25px;
     top: -75px;
+    right: -25px;
 
     font-family: "Inter", sans-serif;
 
-    font-size: 170px;
+    font-size: 150px;
 
     font-weight: 800;
 
@@ -975,14 +955,14 @@ button {
     pointer-events: none;
 
     transition:
-        color .5s ease,
-        transform .7s cubic-bezier(.16,1,.3,1);
+        transform .7s ease,
+        color .5s ease;
 }
 
 .service-card:hover .service-number::after {
-    color: rgba(243,200,59,.035);
+    transform: translate(-10px,10px);
 
-    transform: translate(-8px,8px);
+    color: rgba(243,200,59,.035);
 }
 
 
@@ -991,24 +971,24 @@ button {
 ========================= */
 
 .service-icon {
-    margin-top: 75px;
+    margin-top: 65px;
 
-    color: var(--gold);
-
-    font-size: 40px;
-
-    width: 55px;
-    height: 55px;
+    width: 58px;
+    height: 58px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    color: var(--gold);
+
+    font-size: 38px;
+
     position: relative;
 
     transition:
         transform .55s cubic-bezier(.16,1,.3,1),
-        filter .55s ease;
+        filter .5s ease;
 }
 
 .service-icon::before {
@@ -1016,10 +996,9 @@ button {
 
     position: absolute;
 
-    width: 48px;
-    height: 48px;
+    inset: 5px;
 
-    border: 1px solid rgba(243,200,59,.12);
+    border: 1px solid rgba(243,200,59,.14);
 
     transform: rotate(45deg);
 
@@ -1029,16 +1008,16 @@ button {
 }
 
 .service-card:hover .service-icon {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
 
     filter:
-        drop-shadow(0 0 14px rgba(243,200,59,.25));
+        drop-shadow(0 0 15px rgba(243,200,59,.3));
 }
 
 .service-card:hover .service-icon::before {
     transform: rotate(135deg);
 
-    border-color: rgba(243,200,59,.35);
+    border-color: rgba(243,200,59,.4);
 }
 
 
@@ -1047,9 +1026,9 @@ button {
 ========================= */
 
 .service-card h3 {
-    margin-top: 32px;
+    margin-top: 30px;
 
-    font-size: 24px;
+    font-size: 25px;
 
     line-height: 1.25;
 
@@ -1059,13 +1038,15 @@ button {
 
     position: relative;
 
+    z-index: 3;
+
     transition:
-        transform .5s cubic-bezier(.16,1,.3,1),
+        transform .5s ease,
         color .4s ease;
 }
 
 .service-card:hover h3 {
-    transform: translateX(-4px);
+    transform: translateX(-5px);
 
     color: #fff;
 }
@@ -1082,16 +1063,19 @@ button {
 
     line-height: 1.9;
 
-    margin-top: 20px;
+    max-width: 290px;
 
-    max-width: 250px;
+    margin-top: 18px;
 
-    transition:
-        color .45s ease;
+    position: relative;
+
+    z-index: 3;
+
+    transition: color .4s ease;
 }
 
 .service-card:hover p {
-    color: #8b8984;
+    color: #999;
 }
 
 
@@ -1105,90 +1089,82 @@ button {
     bottom: 30px;
     left: 30px;
 
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    color: #555;
-
     border: 1px solid rgba(255,255,255,.08);
 
+    color: #555;
+
     transition:
+        transform .5s ease,
         color .4s ease,
         border-color .4s ease,
-        transform .5s cubic-bezier(.16,1,.3,1),
         background .4s ease;
 }
 
 .service-card:hover .card-arrow {
+    transform: translate(-4px,-4px);
+
     color: var(--gold);
 
-    border-color: rgba(243,200,59,.3);
+    border-color: rgba(243,200,59,.35);
 
     background: rgba(243,200,59,.04);
-
-    transform: translate(-4px,-4px);
 }
 
 
 /* =========================
-   FEATURED CARD
+   FEATURED
 ========================= */
 
-.service-card.featured::after {
-    width: 18%;
-}
-
-.service-card.featured:hover::after {
-    width: 100%;
+.service-card.featured {
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(243,200,59,.035),
+            transparent 45%
+        ),
+        #080808;
 }
 
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
 
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+    .service-card:nth-child(1),
+    .service-card:nth-child(2),
     .service-card:nth-child(3) {
-        border-left: 0;
-        border-top: 1px solid var(--line);
+        grid-column: span 4;
     }
 
-    .service-card:nth-child(4) {
-        border-top: 1px solid var(--line);
+    .service-card:nth-child(n+4) {
+        grid-column: span 4;
     }
 
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
     .services-grid {
         grid-template-columns: 1fr;
     }
 
-    .service-card,
-    .service-card:nth-child(3),
-    .service-card:nth-child(4) {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-    }
-
-    .service-card:first-child {
-        border-top: 0;
+    .service-card:nth-child(n) {
+        grid-column: span 1;
     }
 
     .service-card {
-        min-height: 390px;
+        min-height: 360px;
     }
 
 }
