@@ -1,547 +1,702 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VOX Media | وكالة تسويق وإبداع رقمي</title>
+    <title>VOX Media — Creative Digital Agency</title>
 
     <meta name="description"
-        content="VOX Media وكالة متخصصة في التسويق الرقمي، صناعة المحتوى، الفيديو، التصميم، إدارة السوشيال ميديا والحلول الإبداعية.">
-
-    <link rel="stylesheet" href="style.css">
+        content="VOX Media — Creative digital agency specializing in strategy, content, branding and digital marketing.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- PRELOADER -->
 
-    <header class="header">
+    <div class="preloader">
+        <img src="assets/images/vox-logo.png" alt="VOX Media">
+    </div>
 
-        <div class="container nav-container">
 
-            <a href="#home" class="logo">
-                VOX
-                <span>MEDIA</span>
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <a href="#home" class="brand">
+                <img src="assets/images/vox-logo.png" alt="VOX Media">
             </a>
 
-            <nav class="nav">
+            <nav class="desktop-nav">
 
                 <a href="#home">الرئيسية</a>
-
                 <a href="#services">خدماتنا</a>
-
-                <a href="#about">من نحن</a>
-
                 <a href="#work">أعمالنا</a>
-
-                <a href="#clients">عملاؤنا</a>
+                <a href="#about">من نحن</a>
+                <a href="#contact">تواصل معنا</a>
 
             </nav>
 
-            <a href="#contact" class="nav-btn">
-                تواصل معنا
+            <a href="#contact" class="header-cta">
+                ابدأ مشروعك
+                <span>↗</span>
             </a>
+
+            <button class="menu-button" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+            </button>
 
         </div>
 
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- MOBILE MENU -->
 
-    <section class="hero" id="home">
+    <div class="mobile-menu">
 
-        <div class="hero-overlay"></div>
+        <button class="mobile-close">×</button>
 
-        <div class="container hero-content">
+        <a href="#home">الرئيسية</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#work">أعمالنا</a>
+        <a href="#about">من نحن</a>
+        <a href="#contact">تواصل معنا</a>
 
-            <div class="hero-text">
+    </div>
 
-                <span class="hero-label">
-                    VOX MEDIA
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-noise"></div>
+
+            <div class="hero-grid"></div>
+
+            <div class="container hero-container">
+
+                <div class="hero-copy">
+
+                    <div class="eyebrow">
+                        <span></span>
+                        CREATIVE DIGITAL AGENCY
+                    </div>
+
+                    <h1>
+                        نصنع
+                        <span>علامات</span>
+                        لا تُنسى.
+                    </h1>
+
+                    <p>
+                        استراتيجية، محتوى، إبداع وتسويق رقمي —
+                        نحول الأفكار إلى حضور يجعل علامتك التجارية
+                        مستحيلة التجاهل.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#work" class="btn btn-gold">
+                            اكتشف أعمالنا
+                            <span>↗</span>
+                        </a>
+
+                        <a href="#services" class="text-button">
+                            ماذا نقدم؟
+                            <span>↓</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="visual-ring ring-one"></div>
+                    <div class="visual-ring ring-two"></div>
+
+                    <div class="hero-logo">
+                        <img src="assets/images/vox-logo.png"
+                            alt="VOX Media">
+                    </div>
+
+                    <div class="floating-tag tag-one">
+                        <span>01</span>
+                        STRATEGY
+                    </div>
+
+                    <div class="floating-tag tag-two">
+                        <span>02</span>
+                        CONTENT
+                    </div>
+
+                    <div class="floating-tag tag-three">
+                        <span>03</span>
+                        CREATIVE
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-bottom">
+
+                <span>SCROLL TO EXPLORE</span>
+
+                <div class="scroll-line"></div>
+
+                <span>2026</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTRO -->
+
+        <section class="intro section">
+
+            <div class="container">
+
+                <div class="intro-top">
+
+                    <span class="section-number">01 / 05</span>
+
+                    <span class="section-label">
+                        WHO WE ARE
+                    </span>
+
+                </div>
+
+                <div class="intro-content">
+
+                    <h2>
+                        نحن لا نصنع
+                        <span>محتوى فقط.</span>
+                    </h2>
+
+                    <p>
+                        نحن نبني تجارب وهوية وحضورًا رقميًا
+                        يجعل العلامات التجارية أقرب لجمهورها،
+                        وأكثر تأثيرًا في سوق مزدحم.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SERVICES -->
+
+        <section class="services section" id="services">
+
+            <div class="container">
+
+                <div class="section-head">
+
+                    <div>
+                        <span class="section-number">02 / 05</span>
+                        <span class="section-label">WHAT WE DO</span>
+                    </div>
+
+                    <h2>
+                        كل ما تحتاجه
+                        <span>لتظهر بشكل مختلف.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="services-list">
+
+                    <article class="service-item">
+
+                        <span class="service-index">01</span>
+
+                        <div class="service-main">
+                            <h3>Strategy</h3>
+                            <p>
+                                استراتيجيات تسويقية ومحتوى مصممة
+                                لتحقيق أهداف واضحة وقابلة للقياس.
+                            </p>
+                        </div>
+
+                        <span class="service-arrow">↗</span>
+
+                    </article>
+
+
+                    <article class="service-item">
+
+                        <span class="service-index">02</span>
+
+                        <div class="service-main">
+                            <h3>Content</h3>
+                            <p>
+                                صناعة محتوى بصري وكتابي يحول
+                                الأفكار إلى قصص يتذكرها الجمهور.
+                            </p>
+                        </div>
+
+                        <span class="service-arrow">↗</span>
+
+                    </article>
+
+
+                    <article class="service-item">
+
+                        <span class="service-index">03</span>
+
+                        <div class="service-main">
+                            <h3>Production</h3>
+                            <p>
+                                تصوير، مونتاج، Reels، إعلانات وفيديوهات
+                                احترافية بمستوى إنتاج عالي.
+                            </p>
+                        </div>
+
+                        <span class="service-arrow">↗</span>
+
+                    </article>
+
+
+                    <article class="service-item">
+
+                        <span class="service-index">04</span>
+
+                        <div class="service-main">
+                            <h3>Branding</h3>
+                            <p>
+                                هوية بصرية وتصميمات تمنح علامتك
+                                شخصية واضحة ومميزة.
+                            </p>
+                        </div>
+
+                        <span class="service-arrow">↗</span>
+
+                    </article>
+
+
+                    <article class="service-item">
+
+                        <span class="service-index">05</span>
+
+                        <div class="service-main">
+                            <h3>Digital Marketing</h3>
+                            <p>
+                                إدارة الحملات والإعلانات والسوشيال
+                                ميديا للوصول للجمهور المناسب.
+                            </p>
+                        </div>
+
+                        <span class="service-arrow">↗</span>
+
+                    </article>
+
+
+                    <article class="service-item">
+
+                        <span class="service-index">06</span>
+
+                        <div class="service-main">
+                            <h3>AI Solutions</h3>
+                            <p>
+                                دمج الذكاء الاصطناعي في الإنتاج
+                                والمحتوى والعمليات الإبداعية.
+                            </p>
+                        </div>
+
+                        <span class="service-arrow">↗</span>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WORK -->
+
+        <section class="work section" id="work">
+
+            <div class="container">
+
+                <div class="section-head work-head">
+
+                    <div>
+                        <span class="section-number">03 / 05</span>
+                        <span class="section-label">SELECTED WORK</span>
+                    </div>
+
+                    <h2>
+                        أعمال تتحدث
+                        <span>عن نفسها.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="projects-grid">
+
+
+                    <!-- JASMIN -->
+
+                    <article class="project project-large">
+
+                        <div class="project-image">
+
+                            <img
+                                src="assets/images/jasmin-resort.png"
+                                alt="Jasmin Resort">
+
+                            <div class="project-overlay">
+
+                                <span>CASE STUDY 01</span>
+
+                                <h3>Jasmin Resort</h3>
+
+                                <p>
+                                    Digital Marketing · Content · Campaign
+                                </p>
+
+                                <span class="project-arrow">↗</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MARRASI -->
+
+                    <article class="project">
+
+                        <div class="project-image">
+
+                            <img
+                                src="assets/images/marrasi-resort.png"
+                                alt="Marrasi Resort">
+
+                            <div class="project-overlay">
+
+                                <span>CASE STUDY 02</span>
+
+                                <h3>Marrasi Resort</h3>
+
+                                <p>
+                                    Content · Campaign
+                                </p>
+
+                                <span class="project-arrow">↗</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- EL FAYOMI -->
+
+                    <article class="project">
+
+                        <div class="project-image">
+
+                            <img
+                                src="assets/images/el-fayomi.png"
+                                alt="El Fayomi">
+
+                            <div class="project-overlay">
+
+                                <span>CASE STUDY 03</span>
+
+                                <h3>El Fayomi</h3>
+
+                                <p>
+                                    Branding · Social Media
+                                </p>
+
+                                <span class="project-arrow">↗</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLIENTS -->
+
+        <section class="clients section">
+
+            <div class="container">
+
+                <div class="clients-heading">
+
+                    <span class="section-number">04 / 05</span>
+
+                    <h2>
+                        علامات
+                        <span>وثقت بنا.</span>
+                    </h2>
+
+                    <p>
+                        نفتخر بالشراكات التي بنيناها،
+                        والأعمال التي صنعت فرقًا حقيقيًا.
+                    </p>
+
+                </div>
+
+
+                <div class="client-wall">
+
+
+                    <div class="client-logo">
+
+                        <img
+                            src="assets/images/jasmin-resort.png"
+                            alt="Jasmin Resort">
+
+                    </div>
+
+
+                    <div class="client-logo">
+
+                        <img
+                            src="assets/images/marrasi-resort.png"
+                            alt="Marrasi Resort">
+
+                    </div>
+
+
+                    <div class="client-logo">
+
+                        <img
+                            src="assets/images/mosaic-minds.png"
+                            alt="Mosaic Minds">
+
+                    </div>
+
+
+                    <div class="client-logo">
+
+                        <img
+                            src="assets/images/el-fayomi.png"
+                            alt="El Fayomi">
+
+                    </div>
+
+
+                    <div class="client-logo">
+
+                        <img
+                            src="assets/images/agro-green.png"
+                            alt="Agro Green">
+
+                    </div>
+
+
+                    <div class="client-logo">
+
+                        <img
+                            src="assets/images/mansoura-sc.png"
+                            alt="Mansoura Sporting Club">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="about section" id="about">
+
+            <div class="container about-layout">
+
+                <div class="about-number">
+                    05
+                </div>
+
+                <div class="about-copy">
+
+                    <span class="section-label">
+                        ABOUT VOX
+                    </span>
+
+                    <h2>
+                        Creative thinking.
+                        <span>Real results.</span>
+                    </h2>
+
+                    <p>
+                        VOX Media وكالة إبداعية رقمية تجمع بين
+                        الاستراتيجية والإبداع والتكنولوجيا لبناء
+                        علامات تجارية قادرة على المنافسة والنمو.
+                    </p>
+
+                    <p>
+                        نؤمن أن أفضل الأفكار هي التي تجمع بين
+                        الشكل الجميل والهدف الواضح والنتيجة الحقيقية.
+                    </p>
+
+                    <a href="#contact" class="btn btn-outline">
+                        اعرف أكثر عن VOX
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+                <div class="about-statement">
+
+                    <span>WE BELIEVE</span>
+
+                    <strong>
+                        GREAT BRANDS
+                        <br>
+                        ARE BUILT,
+                        <br>
+                        NOT BORN.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="final-cta" id="contact">
+
+            <div class="cta-glow"></div>
+
+            <div class="container">
+
+                <span class="section-label">
+                    HAVE A PROJECT?
                 </span>
 
-                <h1>
-                    نحوّل أفكارك إلى
-                    <strong>محتوى يصنع تأثيراً</strong>
-                </h1>
-
-                <p>
-                    نحن في VOX Media نساعد العلامات التجارية على بناء حضور
-                    رقمي قوي من خلال التسويق والإبداع وصناعة المحتوى.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#contact" class="btn primary-btn">
-                        ابدأ مشروعك
-                    </a>
-
-                    <a href="#work" class="btn secondary-btn">
-                        شاهد أعمالنا
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= STATS ================= -->
-
-    <section class="stats">
-
-        <div class="container stats-grid">
-
-            <div class="stat-card">
-                <strong>200+</strong>
-                <span>مشروع تم تنفيذه</span>
-            </div>
-
-            <div class="stat-card">
-                <strong>50+</strong>
-                <span>علامة تجارية</span>
-            </div>
-
-            <div class="stat-card">
-                <strong>12+</strong>
-                <span>سنوات خبرة</span>
-            </div>
-
-            <div class="stat-card">
-                <strong>360°</strong>
-                <span>حلول تسويقية وإبداعية</span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SERVICES ================= -->
-
-    <section class="section services" id="services">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span>ماذا نقدم؟</span>
-
                 <h2>
-                    حلول متكاملة لعلامتك التجارية
+                    خلينا نصنع
+                    <span>شيئًا استثنائيًا.</span>
                 </h2>
 
                 <p>
-                    من الفكرة إلى التنفيذ، نقدم لك حلولاً إبداعية وتسويقية
-                    مصممة لتحقيق نتائج حقيقية.
+                    احكيلنا عن فكرتك، وإحنا نحولها إلى
+                    تجربة تستحق أن تُرى.
                 </p>
 
-            </div>
+                <a
+                    href="https://wa.me/201069952664"
+                    class="btn btn-gold"
+                    target="_blank">
 
+                    تحدث معنا
+                    <span>↗</span>
 
-            <div class="services-grid">
-
-                <div class="service-card">
-                    <div class="service-number">01</div>
-                    <h3>صناعة المحتوى</h3>
-                    <p>
-                        إنتاج محتوى احترافي يساعد علامتك التجارية على الظهور
-                        بشكل مختلف وجذاب.
-                    </p>
-                </div>
-
-
-                <div class="service-card">
-                    <div class="service-number">02</div>
-                    <h3>الفيديو والمونتاج</h3>
-                    <p>
-                        تصوير وإنتاج ومونتاج الفيديوهات الإعلانية
-                        والريلز والمحتوى الرقمي.
-                    </p>
-                </div>
-
-
-                <div class="service-card">
-                    <div class="service-number">03</div>
-                    <h3>السوشيال ميديا</h3>
-                    <p>
-                        إدارة صفحات التواصل الاجتماعي ووضع استراتيجيات
-                        محتوى تساعد على النمو.
-                    </p>
-                </div>
-
-
-                <div class="service-card">
-                    <div class="service-number">04</div>
-                    <h3>التسويق والإعلانات</h3>
-                    <p>
-                        استراتيجيات إعلانية وحملات مدفوعة تستهدف الجمهور
-                        المناسب وتحقق أفضل أداء.
-                    </p>
-                </div>
-
-
-                <div class="service-card">
-                    <div class="service-number">05</div>
-                    <h3>التصميم والهوية</h3>
-                    <p>
-                        تصميمات وهوية بصرية متكاملة تمنح علامتك التجارية
-                        حضوراً احترافياً.
-                    </p>
-                </div>
-
-
-                <div class="service-card">
-                    <div class="service-number">06</div>
-                    <h3>حلول AI</h3>
-                    <p>
-                        استخدام الذكاء الاصطناعي لتطوير المحتوى والإنتاج
-                        وتسريع العملية الإبداعية.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= ABOUT ================= -->
-
-    <section class="about section" id="about">
-
-        <div class="container about-grid">
-
-            <div class="about-image">
-
-                <img src="assets/images/hero.jpg"
-                    alt="VOX Media">
-
-            </div>
-
-            <div class="about-content">
-
-                <span>من نحن</span>
-
-                <h2>
-                    نصنع أفكاراً
-                    <strong>تستحق أن تُرى</strong>
-                </h2>
-
-                <p>
-                    VOX Media هي وكالة متخصصة في التسويق الرقمي وصناعة
-                    المحتوى والحلول الإبداعية.
-                </p>
-
-                <p>
-                    نعمل مع الشركات والعلامات التجارية لتحويل الأفكار
-                    إلى محتوى واستراتيجيات تساعدها على النمو وبناء حضور
-                    قوي في السوق.
-                </p>
-
-                <a href="#contact" class="text-link">
-                    تحدث معنا ←
                 </a>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+    </main>
 
 
-    <!-- ================= WORK ================= -->
-
-    <section class="section work" id="work">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span>أعمالنا</span>
-
-                <h2>
-                    علامات وثقت في VOX
-                </h2>
-
-                <p>
-                    بعض من المشاريع والعلامات التجارية التي عملنا معها.
-                </p>
-
-            </div>
-
-
-            <div class="work-grid">
-
-                <div class="work-card">
-                    <img src="assets/images/jasmin-resort.png"
-                        alt="Jasmin Resort">
-                    <div>
-                        <h3>Jasmin Resort</h3>
-                        <p>Marketing & Content</p>
-                    </div>
-                </div>
-
-
-                <div class="work-card">
-                    <img src="assets/images/mosaic-minds.png"
-                        alt="Mosaic Minds Studio">
-                    <div>
-                        <h3>Mosaic Minds Studio</h3>
-                        <p>Content & Digital Marketing</p>
-                    </div>
-                </div>
-
-
-                <div class="work-card">
-                    <img src="assets/images/el-fayomi.png"
-                        alt="El Fayomi">
-                    <div>
-                        <h3>El Fayomi</h3>
-                        <p>Branding & Social Media</p>
-                    </div>
-                </div>
-
-
-                <div class="work-card">
-                    <img src="assets/images/agro-green.png"
-                        alt="Agro Green">
-                    <div>
-                        <h3>Agro Green</h3>
-                        <p>Branding & Marketing</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CLIENTS ================= -->
-
-    <section class="clients section" id="clients">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span>عملاؤنا</span>
-
-                <h2>
-                    شركاء النجاح
-                </h2>
-
-            </div>
-
-
-            <div class="clients-grid">
-
-                <div class="client-logo">
-                    <img src="assets/images/jasmin-resort.png"
-                        alt="Jasmin Resort">
-                </div>
-
-                <div class="client-logo">
-                    <img src="assets/images/mosaic-minds.png"
-                        alt="Mosaic Minds">
-                </div>
-
-                <div class="client-logo">
-                    <img src="assets/images/el-fayomi.png"
-                        alt="El Fayomi">
-                </div>
-
-                <div class="client-logo">
-                    <img src="assets/images/agro-green.png"
-                        alt="Agro Green">
-                </div>
-
-                <div class="client-logo">
-                    <img src="assets/images/mansoura-sc.png"
-                        alt="Mansoura Sporting Club">
-                </div>
-
-                <div class="client-logo">
-                    <img src="assets/images/monkeyland.png"
-                        alt="Monkeyland">
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CTA ================= -->
-
-    <section class="cta">
-
-        <div class="container">
-
-            <div class="cta-content">
-
-                <span>جاهز نبدأ؟</span>
-
-                <h2>
-                    عندك فكرة؟
-                    <strong>خلينا نحولها لواقع.</strong>
-                </h2>
-
-                <p>
-                    احكيلنا عن مشروعك وإحنا نساعدك نحدد أفضل طريقة لتنفيذه.
-                </p>
-
-                <a href="#contact" class="btn primary-btn">
-                    تواصل معنا
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section class="contact section" id="contact">
-
-        <div class="container contact-grid">
-
-            <div class="contact-content">
-
-                <span>تواصل معنا</span>
-
-                <h2>
-                    لنبدأ مشروعك القادم
-                </h2>
-
-                <p>
-                    سواء كنت تمتلك شركة، علامة تجارية أو مشروع جديد،
-                    نحن جاهزون لمساعدتك.
-                </p>
-
-                <div class="contact-info">
-
-                    <a href="tel:+201069952664">
-                        📞 +20 106 995 2664
-                    </a>
-
-                    <a href="mailto:ahmedelhaddad2022@gmail.com">
-                        ✉️ ahmedelhaddad2022@gmail.com
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <form class="contact-form" id="contactForm">
-
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="الاسم"
-                    required>
-
-                <input
-                    type="tel"
-                    name="phone"
-                    placeholder="رقم الهاتف"
-                    required>
-
-                <input
-                    type="text"
-                    name="company"
-                    placeholder="اسم الشركة">
-
-                <textarea
-                    name="message"
-                    rows="5"
-                    placeholder="احكيلنا عن مشروعك..."
-                    required></textarea>
-
-                <button type="submit" class="btn primary-btn">
-                    إرسال الطلب
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
+    <!-- FOOTER -->
 
     <footer class="footer">
 
-        <div class="container footer-grid">
+        <div class="container footer-top">
 
-            <div>
+            <div class="footer-brand">
 
-                <a href="#home" class="footer-logo">
-                    VOX
-                    <span>MEDIA</span>
-                </a>
+                <img
+                    src="assets/images/vox-logo.png"
+                    alt="VOX Media">
 
                 <p>
-                    حلول تسويقية وإبداعية تساعد علامتك التجارية
-                    على النمو والتميز.
+                    Creative digital agency
+                    built for brands that want more.
                 </p>
 
             </div>
 
 
-            <div>
-
-                <h3>روابط سريعة</h3>
+            <div class="footer-links">
 
                 <a href="#home">الرئيسية</a>
-                <a href="#services">خدماتنا</a>
+                <a href="#services">الخدمات</a>
+                <a href="#work">الأعمال</a>
                 <a href="#about">من نحن</a>
-                <a href="#work">أعمالنا</a>
+                <a href="#contact">تواصل معنا</a>
 
             </div>
 
 
-            <div>
+            <div class="footer-contact">
 
-                <h3>تواصل معنا</h3>
-
-                <a href="tel:+201069952664">
-                    +20 106 995 2664
-                </a>
+                <span>LET'S TALK</span>
 
                 <a href="mailto:ahmedelhaddad2022@gmail.com">
                     ahmedelhaddad2022@gmail.com
                 </a>
 
+                <a href="tel:+201069952664">
+                    +20 106 995 2664
+                </a>
+
             </div>
 
         </div>
 
 
-        <div class="footer-bottom">
+        <div class="container footer-bottom">
 
-            <p>
-                © 2026 VOX Media. جميع الحقوق محفوظة.
-            </p>
+            <span>
+                © 2026 VOX Media
+            </span>
+
+            <span>
+                Mansoura · Egypt
+            </span>
 
         </div>
 
@@ -551,4 +706,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
