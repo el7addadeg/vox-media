@@ -1324,47 +1324,36 @@ button {
 
 .partners {
     position: relative;
-
     background: #050505;
-
     overflow: hidden;
-
     border-top: 1px solid var(--line);
 }
 
 
 /* =========================
-   PARTNERS HEADER
+   HEADER
 ========================= */
 
 .partners-head {
     position: relative;
-
     z-index: 3;
-
-    margin-bottom: 70px;
-}
-
-.partners-head p {
-    max-width: 430px;
+    margin-bottom: 50px;
 }
 
 
 /* =========================
-   PARTNERS SHOWCASE
+   LOGO STRIP
 ========================= */
 
 .partners-showcase {
     position: relative;
-
     width: 100%;
-
     overflow: hidden;
 
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
 
-    padding: 45px 0;
+    padding: 28px 0;
 }
 
 
@@ -1377,93 +1366,70 @@ button {
     content: "";
 
     position: absolute;
-
     top: 0;
     bottom: 0;
 
-    width: 180px;
+    width: 100px;
 
     z-index: 5;
-
     pointer-events: none;
 }
 
 .partners-showcase::before {
     left: 0;
 
-    background:
-        linear-gradient(
-            to right,
-            #050505,
-            transparent
-        );
+    background: linear-gradient(
+        to right,
+        #050505,
+        transparent
+    );
 }
 
 .partners-showcase::after {
     right: 0;
 
-    background:
-        linear-gradient(
-            to left,
-            #050505,
-            transparent
-        );
+    background: linear-gradient(
+        to left,
+        #050505,
+        transparent
+    );
 }
 
 
 /* =========================
-   MOVING TRACK
+   TRACK
 ========================= */
 
 .partners-track {
     display: flex;
-
     align-items: center;
 
     width: max-content;
 
+    gap: 55px;
+
     animation:
-        partnersMove 35s linear infinite;
+        partnersMove 30s linear infinite;
 
     will-change: transform;
 }
 
 
 /* =========================
-   PARTNER LOGO
+   LOGO
 ========================= */
 
 .partner-logo {
-    width: 220px;
+    width: 125px;
+    height: 55px;
 
-    height: 110px;
-
-    margin: 0 18px;
+    flex: 0 0 125px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     position: relative;
-}
-
-
-/* subtle separator */
-
-.partner-logo::after {
-    content: "";
-
-    position: absolute;
-
-    right: -18px;
-
-    width: 1px;
-
-    height: 28px;
-
-    background: rgba(255,255,255,.08);
 }
 
 
@@ -1472,20 +1438,24 @@ button {
 ========================= */
 
 .partner-logo img {
-    width: 150px;
+    display: block;
 
-    height: 70px;
+    width: 100%;
+    height: 100%;
+
+    max-width: 125px;
+    max-height: 55px;
 
     object-fit: contain;
 
-    opacity: .55;
+    opacity: .5;
 
     filter: grayscale(100%);
 
     transition:
-        opacity .5s ease,
-        filter .5s ease,
-        transform .5s cubic-bezier(.16,1,.3,1);
+        opacity .4s ease,
+        filter .4s ease,
+        transform .4s ease;
 }
 
 
@@ -1498,13 +1468,12 @@ button {
 
     filter: grayscale(0%);
 
-    transform: scale(1.12);
-
+    transform: scale(1.08);
 }
 
 
 /* =========================
-   INFINITE MOVEMENT
+   ANIMATION
 ========================= */
 
 @keyframes partnersMove {
@@ -1521,7 +1490,7 @@ button {
 
 
 /* =========================
-   PAUSE ON HOVER
+   PAUSE
 ========================= */
 
 .partners-showcase:hover .partners-track {
@@ -1530,36 +1499,58 @@ button {
 
 
 /* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .partners-track {
+        gap: 40px;
+    }
+
+    .partner-logo {
+        width: 110px;
+        height: 50px;
+        flex-basis: 110px;
+    }
+
+    .partner-logo img {
+        max-width: 110px;
+        max-height: 50px;
+    }
+
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
     .partners-showcase {
-        padding: 35px 0;
+        padding: 22px 0;
     }
 
     .partners-showcase::before,
     .partners-showcase::after {
-        width: 70px;
-    }
-
-    .partner-logo {
-        width: 170px;
-
-        height: 90px;
-
-        margin: 0 10px;
-    }
-
-    .partner-logo img {
-        width: 120px;
-
-        height: 60px;
+        width: 55px;
     }
 
     .partners-track {
-        animation-duration: 28s;
+        gap: 28px;
+        animation-duration: 24s;
+    }
+
+    .partner-logo {
+        width: 90px;
+        height: 42px;
+        flex-basis: 90px;
+    }
+
+    .partner-logo img {
+        max-width: 90px;
+        max-height: 42px;
     }
 
 }
