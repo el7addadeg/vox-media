@@ -1,538 +1,180 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================
-       MOBILE MENU
+       CUSTOM CURSOR
     ========================= */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mobileMenu = document.querySelector(".mobile-menu");
-    const mobileClose = document.querySelector(".mobile-close");
+    const cursor = document.querySelector(".cursor");
+    const ring = document.querySelector(".cursor-ring");
 
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener("click", () => {
-            mobileMenu.classList.add("active");
-            document.body.style.overflow = "hidden";
+    if (cursor && ring && window.innerWidth > 600) {
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let ringX = 0;
+        let ringY = 0;
+
+        document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            cursor.style.left = mouseX + "px";
+            cursor.style.top = mouseY + "px";
         });
-    }
 
-    if (mobileClose && mobileMenu) {
-        mobileClose.addEventListener("click", () => {
-            mobileMenu.classList.remove("active");
-            document.body.style.overflow = "";
-        });
-    }
+        function animateCursor() {
 
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
 
-    /* =========================
-       CLOSE MOBILE MENU
-       WHEN CLICKING A LINK
-    ========================= */
+            ring.style.left = ringX + "px";
+            ring.style.top = ringY + "px";
 
-    const mobileLinks = document.querySelectorAll(".mobile-menu a");
+            requestAnimationFrame(animateCursor);
+        }
 
-    mobileLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.remove("active");
-            document.body.style.overflow = "";
-        });
-    });
+        animateCursor();
 
 
-    /* =========================
-       SMOOTH SCROLL
-    ========================= */
+        document.querySelectorAll("a, button, .service-card, .client-card").forEach(item => {
 
-    const allLinks = document.querySelectorAll('a[href^="#"]');
+            item.addEventListener("mouseenter", () => {
+                ring.style.width = "55px";
+                ring.style.height = "55px";
+            });
 
-    allLinks.forEach(link => {
-
-        link.addEventListener("click", function (event) {
-
-            const targetId = this.getAttribute("href");
-
-            if (!targetId || targetId === "#") return;
-
-            const target = document.querySelector(targetId);
-
-            if (!target) return;
-
-            event.preventDefault();
-
-            const headerHeight = 70;
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                headerHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
+            item.addEventListener("mouseleave", () => {
+                ring.style.width = "35px";
+                ring.style.height = "35px";
             });
 
         });
-
-    });
-
-
-    /* =========================
-       HEADER SCROLL EFFECT
-    ========================= */
-
-    const header = document.querySelector(".header");
-
-    window.addEventListener("scroll", () => {
-
-        if (!header) return;
-
-        if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
-
-    });
+    }
 
 
     /* =========================
-       REVEAL ANIMATION
+       SCROLL REVEAL
     ========================= */
 
     const revealElements = document.querySelectorAll(
-        ".service-card, .work-card, .client-logo, .about-content, .about-image"
+        ".section-head, .service-card, .client-card, .about-content, .about-visual, .contact-inner"
     );
 
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("reveal");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.15
-        }
-    );
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
+    revealElements.forEach(el => {
+        el.classList.add("reveal");
     });
 
+    const observer = new IntersectionObserver((entries) => {
 
-    /* =========================
-       CONTACT FORM
-    ========================= */
+        entries.forEach(entry => {
 
-    const contactForm = document.getElementById("contactForm");
-
-    if (contactForm) {
-
-        contactForm.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            const name =
-                this.querySelector('[name="name"]').value.trim();
-
-            const phone =
-                this.querySelector('[name="phone"]').value.trim();
-
-            const company =
-                this.querySelector('[name="company"]').value.trim();
-
-            const message =
-                this.querySelector('[name="message"]').value.trim();
-
-
-            if (!name || !phone || !message) {
-
-                alert("من فضلك املأ البيانات المطلوبة.");
-
-                return;
-
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
             }
-
-
-            const whatsappMessage =
-                `مرحباً VOX Media%0A%0A` +
-                `الاسم: ${encodeURIComponent(name)}%0A` +
-                `الهاتف: ${encodeURIComponent(phone)}%0A` +
-                `الشركة: ${encodeURIComponent(company || "غير محدد")}%0A` +
-                `المشروع:%0A${encodeURIComponent(message)}`;
-
-
-            const whatsappURL =
-                `https://wa.me/201069952664?text=${whatsappMessage}`;
-
-
-            window.open(
-                whatsappURL,
-                "_blank"
-            );
 
         });
 
-    }
+    }, {
+        threshold: 0.12
+    });
+
+    revealElements.forEach(el => observer.observe(el));
 
 
     /* =========================
-       CURRENT YEAR
+       NAV ACTIVE STATE
     ========================= */
 
-    const yearElement =
-        document.getElementById("currentYear");
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".nav a");
 
-    if (yearElement) {
-        yearElement.textContent =
-            new Date().getFullYear();
-    }
+    window.addEventListener("scroll", () => {
 
-
-    /* =========================
-       ACTIVE NAVIGATION
-    ========================= */
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
-    const navLinks =
-        document.querySelectorAll(".nav a");
-
-
-    const updateActiveNavigation = () => {
-
-        let currentSection = "";
+        let current = "";
 
         sections.forEach(section => {
 
-            const sectionTop =
-                section.offsetTop - 150;
+            const sectionTop = section.offsetTop - 250;
 
-            const sectionBottom =
-                sectionTop + section.offsetHeight;
-
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionBottom
-            ) {
-                currentSection = section.id;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
             }
 
         });
-
 
         navLinks.forEach(link => {
 
             link.classList.remove("active");
 
-            if (
-                link.getAttribute("href") ===
-                `#${currentSection}`
-            ) {
+            if (link.getAttribute("href") === "#" + current) {
                 link.classList.add("active");
             }
 
         });
 
-    };
-
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation
-    );
-
-    updateActiveNavigation();
-
-
-    /* =========================
-       PREVENT IMAGE DRAG
-    ========================= */
-
-    document.querySelectorAll("img").forEach(img => {
-
-        img.addEventListener(
-            "dragstart",
-            event => event.preventDefault()
-        );
-
     });
 
-});document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================
        MOBILE MENU
     ========================= */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mobileMenu = document.querySelector(".mobile-menu");
-    const mobileClose = document.querySelector(".mobile-close");
+    const menuBtn = document.querySelector(".menu-btn");
+    const nav = document.querySelector(".nav");
 
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener("click", () => {
-            mobileMenu.classList.add("active");
-            document.body.style.overflow = "hidden";
-        });
-    }
+    if (menuBtn) {
 
-    if (mobileClose && mobileMenu) {
-        mobileClose.addEventListener("click", () => {
-            mobileMenu.classList.remove("active");
-            document.body.style.overflow = "";
+        menuBtn.addEventListener("click", () => {
+
+            nav.classList.toggle("mobile-open");
+
         });
+
     }
 
 
     /* =========================
-       CLOSE MOBILE MENU
-       WHEN CLICKING A LINK
+       PARALLAX HERO
     ========================= */
 
-    const mobileLinks = document.querySelectorAll(".mobile-menu a");
+    const heroVisual = document.querySelector(".hero-visual");
 
-    mobileLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.remove("active");
-            document.body.style.overflow = "";
+    if (heroVisual && window.innerWidth > 900) {
+
+        document.addEventListener("mousemove", (e) => {
+
+            const x = (window.innerWidth / 2 - e.clientX) / 80;
+            const y = (window.innerHeight / 2 - e.clientY) / 80;
+
+            heroVisual.style.transform =
+                `translate3d(${x}px, ${y}px, 0)`;
+
         });
-    });
+
+    }
 
 
     /* =========================
-       SMOOTH SCROLL
+       SMOOTH ANCHOR
     ========================= */
 
-    const allLinks = document.querySelectorAll('a[href^="#"]');
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-    allLinks.forEach(link => {
+        anchor.addEventListener("click", function(e) {
 
-        link.addEventListener("click", function (event) {
-
-            const targetId = this.getAttribute("href");
-
-            if (!targetId || targetId === "#") return;
-
-            const target = document.querySelector(targetId);
+            const target = document.querySelector(this.getAttribute("href"));
 
             if (!target) return;
 
-            event.preventDefault();
+            e.preventDefault();
 
-            const headerHeight = 70;
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                headerHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
 
         });
-
-    });
-
-
-    /* =========================
-       HEADER SCROLL EFFECT
-    ========================= */
-
-    const header = document.querySelector(".header");
-
-    window.addEventListener("scroll", () => {
-
-        if (!header) return;
-
-        if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
-
-    });
-
-
-    /* =========================
-       REVEAL ANIMATION
-    ========================= */
-
-    const revealElements = document.querySelectorAll(
-        ".service-card, .work-card, .client-logo, .about-content, .about-image"
-    );
-
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("reveal");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.15
-        }
-    );
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-
-
-    /* =========================
-       CONTACT FORM
-    ========================= */
-
-    const contactForm = document.getElementById("contactForm");
-
-    if (contactForm) {
-
-        contactForm.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            const name =
-                this.querySelector('[name="name"]').value.trim();
-
-            const phone =
-                this.querySelector('[name="phone"]').value.trim();
-
-            const company =
-                this.querySelector('[name="company"]').value.trim();
-
-            const message =
-                this.querySelector('[name="message"]').value.trim();
-
-
-            if (!name || !phone || !message) {
-
-                alert("من فضلك املأ البيانات المطلوبة.");
-
-                return;
-
-            }
-
-
-            const whatsappMessage =
-                `مرحباً VOX Media%0A%0A` +
-                `الاسم: ${encodeURIComponent(name)}%0A` +
-                `الهاتف: ${encodeURIComponent(phone)}%0A` +
-                `الشركة: ${encodeURIComponent(company || "غير محدد")}%0A` +
-                `المشروع:%0A${encodeURIComponent(message)}`;
-
-
-            const whatsappURL =
-                `https://wa.me/201069952664?text=${whatsappMessage}`;
-
-
-            window.open(
-                whatsappURL,
-                "_blank"
-            );
-
-        });
-
-    }
-
-
-    /* =========================
-       CURRENT YEAR
-    ========================= */
-
-    const yearElement =
-        document.getElementById("currentYear");
-
-    if (yearElement) {
-        yearElement.textContent =
-            new Date().getFullYear();
-    }
-
-
-    /* =========================
-       ACTIVE NAVIGATION
-    ========================= */
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
-    const navLinks =
-        document.querySelectorAll(".nav a");
-
-
-    const updateActiveNavigation = () => {
-
-        let currentSection = "";
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.offsetTop - 150;
-
-            const sectionBottom =
-                sectionTop + section.offsetHeight;
-
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionBottom
-            ) {
-                currentSection = section.id;
-            }
-
-        });
-
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            if (
-                link.getAttribute("href") ===
-                `#${currentSection}`
-            ) {
-                link.classList.add("active");
-            }
-
-        });
-
-    };
-
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation
-    );
-
-    updateActiveNavigation();
-
-
-    /* =========================
-       PREVENT IMAGE DRAG
-    ========================= */
-
-    document.querySelectorAll("img").forEach(img => {
-
-        img.addEventListener(
-            "dragstart",
-            event => event.preventDefault()
-        );
 
     });
 
