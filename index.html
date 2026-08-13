@@ -659,156 +659,503 @@
 
 
 <!-- =====================================================
-     PARTNERS
+     WORK / SELECTED PROJECTS
 ===================================================== -->
 
-<section
-    class="partners section"
-    id="partners"
->
+<section class="work section" id="work">
 
-    <div class="section-head partners-head">
+    <!-- WORK HEADER -->
+    <div class="section-head work-head">
 
         <div>
-
             <span class="section-number">
-                03 / OUR PARTNERS
+                02 / SELECTED WORK
             </span>
 
             <h2>
-                شركاء<br>
-                <strong>وثقوا بنا.</strong>
+                شغلنا<br>
+                <strong>يتكلم عننا.</strong>
             </h2>
-
         </div>
 
         <p>
-            علامات تجارية اختارت VOX لتطوير حضورها
-            وصناعة محتوى يليق بها ويصل إلى جمهورها.
+            مجموعة مختارة من المشاريع التي نفذتها VOX
+            في التصوير، الإنتاج، المونتاج، الإعلانات
+            وصناعة المحتوى الرقمي.
         </p>
 
     </div>
 
 
-    <!-- PARTNERS MARQUEE -->
+    <!-- =================================================
+         FILTERS
+    ================================================= -->
 
-    <div class="partners-showcase">
+    <div class="work-filters">
 
-        <div class="partners-track">
+        <button
+            class="work-filter active"
+            data-filter="all"
+        >
+            الكل
+        </button>
 
+        <button
+            class="work-filter"
+            data-filter="production"
+        >
+            تصوير وإنتاج
+        </button>
 
-            <!-- SET 01 -->
+        <button
+            class="work-filter"
+            data-filter="editing"
+        >
+            مونتاج
+        </button>
 
-            <div class="partner-logo">
-                <img
-                    src="assets/images/el-fayomi.png"
-                    alt="El Fayomi"
-                >
-            </div>
+        <button
+            class="work-filter"
+            data-filter="ai"
+        >
+            AI
+        </button>
 
-            <div class="partner-logo">
-                <img
-                    src="assets/images/jasmin-resort.png"
-                    alt="Jasmin Resort"
-                >
-            </div>
+        <button
+            class="work-filter"
+            data-filter="ads"
+        >
+            إعلانات
+        </button>
 
-            <div class="partner-logo">
-                <img
-                    src="assets/images/agro-green.png"
-                    alt="Agro Green"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/mansoura-sc.png"
-                    alt="Mansoura Sporting Club"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/monkeyland.png"
-                    alt="Monkeyland"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/mosaic-minds.png"
-                    alt="Mosaic Minds"
-                >
-            </div>
-
-
-            <!-- SET 02
-                 Duplicate for infinite movement
-            -->
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/el-fayomi.png"
-                    alt="El Fayomi"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/jasmin-resort.png"
-                    alt="Jasmin Resort"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/agro-green.png"
-                    alt="Agro Green"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/mansoura-sc.png"
-                    alt="Mansoura Sporting Club"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/monkeyland.png"
-                    alt="Monkeyland"
-                >
-            </div>
-
-            <div class="partner-logo">
-                <img
-                    src="assets/images/mosaic-minds.png"
-                    alt="Mosaic Minds"
-                >
-            </div>
-
-
-        </div>
+        <button
+            class="work-filter"
+            data-filter="social"
+        >
+            Social Media
+        </button>
 
     </div>
 
 
-    <div class="partners-footer">
+    <!-- =================================================
+         WORK GRID
+    ================================================= -->
+
+    <div class="work-grid">
+
+
+        <!-- PROJECT 01 -->
+        <article
+            class="work-card"
+            data-category="production"
+            data-youtube="YOUTUBE_VIDEO_ID_1"
+            data-title="مشروع إنتاج إعلاني"
+            data-service="تصوير وإنتاج"
+        >
+
+            <div class="work-media">
+
+                <img
+                    class="work-thumbnail"
+                    src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_1/maxresdefault.jpg"
+                    alt="مشروع إنتاج إعلاني"
+                    loading="lazy"
+                >
+
+                <div class="work-overlay"></div>
+
+                <div class="work-play">
+                    <span>▶</span>
+                </div>
+
+                <span class="work-number">
+                    01
+                </span>
+
+                <span class="work-category">
+                    PRODUCTION
+                </span>
+
+            </div>
+
+
+            <div class="work-info">
+
+                <div>
+                    <span class="work-label">
+                        تصوير وإنتاج
+                    </span>
+
+                    <h3>
+                        مشروع إنتاج إعلاني
+                    </h3>
+                </div>
+
+                <span class="work-arrow">
+                    ↗
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 02 -->
+        <article
+            class="work-card"
+            data-category="editing"
+            data-youtube="YOUTUBE_VIDEO_ID_2"
+            data-title="مونتاج إعلاني"
+            data-service="مونتاج وصناعة فيديو"
+        >
+
+            <div class="work-media">
+
+                <img
+                    class="work-thumbnail"
+                    src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_2/maxresdefault.jpg"
+                    alt="مونتاج إعلاني"
+                    loading="lazy"
+                >
+
+                <div class="work-overlay"></div>
+
+                <div class="work-play">
+                    <span>▶</span>
+                </div>
+
+                <span class="work-number">
+                    02
+                </span>
+
+                <span class="work-category">
+                    EDITING
+                </span>
+
+            </div>
+
+
+            <div class="work-info">
+
+                <div>
+                    <span class="work-label">
+                        مونتاج
+                    </span>
+
+                    <h3>
+                        مونتاج إعلاني
+                    </h3>
+                </div>
+
+                <span class="work-arrow">
+                    ↗
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 03 -->
+        <article
+            class="work-card"
+            data-category="ads"
+            data-youtube="YOUTUBE_VIDEO_ID_3"
+            data-title="حملة إعلانية"
+            data-service="Digital Advertising"
+        >
+
+            <div class="work-media">
+
+                <img
+                    class="work-thumbnail"
+                    src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_3/maxresdefault.jpg"
+                    alt="حملة إعلانية"
+                    loading="lazy"
+                >
+
+                <div class="work-overlay"></div>
+
+                <div class="work-play">
+                    <span>▶</span>
+                </div>
+
+                <span class="work-number">
+                    03
+                </span>
+
+                <span class="work-category">
+                    ADVERTISING
+                </span>
+
+            </div>
+
+
+            <div class="work-info">
+
+                <div>
+                    <span class="work-label">
+                        إعلانات
+                    </span>
+
+                    <h3>
+                        حملة إعلانية
+                    </h3>
+                </div>
+
+                <span class="work-arrow">
+                    ↗
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 04 -->
+        <article
+            class="work-card"
+            data-category="ai"
+            data-youtube="YOUTUBE_VIDEO_ID_4"
+            data-title="AI Creative Video"
+            data-service="AI Content"
+        >
+
+            <div class="work-media">
+
+                <img
+                    class="work-thumbnail"
+                    src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_4/maxresdefault.jpg"
+                    alt="AI Creative Video"
+                    loading="lazy"
+                >
+
+                <div class="work-overlay"></div>
+
+                <div class="work-play">
+                    <span>▶</span>
+                </div>
+
+                <span class="work-number">
+                    04
+                </span>
+
+                <span class="work-category">
+                    AI
+                </span>
+
+            </div>
+
+
+            <div class="work-info">
+
+                <div>
+                    <span class="work-label">
+                        AI Content
+                    </span>
+
+                    <h3>
+                        AI Creative Video
+                    </h3>
+                </div>
+
+                <span class="work-arrow">
+                    ↗
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 05 -->
+        <article
+            class="work-card"
+            data-category="social"
+            data-youtube="YOUTUBE_VIDEO_ID_5"
+            data-title="Social Media Campaign"
+            data-service="Social Media"
+        >
+
+            <div class="work-media">
+
+                <img
+                    class="work-thumbnail"
+                    src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_5/maxresdefault.jpg"
+                    alt="Social Media Campaign"
+                    loading="lazy"
+                >
+
+                <div class="work-overlay"></div>
+
+                <div class="work-play">
+                    <span>▶</span>
+                </div>
+
+                <span class="work-number">
+                    05
+                </span>
+
+                <span class="work-category">
+                    SOCIAL
+                </span>
+
+            </div>
+
+
+            <div class="work-info">
+
+                <div>
+                    <span class="work-label">
+                        Social Media
+                    </span>
+
+                    <h3>
+                        Social Media Campaign
+                    </h3>
+                </div>
+
+                <span class="work-arrow">
+                    ↗
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 06 -->
+        <article
+            class="work-card"
+            data-category="production"
+            data-youtube="YOUTUBE_VIDEO_ID_6"
+            data-title="Commercial Production"
+            data-service="Production"
+        >
+
+            <div class="work-media">
+
+                <img
+                    class="work-thumbnail"
+                    src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_6/maxresdefault.jpg"
+                    alt="Commercial Production"
+                    loading="lazy"
+                >
+
+                <div class="work-overlay"></div>
+
+                <div class="work-play">
+                    <span>▶</span>
+                </div>
+
+                <span class="work-number">
+                    06
+                </span>
+
+                <span class="work-category">
+                    PRODUCTION
+                </span>
+
+            </div>
+
+
+            <div class="work-info">
+
+                <div>
+                    <span class="work-label">
+                        Production
+                    </span>
+
+                    <h3>
+                        Commercial Production
+                    </h3>
+                </div>
+
+                <span class="work-arrow">
+                    ↗
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- WORK FOOTER -->
+    <div class="work-bottom">
 
         <span>
-            TRUSTED BY BRANDS
+            MORE PROJECTS
         </span>
 
-        <div class="partners-line"></div>
+        <div class="work-line"></div>
 
         <span>
-            AND MORE
+            2026
         </span>
 
     </div>
 
 </section>
+
+
+
+<!-- =====================================================
+     VIDEO MODAL
+===================================================== -->
+
+<div
+    class="video-modal"
+    id="videoModal"
+    aria-hidden="true"
+>
+
+    <div class="video-modal-backdrop"></div>
+
+
+    <div class="video-modal-content">
+
+        <button
+            class="video-modal-close"
+            id="videoModalClose"
+            aria-label="Close video"
+        >
+            ×
+        </button>
+
+
+        <div class="video-modal-video">
+
+            <div
+                class="youtube-container"
+                id="youtubeContainer"
+            ></div>
+
+        </div>
+
+
+        <div class="video-modal-info">
+
+            <span id="modalService">
+                VIDEO
+            </span>
+
+            <h3 id="modalTitle">
+                Project
+            </h3>
+
+        </div>
+
+    </div>
+
+</div>
 
 
         <!-- ABOUT -->
