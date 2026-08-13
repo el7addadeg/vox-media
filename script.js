@@ -495,5 +495,276 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    /* =====================================================
+   VOX WORK
+   FILTERS + YOUTUBE LAZY MODAL
+===================================================== */
+
+const workCards = document.querySelectorAll(".work-card");
+const workFilters = document.querySelectorAll(".work-filter");
+
+const videoModal = document.getElementById("videoModal");
+const videoModalClose = document.getElementById("videoModalClose");
+const videoModalBackdrop = document.querySelector(".video-modal-backdrop");
+
+const youtubeContainer =
+    document.getElementById("youtubeContainer");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalService =
+    document.getElementById("modalService");
+
+
+/* =====================================================
+   YOUTUBE THUMBNAIL FALLBACK
+===================================================== */
+
+workCards.forEach(card => {
+
+    const videoId = card.dataset.youtube;
+    const thumbnail = card.querySelector(".work-thumbnail");
+
+    if (!videoId || !thumbnail) return;
+
+    /*
+       لو maxresdefault مش موجود،
+       استخدم hqdefault تلقائياً.
+    */
+
+    thumbnail.addEventListener("error", () => {
+
+        thumbnail.src =
+            `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+    }, {
+        once: true
+    });
+
+});
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+workFilters.forEach(filter => {
+
+    filter.addEventListener("click", () => {
+
+        const selected =
+            filter.dataset.filter;
+
+
+        /* ACTIVE BUTTON */
+
+        workFilters.forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+        filter.classList.add("active");
+
+
+        /* FILTER CARDS */
+
+        workCards.forEach(card => {
+
+            const category =
+                card.dataset.category;
+
+
+            if (
+                selected === "all" ||
+                category === selected
+            ) {
+
+                card.classList.remove("is-hidden");
+
+                requestAnimationFrame(() => {
+
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+
+                });
+
+            } else {
+
+                card.style.opacity = "0";
+                card.style.transform = "translateY(15px)";
+
+                setTimeout(() => {
+
+                    card.classList.add("is-hidden");
+
+                }, 250);
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* =====================================================
+   OPEN VIDEO MODAL
+===================================================== */
+
+function openVideo(card) {
+
+    const videoId =
+        card.dataset.youtube;
+
+    const title =
+        card.dataset.title || "VOX Media";
+
+    const service =
+        card.dataset.service || "VIDEO";
+
+
+    if (!videoId) return;
+
+
+    /* UPDATE MODAL TEXT */
+
+    modalTitle.textContent = title;
+
+    modalService.textContent =
+        service.toUpperCase();
+
+
+    /*
+       IMPORTANT:
+       YouTube iframe is created ONLY NOW.
+
+       This means the page does NOT load
+       YouTube players for every card.
+    */
+
+    youtubeContainer.innerHTML = `
+
+        <iframe
+            src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1"
+            title="${title}"
+            loading="eager"
+            allow="
+                autoplay;
+                encrypted-media;
+                picture-in-picture;
+                fullscreen
+            "
+            allowfullscreen>
+        </iframe>
+
+    `;
+
+
+    /* SHOW MODAL */
+
+    videoModal.classList.add("active");
+
+    videoModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    /* LOCK PAGE SCROLL */
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* =====================================================
+   CARD CLICK
+===================================================== */
+
+workCards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        openVideo(card);
+
+    });
+
+});
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeVideo() {
+
+    videoModal.classList.remove("active");
+
+    videoModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    /*
+       Destroy iframe completely.
+
+       This stops YouTube playback
+       and releases resources.
+    */
+
+    youtubeContainer.innerHTML = "";
+
+
+    /* RESTORE SCROLL */
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* CLOSE BUTTON */
+
+if (videoModalClose) {
+
+    videoModalClose.addEventListener(
+        "click",
+        closeVideo
+    );
+
+}
+
+
+/* BACKDROP CLICK */
+
+if (videoModalBackdrop) {
+
+    videoModalBackdrop.addEventListener(
+        "click",
+        closeVideo
+    );
+
+}
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener("keydown", (event) => {
+
+    if (
+        event.key === "Escape" &&
+        videoModal.classList.contains("active")
+    ) {
+
+        closeVideo();
+
+    }
+
+});
 
 });
