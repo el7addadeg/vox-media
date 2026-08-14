@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-
         function animateCursor() {
 
             ringX += (mouseX - ringX) * 0.12;
@@ -39,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         animateCursor();
-
 
         /* Cursor Hover */
 
@@ -56,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 });
 
-
                 item.addEventListener("mouseleave", () => {
 
                     ring.style.width = "35px";
@@ -67,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
     }
-
 
 
     /* =====================================================
@@ -87,13 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
             `
         );
 
-
     revealElements.forEach(el => {
 
         el.classList.add("reveal");
 
     });
-
 
     const observer =
         new IntersectionObserver(
@@ -115,13 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
-
     revealElements.forEach(el => {
 
         observer.observe(el);
 
     });
-
 
 
     /* =====================================================
@@ -133,23 +125,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "main section[id]"
         );
 
-
     const navLinks =
         document.querySelectorAll(
             ".nav a"
         );
 
-
     window.addEventListener("scroll", () => {
 
         let current = "";
-
 
         sections.forEach(section => {
 
             const sectionTop =
                 section.offsetTop - 250;
-
 
             if (window.scrollY >= sectionTop) {
 
@@ -160,11 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-
         navLinks.forEach(link => {
 
             link.classList.remove("active");
-
 
             if (
                 link.getAttribute("href") ===
@@ -180,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-
     /* =====================================================
        MOBILE MENU
     ===================================================== */
@@ -190,12 +175,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ".menu-btn"
         );
 
-
     const nav =
         document.querySelector(
             ".nav"
         );
-
 
     if (menuBtn && nav) {
 
@@ -206,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         });
-
 
         nav.querySelectorAll("a")
             .forEach(link => {
@@ -227,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     /* =====================================================
        HERO PARALLAX
     ===================================================== */
@@ -236,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(
             ".hero-visual"
         );
-
 
     if (
         heroVisual &&
@@ -253,13 +233,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         e.clientX
                     ) / 80;
 
-
                 const y =
                     (
                         window.innerHeight / 2 -
                         e.clientY
                     ) / 80;
-
 
                 heroVisual.style.transform =
                     `translate3d(${x}px, ${y}px, 0)`;
@@ -268,7 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
-
 
 
     /* =====================================================
@@ -288,11 +265,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const href =
                         this.getAttribute("href");
 
-
-                    /*
-                       Ignore empty "#"
-                    */
-
                     if (
                         !href ||
                         href === "#"
@@ -302,12 +274,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     }
 
-
                     const target =
                         document.querySelector(
                             href
                         );
-
 
                     if (!target) {
 
@@ -315,9 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     }
 
-
                     e.preventDefault();
-
 
                     target.scrollIntoView({
 
@@ -332,7 +300,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-
     /* =====================================================
        PARTNERS MARQUEE
     ===================================================== */
@@ -341,7 +308,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(
             ".partners-track"
         );
-
 
     if (partnersTrack) {
 
@@ -355,7 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
         );
-
 
         partnersTrack.addEventListener(
             "mouseleave",
@@ -371,10 +336,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     /* =====================================================
        VOX WORK
-       FILTERS + YOUTUBE LAZY LOADING + MODAL
+       Filters + YouTube Lazy Loading + Modal
     ===================================================== */
 
     const workCards =
@@ -382,475 +346,450 @@ document.addEventListener("DOMContentLoaded", () => {
             ".work-card"
         );
 
-
     const workFilters =
         document.querySelectorAll(
             ".work-filter"
         );
 
-
-    const videoModal =
+    const workModal =
         document.getElementById(
-            "videoModal"
+            "workModal"
         );
 
-
-    const videoModalClose =
+    const workModalClose =
         document.getElementById(
-            "videoModalClose"
+            "workModalClose"
         );
 
+    const workModalBackdrop =
+        workModal
+            ? workModal.querySelector(
+                ".work-modal-backdrop"
+            )
+            : null;
 
-    const videoModalBackdrop =
-        document.querySelector(
-            ".video-modal-backdrop"
-        );
+    const workModalVideo =
+        workModal
+            ? workModal.querySelector(
+                ".work-modal-video"
+            )
+            : null;
 
-
-    const youtubeContainer =
+    const workModalTitle =
         document.getElementById(
-            "youtubeContainer"
+            "workModalTitle"
         );
 
-
-    const modalTitle =
+    const workModalType =
         document.getElementById(
-            "modalTitle"
+            "workModalType"
         );
 
-
-    const modalService =
+    const workYoutubeLink =
         document.getElementById(
-            "modalService"
+            "workYoutubeLink"
         );
-
 
 
     /* =====================================================
-       CHECK WORK ELEMENTS
+       YOUTUBE THUMBNAILS
     ===================================================== */
 
-    if (
-        workCards.length &&
-        workFilters.length
-    ) {
+    workCards.forEach(card => {
+
+        const media =
+            card.querySelector(
+                ".work-media"
+            );
+
+        const image =
+            media
+                ? media.querySelector("img")
+                : null;
+
+        const videoId =
+            media
+                ? media.dataset.video
+                : null;
+
+        if (!image || !videoId) return;
+
+        image.addEventListener(
+            "error",
+            () => {
+
+                if (!image.dataset.fallback) {
+
+                    image.dataset.fallback = "1";
+
+                    image.src =
+                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+                }
+
+            },
+            {
+                once: true
+            }
+        );
+
+    });
 
 
+    /* =====================================================
+       WORK FILTERS
+       Cards can belong to more than one category
+    ===================================================== */
 
-        /* =================================================
-           YOUTUBE THUMBNAIL FALLBACK
-        ================================================= */
+    function applyWorkFilter(selected) {
 
         workCards.forEach(card => {
 
-            const videoId =
-                card.dataset.youtube;
+            const categories =
+                (
+                    card.dataset.category || ""
+                )
+                    .split(/\s+/)
+                    .filter(Boolean);
 
+            const show =
+                selected === "all" ||
+                categories.includes(selected);
 
-            const thumbnail =
-                card.querySelector(
-                    ".work-thumbnail"
-                );
-
-
-            if (
-                !videoId ||
-                !thumbnail
-            ) {
-
-                return;
-
-            }
-
-
-            /*
-               YouTube sometimes doesn't provide
-               maxresdefault for some videos.
-
-               Fallback automatically to hqdefault.
-            */
-
-            thumbnail.addEventListener(
-                "error",
-                () => {
-
-                    thumbnail.src =
-                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-
-                },
-                {
-                    once: true
-                }
+            card.classList.toggle(
+                "is-hidden",
+                !show
             );
 
         });
 
+    }
 
 
-        /* =================================================
-           WORK FILTERS
-        ================================================= */
+    workFilters.forEach(filter => {
 
-        workFilters.forEach(filter => {
+        filter.addEventListener(
+            "click",
+            () => {
 
-            filter.addEventListener(
-                "click",
-                () => {
+                const selected =
+                    filter.dataset.filter ||
+                    "all";
 
-                    const selected =
-                        filter.dataset.filter;
+                workFilters.forEach(btn => {
 
-
-                    /*
-                       Active Button
-                    */
-
-                    workFilters.forEach(btn => {
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    });
-
-
-                    filter.classList.add(
+                    btn.classList.remove(
                         "active"
                     );
 
+                });
 
-                    /*
-                       Filter Cards
-                    */
+                filter.classList.add(
+                    "active"
+                );
 
-                    workCards.forEach(card => {
-
-                        const category =
-                            card.dataset.category;
-
-
-                        const shouldShow =
-                            selected === "all" ||
-                            category === selected;
-
-
-                        if (shouldShow) {
-
-                            /*
-                               Remove hidden first
-                            */
-
-                            card.classList.remove(
-                                "is-hidden"
-                            );
-
-
-                            /*
-                               Small animation
-                            */
-
-                            requestAnimationFrame(() => {
-
-                                card.style.opacity =
-                                    "1";
-
-                                card.style.transform =
-                                    "translateY(0)";
-
-                            });
-
-                        } else {
-
-                            card.style.opacity =
-                                "0";
-
-                            card.style.transform =
-                                "translateY(15px)";
-
-
-                            setTimeout(() => {
-
-                                card.classList.add(
-                                    "is-hidden"
-                                );
-
-                            }, 250);
-
-                        }
-
-                    });
-
-                }
-            );
-
-        });
-
-
-
-        /* =================================================
-           OPEN VIDEO MODAL
-        ================================================= */
-
-        function openVideo(card) {
-
-            const videoId =
-                card.dataset.youtube;
-
-
-            const title =
-                card.dataset.title ||
-                "VOX Media";
-
-
-            const service =
-                card.dataset.service ||
-                "VIDEO";
-
-
-            if (
-                !videoId ||
-                !videoModal ||
-                !youtubeContainer
-            ) {
-
-                return;
+                applyWorkFilter(
+                    selected
+                );
 
             }
+        );
+
+    });
 
 
-            /*
-               Update Modal Information
-            */
+    /* =====================================================
+       OPEN PROJECT
+       YouTube is loaded ONLY after clicking
+    ===================================================== */
 
-            if (modalTitle) {
+    function openWork(button) {
 
-                modalTitle.textContent =
-                    title;
+        if (
+            !button ||
+            !workModal ||
+            !workModalVideo
+        ) {
 
-            }
+            return;
 
+        }
 
-            if (modalService) {
+        const videoId =
+            button.dataset.video;
 
-                modalService.textContent =
-                    service.toUpperCase();
+        if (!videoId) return;
 
-            }
+        const title =
+            button.dataset.title ||
+            "VOX Media";
 
+        const type =
+            button.dataset.type ||
+            "PROJECT";
 
-
-            /* =============================================
-               YOUTUBE LAZY LOADING
-            ============================================= */
-
-            /*
-               The iframe is NOT loaded when the page
-               opens.
-
-               It is created ONLY when the user clicks
-               the project.
-
-               This keeps the website faster.
-            */
-
-            youtubeContainer.innerHTML = `
-
-                <iframe
-                    src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1"
-                    title="${title.replace(/"/g, "&quot;")}"
-                    loading="eager"
-                    allow="
-                        autoplay;
-                        encrypted-media;
-                        picture-in-picture;
-                        fullscreen
-                    "
-                    allowfullscreen>
-                </iframe>
-
-            `;
+        const client =
+            button.dataset.client ||
+            title;
 
 
+        if (workModalTitle) {
 
-            /* =============================================
-               SHOW MODAL
-            ============================================= */
-
-            videoModal.classList.add(
-                "active"
-            );
-
-
-            videoModal.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            /*
-               Prevent page scrolling
-            */
-
-            document.body.style.overflow =
-                "hidden";
+            workModalTitle.textContent =
+                client;
 
         }
 
 
+        if (workModalType) {
+
+            workModalType.textContent =
+                type.toUpperCase();
+
+        }
+
+
+        if (workYoutubeLink) {
+
+            workYoutubeLink.href =
+                `https://www.youtube.com/watch?v=${videoId}`;
+
+        }
+
 
         /* =================================================
-           WORK CARD CLICK
+           LAZY LOAD YOUTUBE
         ================================================= */
 
-        workCards.forEach(card => {
+        workModalVideo.innerHTML = `
 
-            card.addEventListener(
+            <div
+                class="work-video-loader"
+                id="workVideoLoader"
+                aria-hidden="true"
+            >
+                <span></span>
+            </div>
+
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+                title="${String(title).replace(/"/g, "&quot;")}"
+                loading="eager"
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+
+        `;
+
+
+        /* =================================================
+           OPEN MODAL
+        ================================================= */
+
+        workModal.classList.add(
+            "active"
+        );
+
+        workModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.classList.add(
+            "work-modal-open"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+
+        /* Focus iframe */
+
+        requestAnimationFrame(() => {
+
+            const iframe =
+                workModalVideo.querySelector(
+                    "iframe"
+                );
+
+            if (iframe) {
+
+                iframe.focus({
+                    preventScroll: true
+                });
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       PROJECT CLICK EVENTS
+    ===================================================== */
+
+    workCards.forEach(card => {
+
+        const media =
+            card.querySelector(
+                ".work-media"
+            );
+
+        const openButton =
+            card.querySelector(
+                ".work-open"
+            );
+
+
+        /* Click thumbnail */
+
+        if (media) {
+
+            media.addEventListener(
                 "click",
                 () => {
 
-                    openVideo(card);
+                    openWork(
+                        media
+                    );
 
                 }
             );
 
-        });
+        }
 
 
+        /* Click arrow/button */
 
-        /* =================================================
-           CLOSE VIDEO MODAL
-        ================================================= */
+        if (openButton) {
 
-        function closeVideo() {
+            openButton.addEventListener(
+                "click",
+                (event) => {
 
-            if (!videoModal) {
+                    event.stopPropagation();
 
-                return;
+                    openWork(
+                        openButton
+                    );
 
-            }
-
-
-            videoModal.classList.remove(
-                "active"
+                }
             );
 
+        }
 
-            videoModal.setAttribute(
-                "aria-hidden",
-                "true"
-            );
+    });
 
 
-            /*
-               IMPORTANT:
+    /* =====================================================
+       CLOSE PROJECT
+    ===================================================== */
 
-               Destroy iframe completely.
+    function closeWork() {
 
-               This immediately stops YouTube playback
-               and releases the player resources.
-            */
-
-            if (youtubeContainer) {
-
-                youtubeContainer.innerHTML =
-                    "";
-
-            }
+        if (!workModal) return;
 
 
-            /*
-               Restore page scroll
-            */
+        workModal.classList.remove(
+            "active"
+        );
 
-            document.body.style.overflow =
+        workModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        /*
+           Destroy iframe completely
+           so YouTube stops immediately.
+        */
+
+        if (workModalVideo) {
+
+            workModalVideo.innerHTML =
                 "";
 
         }
 
 
+        document.body.classList.remove(
+            "work-modal-open"
+        );
 
-        /* =================================================
-           CLOSE BUTTON
-        ================================================= */
+        document.body.style.overflow =
+            "";
 
-        if (videoModalClose) {
-
-            videoModalClose.addEventListener(
-                "click",
-                closeVideo
-            );
-
-        }
+    }
 
 
+    /* Close button */
 
-        /* =================================================
-           BACKDROP CLICK
-        ================================================= */
+    if (workModalClose) {
 
-        if (videoModalBackdrop) {
-
-            videoModalBackdrop.addEventListener(
-                "click",
-                closeVideo
-            );
-
-        }
-
-
-
-        /* =================================================
-           ESC KEY
-        ================================================= */
-
-        document.addEventListener(
-            "keydown",
-            (event) => {
-
-                if (
-                    event.key === "Escape" &&
-                    videoModal.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closeVideo();
-
-                }
-
-            }
+        workModalClose.addEventListener(
+            "click",
+            closeWork
         );
 
     }
 
 
+    /* Close backdrop */
+
+    if (workModalBackdrop) {
+
+        workModalBackdrop.addEventListener(
+            "click",
+            closeWork
+        );
+
+    }
+
 
     /* =====================================================
-       WORK CARD KEYBOARD ACCESSIBILITY
+       ESCAPE KEY
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape" &&
+                workModal &&
+                workModal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeWork();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       KEYBOARD ACCESSIBILITY
     ===================================================== */
 
     workCards.forEach(card => {
 
-        /*
-           Make cards accessible by keyboard
-           if they are not naturally buttons.
-        */
-
-        if (
-            !card.hasAttribute("tabindex")
-        ) {
-
-            card.setAttribute(
-                "tabindex",
-                "0"
+        const media =
+            card.querySelector(
+                ".work-media"
             );
 
-        }
+        if (!media) return;
 
 
-        card.addEventListener(
+        media.addEventListener(
             "keydown",
-            (event) => {
+            event => {
 
                 if (
                     event.key === "Enter" ||
@@ -859,7 +798,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     event.preventDefault();
 
-                    card.click();
+                    openWork(
+                        media
+                    );
 
                 }
 
@@ -867,7 +808,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     });
-
 
 
     /* =====================================================
@@ -892,7 +832,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-
     /* =====================================================
        REDUCED MOTION
     ===================================================== */
@@ -902,10 +841,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "(prefers-reduced-motion: reduce)"
         ).matches
     ) {
-
-        /*
-           Disable JS-heavy motion where possible.
-        */
 
         if (partnersTrack) {
 
