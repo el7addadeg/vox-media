@@ -486,7 +486,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         requestAnimationFrame(() => {
             const iframe = workModalVideo.querySelector("iframe");
-            if (iframe) iframe.focus({ preventScroll: true });
+            const loader = workModalVideo.querySelector(".work-video-loader");
+
+            if (iframe) {
+                /* Hide the black loading layer as soon as YouTube finishes loading.
+                   The old version left this layer above the iframe, so the video
+                   could play audio while its picture stayed hidden. */
+                iframe.addEventListener("load", () => {
+                    if (loader) loader.remove();
+                    iframe.focus({ preventScroll: true });
+                }, { once: true });
+
+                /* Fallback in case the browser has already completed the iframe load. */
+                setTimeout(() => {
+                    if (loader && iframe.contentWindow) loader.remove();
+                }, 4500);
+            }
         });
     }
 
