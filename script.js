@@ -563,24 +563,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
         workModalVideo.innerHTML = `
 
-            <div
-                class="work-video-loader"
-                id="workVideoLoader"
-                aria-hidden="true"
-            >
-                <span></span>
-            </div>
+    <div
+        class="work-video-loader"
+        id="workVideoLoader"
+        aria-hidden="true"
+    >
+        <span></span>
+    </div>
 
-            <iframe
-                src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-                title="${String(title).replace(/"/g, "&quot;")}"
-                loading="eager"
-                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin">
-            </iframe>
+    <iframe
+        src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+        title="${String(title).replace(/"/g, "&quot;")}"
+        loading="eager"
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
 
-        `;
+`;
+
+const iframe = workModalVideo.querySelector("iframe");
+const loader = workModalVideo.querySelector(".work-video-loader");
+
+if (iframe) {
+
+    iframe.addEventListener("load", () => {
+
+        if (loader) {
+
+            loader.classList.add("loaded");
+
+            setTimeout(() => {
+                loader.remove();
+            }, 250);
+
+        }
+
+    });
+
+}
 
 
         /* =================================================
