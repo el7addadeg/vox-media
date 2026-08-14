@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+
         function animateCursor() {
 
             ringX += (mouseX - ringX) * 0.12;
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         animateCursor();
+
 
         /* Cursor Hover */
 
@@ -54,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 });
 
+
                 item.addEventListener("mouseleave", () => {
 
                     ring.style.width = "35px";
@@ -64,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
     }
+
 
 
     /* =====================================================
@@ -83,11 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
             `
         );
 
+
     revealElements.forEach(el => {
 
         el.classList.add("reveal");
 
     });
+
 
     const observer =
         new IntersectionObserver(
@@ -109,11 +115,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
+
     revealElements.forEach(el => {
 
         observer.observe(el);
 
     });
+
 
 
     /* =====================================================
@@ -125,19 +133,23 @@ document.addEventListener("DOMContentLoaded", () => {
             "main section[id]"
         );
 
+
     const navLinks =
         document.querySelectorAll(
             ".nav a"
         );
 
+
     window.addEventListener("scroll", () => {
 
         let current = "";
+
 
         sections.forEach(section => {
 
             const sectionTop =
                 section.offsetTop - 250;
+
 
             if (window.scrollY >= sectionTop) {
 
@@ -148,9 +160,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+
         navLinks.forEach(link => {
 
             link.classList.remove("active");
+
 
             if (
                 link.getAttribute("href") ===
@@ -166,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+
     /* =====================================================
        MOBILE MENU
     ===================================================== */
@@ -175,10 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
             ".menu-btn"
         );
 
+
     const nav =
         document.querySelector(
             ".nav"
         );
+
 
     if (menuBtn && nav) {
 
@@ -189,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         });
+
 
         nav.querySelectorAll("a")
             .forEach(link => {
@@ -209,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /* =====================================================
        HERO PARALLAX
     ===================================================== */
@@ -217,6 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(
             ".hero-visual"
         );
+
 
     if (
         heroVisual &&
@@ -233,11 +253,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         e.clientX
                     ) / 80;
 
+
                 const y =
                     (
                         window.innerHeight / 2 -
                         e.clientY
                     ) / 80;
+
 
                 heroVisual.style.transform =
                     `translate3d(${x}px, ${y}px, 0)`;
@@ -246,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
+
 
 
     /* =====================================================
@@ -265,6 +288,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     const href =
                         this.getAttribute("href");
 
+
+                    /*
+                       Ignore empty "#"
+                    */
+
                     if (
                         !href ||
                         href === "#"
@@ -274,10 +302,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     }
 
+
                     const target =
                         document.querySelector(
                             href
                         );
+
 
                     if (!target) {
 
@@ -285,7 +315,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     }
 
+
                     e.preventDefault();
+
 
                     target.scrollIntoView({
 
@@ -300,6 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
+
     /* =====================================================
        PARTNERS MARQUEE
     ===================================================== */
@@ -308,6 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(
             ".partners-track"
         );
+
 
     if (partnersTrack) {
 
@@ -321,6 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
         );
+
 
         partnersTrack.addEventListener(
             "mouseleave",
@@ -336,500 +371,176 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /* =====================================================
-       VOX WORK
+       VOX WORK — FIXED
        Filters + YouTube Lazy Loading + Modal
     ===================================================== */
 
-    const workCards =
-        document.querySelectorAll(
-            ".work-card"
-        );
+    const workCards = document.querySelectorAll(".work-card");
+    const workFilters = document.querySelectorAll(".work-filter");
 
-    const workFilters =
-        document.querySelectorAll(
-            ".work-filter"
-        );
+    const workModal = document.getElementById("workModal");
+    const workModalClose = document.getElementById("workModalClose");
+    const workModalBackdrop = workModal
+        ? workModal.querySelector(".work-modal-backdrop")
+        : null;
+    const workModalVideo = workModal
+        ? workModal.querySelector(".work-modal-video")
+        : null;
+    const workModalTitle = document.getElementById("workModalTitle");
+    const workModalType = document.getElementById("workModalType");
+    const workYoutubeLink = document.getElementById("workYoutubeLink");
 
-    const workModal =
-        document.getElementById(
-            "workModal"
-        );
-
-    const workModalClose =
-        document.getElementById(
-            "workModalClose"
-        );
-
-    const workModalBackdrop =
-        workModal
-            ? workModal.querySelector(
-                ".work-modal-backdrop"
-            )
-            : null;
-
-    const workModalVideo =
-        workModal
-            ? workModal.querySelector(
-                ".work-modal-video"
-            )
-            : null;
-
-    const workModalTitle =
-        document.getElementById(
-            "workModalTitle"
-        );
-
-    const workModalType =
-        document.getElementById(
-            "workModalType"
-        );
-
-    const workYoutubeLink =
-        document.getElementById(
-            "workYoutubeLink"
-        );
-
+    let activeWorkCard = null;
 
     /* =====================================================
        YOUTUBE THUMBNAILS
     ===================================================== */
 
     workCards.forEach(card => {
-
-        const media =
-            card.querySelector(
-                ".work-media"
-            );
-
-        const image =
-            media
-                ? media.querySelector("img")
-                : null;
-
-        const videoId =
-            media
-                ? media.dataset.video
-                : null;
+        const media = card.querySelector(".work-media");
+        const image = media ? media.querySelector("img") : null;
+        const videoId = media ? media.dataset.video : null;
 
         if (!image || !videoId) return;
 
-        image.addEventListener(
-            "error",
-            () => {
-
-                if (!image.dataset.fallback) {
-
-                    image.dataset.fallback = "1";
-
-                    image.src =
-                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-
-                }
-
-            },
-            {
-                once: true
+        image.addEventListener("error", () => {
+            if (!image.dataset.fallback) {
+                image.dataset.fallback = "1";
+                image.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
             }
-        );
-
+        }, { once: true });
     });
 
-
     /* =====================================================
-       WORK FILTERS
-       Cards can belong to more than one category
+       FILTERS
+       Cards can belong to more than one category.
     ===================================================== */
 
     function applyWorkFilter(selected) {
-
         workCards.forEach(card => {
+            const categories = (card.dataset.category || "")
+                .split(/\s+/)
+                .filter(Boolean);
 
-            const categories =
-                (
-                    card.dataset.category || ""
-                )
-                    .split(/\s+/)
-                    .filter(Boolean);
+            const show = selected === "all" || categories.includes(selected);
 
-            const show =
-                selected === "all" ||
-                categories.includes(selected);
-
-            card.classList.toggle(
-                "is-hidden",
-                !show
-            );
-
+            card.classList.toggle("is-hidden", !show);
         });
-
     }
 
-
     workFilters.forEach(filter => {
+        filter.addEventListener("click", () => {
+            const selected = filter.dataset.filter || "all";
 
-        filter.addEventListener(
-            "click",
-            () => {
+            workFilters.forEach(btn => btn.classList.remove("active"));
+            filter.classList.add("active");
 
-                const selected =
-                    filter.dataset.filter ||
-                    "all";
-
-                workFilters.forEach(btn => {
-
-                    btn.classList.remove(
-                        "active"
-                    );
-
-                });
-
-                filter.classList.add(
-                    "active"
-                );
-
-                applyWorkFilter(
-                    selected
-                );
-
-            }
-        );
-
+            applyWorkFilter(selected);
+        });
     });
-
 
     /* =====================================================
        OPEN PROJECT
-       YouTube is loaded ONLY after clicking
+       Read data from the actual clicked .work-media / .work-open button.
     ===================================================== */
 
     function openWork(button) {
+        if (!button || !workModal || !workModalVideo) return;
 
-        if (
-            !button ||
-            !workModal ||
-            !workModalVideo
-        ) {
-
-            return;
-
-        }
-
-        const videoId =
-            button.dataset.video;
-
+        const videoId = button.dataset.video;
         if (!videoId) return;
 
-        const title =
-            button.dataset.title ||
-            "VOX Media";
+        const title = button.dataset.title || "VOX Media";
+        const type = button.dataset.type || "PROJECT";
+        const client = button.dataset.client || title;
 
-        const type =
-            button.dataset.type ||
-            "PROJECT";
+        activeWorkCard = button.closest(".work-card");
 
-        const client =
-            button.dataset.client ||
-            title;
-
-
-        if (workModalTitle) {
-
-            workModalTitle.textContent =
-                client;
-
-        }
-
-
-        if (workModalType) {
-
-            workModalType.textContent =
-                type.toUpperCase();
-
-        }
-
-
+        if (workModalTitle) workModalTitle.textContent = client;
+        if (workModalType) workModalType.textContent = type.toUpperCase();
         if (workYoutubeLink) {
-
-            workYoutubeLink.href =
-                `https://www.youtube.com/watch?v=${videoId}`;
-
+            workYoutubeLink.href = `https://www.youtube.com/watch?v=${videoId}`;
         }
 
-
-        /* =================================================
-           LAZY LOAD YOUTUBE
-        ================================================= */
-
+        /* Lazy-load YouTube ONLY after the user clicks. */
         workModalVideo.innerHTML = `
+            <div class="work-video-loader" id="workVideoLoader" aria-hidden="true">
+                <span></span>
+            </div>
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+                title="${String(title).replace(/"/g, "&quot;")}"
+                loading="eager"
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+        `;
 
-    <div
-        class="work-video-loader"
-        id="workVideoLoader"
-        aria-hidden="true"
-    >
-        <span></span>
-    </div>
-
-    <iframe
-        src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-        title="${String(title).replace(/"/g, "&quot;")}"
-        loading="eager"
-        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-        allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin">
-    </iframe>
-
-`;
-
-const iframe = workModalVideo.querySelector("iframe");
-const loader = workModalVideo.querySelector(".work-video-loader");
-
-if (iframe) {
-
-    iframe.addEventListener("load", () => {
-
-        if (loader) {
-
-            loader.classList.add("loaded");
-
-            setTimeout(() => {
-                loader.remove();
-            }, 250);
-
-        }
-
-    });
-
-}
-
-
-        /* =================================================
-           OPEN MODAL
-        ================================================= */
-
-        workModal.classList.add(
-            "active"
-        );
-
-        workModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.classList.add(
-            "work-modal-open"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-
-
-        /* Focus iframe */
+        workModal.classList.add("active");
+        workModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("work-modal-open");
+        document.body.style.overflow = "hidden";
 
         requestAnimationFrame(() => {
-
-            const iframe =
-                workModalVideo.querySelector(
-                    "iframe"
-                );
-
-            if (iframe) {
-
-                iframe.focus({
-                    preventScroll: true
-                });
-
-            }
-
+            const iframe = workModalVideo.querySelector("iframe");
+            if (iframe) iframe.focus({ preventScroll: true });
         });
-
     }
 
-
-    /* =====================================================
-       PROJECT CLICK EVENTS
-    ===================================================== */
-
+    /* Click only the media/open controls — not the entire card. */
     workCards.forEach(card => {
+        const media = card.querySelector(".work-media");
+        const openButton = card.querySelector(".work-open");
 
-        const media =
-            card.querySelector(
-                ".work-media"
-            );
-
-        const openButton =
-            card.querySelector(
-                ".work-open"
-            );
-
-
-        /* Click thumbnail */
-
-        if (media) {
-
-            media.addEventListener(
-                "click",
-                () => {
-
-                    openWork(
-                        media
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* Click arrow/button */
-
-        if (openButton) {
-
-            openButton.addEventListener(
-                "click",
-                (event) => {
-
-                    event.stopPropagation();
-
-                    openWork(
-                        openButton
-                    );
-
-                }
-            );
-
-        }
-
+        if (media) media.addEventListener("click", () => openWork(media));
+        if (openButton) openButton.addEventListener("click", () => openWork(openButton));
     });
-
 
     /* =====================================================
        CLOSE PROJECT
     ===================================================== */
 
     function closeWork() {
-
         if (!workModal) return;
 
+        workModal.classList.remove("active");
+        workModal.setAttribute("aria-hidden", "true");
 
-        workModal.classList.remove(
-            "active"
-        );
+        /* Destroy iframe completely so YouTube stops immediately. */
+        if (workModalVideo) workModalVideo.innerHTML = "";
 
-        workModal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        document.body.classList.remove("work-modal-open");
+        document.body.style.overflow = "";
+        activeWorkCard = null;
+    }
 
+    if (workModalClose) workModalClose.addEventListener("click", closeWork);
+    if (workModalBackdrop) workModalBackdrop.addEventListener("click", closeWork);
 
-        /*
-           Destroy iframe completely
-           so YouTube stops immediately.
-        */
-
-        if (workModalVideo) {
-
-            workModalVideo.innerHTML =
-                "";
-
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && workModal && workModal.classList.contains("active")) {
+            closeWork();
         }
-
-
-        document.body.classList.remove(
-            "work-modal-open"
-        );
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-
-    /* Close button */
-
-    if (workModalClose) {
-
-        workModalClose.addEventListener(
-            "click",
-            closeWork
-        );
-
-    }
-
-
-    /* Close backdrop */
-
-    if (workModalBackdrop) {
-
-        workModalBackdrop.addEventListener(
-            "click",
-            closeWork
-        );
-
-    }
-
-
-    /* =====================================================
-       ESCAPE KEY
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Escape" &&
-                workModal &&
-                workModal.classList.contains(
-                    "active"
-                )
-            ) {
-
-                closeWork();
-
-            }
-
-        }
-    );
-
+    });
 
     /* =====================================================
        KEYBOARD ACCESSIBILITY
     ===================================================== */
 
     workCards.forEach(card => {
-
-        const media =
-            card.querySelector(
-                ".work-media"
-            );
-
+        const media = card.querySelector(".work-media");
         if (!media) return;
 
-
-        media.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
-
-                    event.preventDefault();
-
-                    openWork(
-                        media
-                    );
-
-                }
-
+        media.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openWork(media);
             }
-        );
-
+        });
     });
-
 
     /* =====================================================
        IMAGE ERROR PROTECTION
@@ -853,6 +564,7 @@ if (iframe) {
         });
 
 
+
     /* =====================================================
        REDUCED MOTION
     ===================================================== */
@@ -863,6 +575,10 @@ if (iframe) {
         ).matches
     ) {
 
+        /*
+           Disable JS-heavy motion where possible.
+        */
+
         if (partnersTrack) {
 
             partnersTrack.style.animationPlayState =
@@ -872,4 +588,103 @@ if (iframe) {
 
     }
 
+});
+
+/* =====================================================
+   VOX DESIGN GALLERY
+   Filters + Image Lightbox
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const designCards = document.querySelectorAll(".design-card");
+    const designFilters = document.querySelectorAll(".design-filter");
+    const designModal = document.getElementById("designModal");
+    const designModalClose = document.getElementById("designModalClose");
+    const designModalBackdrop = designModal
+        ? designModal.querySelector(".design-modal-backdrop")
+        : null;
+    const designModalImage = document.getElementById("designModalImage");
+    const designModalTitle = document.getElementById("designModalTitle");
+    const designModalType = document.getElementById("designModalType");
+
+    if (!designCards.length) return;
+
+    designFilters.forEach(filter => {
+        filter.addEventListener("click", () => {
+            const selected = filter.dataset.designFilter || "all";
+
+            designFilters.forEach(btn => btn.classList.remove("active"));
+            filter.classList.add("active");
+
+            designCards.forEach(card => {
+                const category = card.dataset.designCategory || "";
+                card.classList.toggle(
+                    "is-hidden",
+                    selected !== "all" && category !== selected
+                );
+            });
+        });
+    });
+
+    function openDesign(card) {
+        if (!designModal) return;
+
+        const image = card.dataset.image;
+        const title = card.dataset.title || "VOX Design";
+        const type = card.dataset.type || "DESIGN";
+
+        if (!image) return;
+
+        if (designModalImage) {
+            designModalImage.src = image;
+            designModalImage.alt = title;
+        }
+
+        if (designModalTitle) designModalTitle.textContent = title;
+        if (designModalType) designModalType.textContent = type.toUpperCase();
+
+        designModal.classList.add("active");
+        designModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("work-modal-open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeDesign() {
+        if (!designModal) return;
+
+        designModal.classList.remove("active");
+        designModal.setAttribute("aria-hidden", "true");
+
+        if (designModalImage) designModalImage.src = "";
+
+        if (!document.querySelector(".work-modal.active")) {
+            document.body.classList.remove("work-modal-open");
+            document.body.style.overflow = "";
+        }
+    }
+
+    designCards.forEach(card => {
+        card.addEventListener("click", () => openDesign(card));
+        card.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openDesign(card);
+            }
+        });
+    });
+
+    if (designModalClose) designModalClose.addEventListener("click", closeDesign);
+    if (designModalBackdrop) designModalBackdrop.addEventListener("click", closeDesign);
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && designModal?.classList.contains("active")) {
+            closeDesign();
+        }
+    });
+
+    document.querySelectorAll(".design-image img").forEach(img => {
+        img.addEventListener("error", () => {
+            img.classList.add("image-error");
+            img.removeAttribute("src");
+        }, { once: true });
+    });
 });
