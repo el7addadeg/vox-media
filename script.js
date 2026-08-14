@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
         image.addEventListener("error", () => {
             if (!image.dataset.fallback) {
                 image.dataset.fallback = "1";
-                image.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                image.src = `https://i.ytimg.com/vi/${videoId}/default.jpg`;
             }
         }, { once: true });
     });
