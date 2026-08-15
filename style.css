@@ -3592,3 +3592,230 @@ button {
     align-items: center;
     gap: 12px;
 }
+
+
+/* =====================================================
+   VOX WORK — PREMIUM PORTFOLIO PASS
+   Final visual layer: cards, thumbnails, design gallery.
+===================================================== */
+.work-page .work.section,
+.work-page .design-work.section { position: relative; }
+
+.work-head,
+.work-page .design-work .section-head { align-items: end; }
+
+.work-filters,
+.design-filters {
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 34px;
+    margin-bottom: 34px;
+}
+
+.work-filter,
+.design-filter {
+    position: relative;
+    min-width: 104px;
+    padding: 13px 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.015);
+    color: #777;
+    font-family: "Cairo", sans-serif;
+    font-size: 10px;
+    cursor: pointer;
+    transition: color .3s ease, background .3s ease, border-color .3s ease, transform .3s ease;
+}
+
+.work-filter::after,
+.design-filter::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width .35s ease;
+}
+
+.work-filter:hover,
+.design-filter:hover { color: #fff; border-color: rgba(243,200,59,.35); transform: translateY(-2px); }
+.work-filter.active,
+.design-filter.active { color: #111; background: var(--gold); border-color: var(--gold); }
+.work-filter.active::after,
+.design-filter.active::after { width: 100%; }
+
+.work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.work-card {
+    position: relative;
+    border: 1px solid rgba(255,255,255,.09);
+    box-shadow: 0 18px 55px rgba(0,0,0,.14);
+    transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s ease, box-shadow .5s ease;
+}
+
+.work-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    border: 1px solid rgba(243,200,59,0);
+    pointer-events: none;
+    transition: border-color .45s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(243,200,59,.32);
+    box-shadow: 0 28px 80px rgba(0,0,0,.36);
+}
+.work-card:hover::before { border-color: rgba(243,200,59,.24); }
+
+.work-media {
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.work-media img {
+    object-position: center center;
+    transition: transform .8s cubic-bezier(.16,1,.3,1), filter .6s ease;
+}
+
+.work-media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(243,200,59,.10), transparent 30%, transparent 70%, rgba(0,0,0,.45));
+    opacity: .65;
+    pointer-events: none;
+}
+
+.work-overlay { z-index: 4; }
+.work-play {
+    width: 64px;
+    height: 64px;
+    font-size: 17px;
+    box-shadow: 0 0 0 8px rgba(243,200,59,.07), 0 18px 50px rgba(243,200,59,.25);
+}
+.work-card:hover .work-play { transform: scale(1.12); }
+
+.work-view {
+    padding: 7px 11px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(0,0,0,.25);
+    backdrop-filter: blur(6px);
+}
+
+.work-info {
+    min-height: 138px;
+    padding: 23px 25px !important;
+}
+
+.work-category { font-size: 7.5px; letter-spacing: .18em; }
+.work-card h3 { font-size: 21px; }
+.work-card p { max-width: 580px; }
+
+.work-open {
+    position: relative;
+    overflow: hidden;
+}
+.work-open::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    z-index: -1;
+}
+.work-open:hover::before { transform: translateY(0); }
+
+/* Design gallery */
+.design-grid {
+    grid-template-columns: repeat(12, minmax(0,1fr));
+    gap: 18px;
+    background: transparent;
+    border: 0;
+}
+
+.design-card {
+    grid-column: span 4;
+    min-height: 430px;
+    border: 1px solid rgba(255,255,255,.09);
+    background: #090909;
+    box-shadow: 0 18px 55px rgba(0,0,0,.16);
+    transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s ease, box-shadow .5s ease;
+}
+.design-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(243,200,59,.30);
+    box-shadow: 0 28px 80px rgba(0,0,0,.34);
+}
+.design-image {
+    position: relative;
+    height: 350px;
+    background: #111;
+}
+.design-image::after {
+    content: "VIEW DESIGN";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font: 700 9px/1 "Inter", sans-serif;
+    letter-spacing: .2em;
+    background: rgba(0,0,0,.48);
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+.design-card:hover .design-image::after { opacity: 1; }
+.design-card:hover .design-image img { transform: scale(1.045); filter: brightness(.68); }
+
+.design-card-info {
+    min-height: 95px;
+    padding: 22px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.design-card-info small { margin-bottom: 7px; }
+.design-card-info strong { font-size: 16px; font-weight: 600; }
+.design-card-info i { left: 23px; bottom: 22px; transition: transform .3s ease, color .3s ease; }
+.design-card:hover .design-card-info i { color: var(--gold); transform: translate(-3px,-3px); }
+
+.design-card.is-hidden { display: none !important; }
+
+.design-modal-image {
+    min-height: 65vh;
+    background: #050505;
+}
+.design-modal-image img {
+    max-height: 72vh;
+    object-fit: contain;
+    background: #050505;
+}
+
+@media (max-width: 900px) {
+    .work-grid { grid-template-columns: 1fr; gap: 16px; }
+    .design-card { grid-column: span 6; }
+}
+
+@media (max-width: 600px) {
+    .work-filters,
+    .design-filters { gap: 6px; margin-top: 24px; margin-bottom: 24px; }
+    .work-filter,
+    .design-filter { min-width: auto; flex: 1 1 calc(50% - 6px); padding: 11px 10px; }
+    .work-grid { gap: 14px; }
+    .work-info { min-height: 126px; padding: 18px !important; }
+    .work-card h3 { font-size: 18px; }
+    .work-card p { font-size: 10.5px; line-height: 1.8; }
+    .design-grid { gap: 12px; }
+    .design-card { grid-column: span 12; min-height: 0; }
+    .design-image { height: auto; aspect-ratio: 4 / 3; }
+}

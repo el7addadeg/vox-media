@@ -405,12 +405,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!image || !videoId) return;
 
+        /* Prefer the sharper YouTube thumbnail, then fall back safely. */
+        if (!image.dataset.thumbReady) {
+            image.dataset.thumbReady = "1";
+            image.src = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+        }
+
         image.addEventListener("error", () => {
-            if (!image.dataset.fallback) {
+            const state = image.dataset.fallback || "0";
+            if (state === "0") {
                 image.dataset.fallback = "1";
+                image.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+            } else if (state === "1") {
+                image.dataset.fallback = "2";
                 image.src = `https://i.ytimg.com/vi/${videoId}/default.jpg`;
             }
-        }, { once: true });
+        });
     });
 
     /* =====================================================
@@ -699,7 +709,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".design-image img").forEach(img => {
         img.addEventListener("error", () => {
             img.classList.add("image-error");
-            img.removeAttribute("src");
         }, { once: true });
     });
 });
