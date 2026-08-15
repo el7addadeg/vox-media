@@ -75,7 +75,7 @@ button {
 ========================= */
 
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -84,7 +84,56 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 20;
+    z-index: 9990;
+
+    background: rgba(5, 5, 5, 0.35);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+
+    border-bottom: 1px solid transparent;
+
+    transition:
+        background .4s ease,
+        backdrop-filter .4s ease,
+        -webkit-backdrop-filter .4s ease,
+        border-color .4s ease,
+        height .4s ease;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    padding: 0 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9990;
+
+    background: rgba(5, 5, 5, 0.35);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+
+    border-bottom: 1px solid transparent;
+
+    transition:
+        background .4s ease,
+        backdrop-filter .4s ease,
+        -webkit-backdrop-filter .4s ease,
+        border-color .4s ease,
+        height .4s ease;
+}
+.header.scrolled {
+    height: 78px;
+
+    background: rgba(5, 5, 5, 0.88);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom-color: rgba(243, 200, 59, .12);
 }
 
 .logo img {
