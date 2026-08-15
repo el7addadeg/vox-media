@@ -4246,3 +4246,258 @@ button {
     }
 
 }
+/* =====================================================
+   INTERACTIVE QUOTE MODAL
+===================================================== */
+.quote-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+}
+
+.quote-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.quote-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.quote-modal-dialog {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 680px;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), 0 0 40px rgba(243, 200, 59, 0.08);
+    transform: translateY(20px) scale(0.98);
+    transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.quote-modal.active .quote-modal-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.quote-modal-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.quote-modal-close:hover {
+    background: var(--gold);
+    color: #000;
+    border-color: var(--gold);
+}
+
+.quote-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.quote-badge {
+    display: inline-block;
+    color: var(--gold);
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.quote-header h2 {
+    font-size: 28px;
+    margin: 0 0 10px;
+}
+
+.quote-header h2 strong {
+    color: var(--gold);
+}
+
+.quote-header p {
+    color: #888;
+    font-size: 13px;
+    margin: 0;
+}
+
+.step-indicator {
+    display: block;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+.quote-step {
+    display: none;
+}
+
+.quote-step.active {
+    display: block;
+    animation: fadeInStep .35s ease;
+}
+
+@keyframes fadeInStep {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Service Options Grid */
+.quote-options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.quote-option input {
+    display: none;
+}
+
+.option-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 10px;
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+    height: 100%;
+}
+
+.option-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.option-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ccc;
+}
+
+.quote-option input:checked + .option-card {
+    background: rgba(243, 200, 59, 0.12);
+    border-color: var(--gold);
+}
+
+.quote-option input:checked + .option-card .option-title {
+    color: var(--gold);
+}
+
+/* Form inputs & budget */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-label {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.quote-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: .3s;
+}
+
+.quote-input:focus {
+    border-color: var(--gold);
+    background: #181818;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.budget-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.budget-radio input {
+    display: none;
+}
+
+.budget-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-size: 11px;
+    color: #aaa;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.budget-radio input:checked + span {
+    background: rgba(243, 200, 59, 0.12);
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.quote-actions {
+    margin-top: 25px;
+}
+
+.quote-actions.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+@media (max-width: 600px) {
+    .quote-modal-dialog { padding: 25px 20px; }
+    .quote-options-grid { grid-template-columns: repeat(2, 1fr); }
+    .budget-options { grid-template-columns: 1fr; }
+    .form-grid-2 { grid-template-columns: 1fr; }
+}
