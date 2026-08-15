@@ -461,3 +461,44 @@ window.addEventListener("scroll", () => {
         floatingBtn.classList.remove("visible");
     }
 });
+/* =====================================================
+   ANIMATED NUMBER COUNTERS (INTERSECTION OBSERVER)
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const statElements = document.querySelectorAll(".stat-number[data-target]");
+    if (!statElements.length) return;
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.target, 10);
+                const suffix = el.dataset.suffix || "";
+                const duration = 1800; // مدة الحركة بالمللي ثانية
+                const startTime = performance.now();
+
+                function updateCount(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // حركة انسيابية EaseOutQuad
+                    const easeProgress = 1 - (1 - progress) * (1 - progress);
+                    const currentCount = Math.floor(easeProgress * target);
+
+                    el.textContent = currentCount + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        el.textContent = target + suffix;
+                    }
+                }
+
+                requestAnimationFrame(updateCount);
+                observer.unobserve(el); // يشغل العد مرة واحدة فقط
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statElements.forEach(el => counterObserver.observe(el));
+});
