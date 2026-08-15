@@ -92,19 +92,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* =====================================================
-       MOBILE MENU
+       FULL-SCREEN MOBILE MENU INTERACTION
     ===================================================== */
     const menuBtn = document.querySelector(".menu-btn");
     const nav = document.querySelector(".nav");
 
     if (menuBtn && nav) {
         menuBtn.addEventListener("click", () => {
-            nav.classList.toggle("mobile-open");
+            const isOpen = nav.classList.toggle("mobile-open");
+            menuBtn.classList.toggle("is-active", isOpen);
+            document.body.style.overflow = isOpen ? "hidden" : "";
         });
 
         nav.querySelectorAll("a").forEach(link => {
             link.addEventListener("click", () => {
                 nav.classList.remove("mobile-open");
+                menuBtn.classList.remove("is-active");
+                document.body.style.overflow = "";
             });
         });
     }
@@ -325,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
         designModal.setAttribute("aria-hidden", "true");
         if (designModalImage) designModalImage.src = "";
 
-        if (!document.querySelector(".work-modal.active")) {
+        if (!document.querySelector(".work-modal.active") && !document.querySelector(".quote-modal.active")) {
             document.body.classList.remove("work-modal-open");
             document.body.style.overflow = "";
         }
@@ -344,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
 /* =====================================================
    INTERACTIVE QUOTE MODAL ENGINE
 ===================================================== */
@@ -356,12 +361,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!quoteModal) return;
 
     // Open Quote Modal from any trigger button
-document.querySelectorAll('.header-cta, .open-quote-modal, .footer-cta-btn').forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        openQuoteModal();
+    document.querySelectorAll('.header-cta, .open-quote-modal, .footer-cta-btn').forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openQuoteModal();
+        });
     });
-});
 
     function openQuoteModal() {
         quoteModal.classList.add("active");
@@ -437,12 +442,12 @@ document.querySelectorAll('.header-cta, .open-quote-modal, .footer-cta-btn').for
             window.open(whatsappUrl, "_blank");
             closeQuoteModal();
             quoteForm.reset();
-            // ارجاع النموذج للخطوة الأولى
             steps.forEach(s => s.classList.remove("active"));
             quoteModal.querySelector(`.quote-step[data-step="1"]`).classList.add("active");
         });
     }
 });
+
 /* =====================================================
    FLOATING WHATSAPP VISIBILITY ON SCROLL
 ===================================================== */
