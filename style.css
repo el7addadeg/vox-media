@@ -1903,3 +1903,28 @@ button {
         font-size: 11px;
     }
 }
+.faq { background: #050505; }
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.faq-question {
+    padding: 30px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color .3s;
+}
+.faq-question:hover { color: var(--gold); }
+.faq-question span { color: var(--gold); font-size: 12px; font-family: "Inter"; }
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    color: #777;
+    line-height: 1.9;
+    font-size: 14px;
+    padding-bottom: 0;
+}
+.faq-item.active .faq-answer { max-height: 200px; padding-bottom: 30px; }
