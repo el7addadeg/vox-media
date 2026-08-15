@@ -502,3 +502,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     statElements.forEach(el => counterObserver.observe(el));
 });
+/* =====================================================
+   FAQ ACCORDION
+===================================================== */
+document.querySelectorAll(".faq-question").forEach(question => {
+    question.addEventListener("click", () => {
+        const parent = question.parentElement;
+        
+        // إغلاق أي عنصر مفتوح (اختياري)
+        document.querySelectorAll(".faq-item").forEach(item => {
+            if (item !== parent) item.classList.remove("active");
+        });
+
+        parent.classList.toggle("active");
+    });
+});
