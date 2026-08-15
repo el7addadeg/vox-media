@@ -2,18 +2,19 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Branding & Visual Identity | VOX Media</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
 
     <style>
-
-        html,
-        body {
+        html, body {
             background: #050505;
             color: #fff;
         }
@@ -24,8 +25,6 @@
             color: #fff;
             overflow: hidden;
         }
-
-        /* HERO */
 
         .service-hero {
             min-height: 72vh;
@@ -86,11 +85,10 @@
             margin-bottom: 35px;
         }
 
-        /* SECTIONS */
-
         .service-intro,
         .service-offerings,
         .service-process,
+        .related-services,
         .service-cta {
             position: relative;
             background: #050505;
@@ -98,7 +96,8 @@
 
         .service-intro,
         .service-offerings,
-        .service-process {
+        .service-process,
+        .related-services {
             border-bottom: 1px solid var(--line);
         }
 
@@ -115,8 +114,6 @@
             line-height: 2;
             max-width: 620px;
         }
-
-        /* SERVICE LIST */
 
         .service-list {
             margin-top: 70px;
@@ -181,8 +178,6 @@
             transform: translate(-4px, -4px);
         }
 
-        /* PROCESS */
-
         .process-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -225,17 +220,131 @@
             line-height: 1.9;
         }
 
-        /* CTA */
+        .related-services {
+            padding: 120px 9%;
+        }
+
+        .related-services-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 55px;
+        }
+
+        .related-services-head span {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .related-services-head h2 {
+            margin: 15px 0 0;
+            font-size: clamp(38px, 5vw, 70px);
+            line-height: 1;
+        }
+
+        .related-services-head h2 strong {
+            color: var(--gold);
+        }
+
+        .related-services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .related-service-card {
+            position: relative;
+            min-height: 230px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #080808;
+            color: #fff;
+            text-decoration: none;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .related-service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: translateY(100%);
+            transition: transform .4s cubic-bezier(.16,1,.3,1);
+            z-index: 0;
+        }
+
+        .related-service-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .related-service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .related-service-number {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+        }
+
+        .related-service-card:hover .related-service-number {
+            color: #111;
+        }
+
+        .related-service-card h3 {
+            margin: 35px 0 10px;
+            font-size: 21px;
+            font-weight: 500;
+        }
+
+        .related-service-card p {
+            margin: 0;
+            color: #666;
+            font-size: 11px;
+            line-height: 1.8;
+            transition: color .35s ease;
+        }
+
+        .related-service-card:hover p {
+            color: rgba(17,17,17,.7);
+        }
+
+        .related-service-arrow {
+            align-self: flex-start;
+            color: #777;
+            font-size: 18px;
+            transition: .35s ease;
+        }
+
+        .related-service-card:hover .related-service-arrow {
+            color: #111;
+            transform: translate(-4px,-4px);
+        }
 
         .service-cta {
-            padding-top: 130px !important;
-            padding-bottom: 130px !important;
+            padding: 130px 9% !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
         .service-cta-inner {
             max-width: 900px;
-            margin: auto;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .service-cta .section-number {
@@ -263,10 +372,7 @@
             font-size: 14px;
         }
 
-        /* MOBILE */
-
         @media (max-width: 900px) {
-
             .service-hero {
                 min-height: 60vh;
                 padding: 150px 7% 90px;
@@ -281,10 +387,12 @@
                 gap: 20px;
             }
 
+            .related-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 600px) {
-
             .service-hero {
                 min-height: 65vh;
                 padding: 150px 7% 80px;
@@ -334,579 +442,327 @@
                 padding: 28px;
             }
 
-            .service-cta {
-                padding-top: 90px !important;
-                padding-bottom: 90px !important;
+            .related-services {
+                padding: 85px 7%;
             }
 
+            .related-services-head {
+                display: block;
+                margin-bottom: 35px;
+            }
+
+            .related-services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .related-service-card {
+                min-height: 190px;
+                padding: 25px;
+            }
+
+            .service-cta {
+                padding: 90px 7% !important;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- GLOBAL HEADER -->
-
     <header class="header">
-
         <a href="../index.html#home" class="logo">
-
-            <img
-                src="../assets/images/vox-logo.png"
-                alt="VOX Media">
-
+            <img src="../assets/images/vox-logo.png" alt="VOX Media">
         </a>
-
 
         <nav class="nav">
-
-            <a href="../index.html#home">
-                الرئيسية
-            </a>
-
-            <a
-                href="../index.html#services"
-                class="active">
-
-                خدماتنا
-
-            </a>
-
-            <a href="../work.html">
-                أعمالنا
-            </a>
-
-            <a href="../index.html#about">
-                من نحن
-            </a>
-
-            <a href="../index.html#contact">
-                تواصل معنا
-            </a>
-
+            <a href="../index.html#home">الرئيسية</a>
+            <a href="../index.html#services" class="active">خدماتنا</a>
+            <a href="../work.html">أعمالنا</a>
+            <a href="../index.html#about">من نحن</a>
+            <a href="../index.html#contact">تواصل معنا</a>
         </nav>
 
-
-        <a
-            href="../index.html#contact"
-            class="header-cta">
-
+        <a href="../index.html#contact" class="header-cta">
             <span>↗</span>
             ابدأ مشروعك
-
         </a>
 
-
-        <button
-            class="menu-btn"
-            aria-label="القائمة">
-
+        <button class="menu-btn" aria-label="القائمة">
             <span></span>
             <span></span>
-
         </button>
-
     </header>
-
-
 
     <main class="service-page">
 
-
         <!-- HERO -->
-
         <section class="service-hero">
-
             <div class="service-hero-content">
-
-                <span class="section-number">
-                    06 / BRANDING & VISUAL IDENTITY
-                </span>
-
-
-                <h1>
-
-                    هوية<br>
-
-                    <strong>تُميّزك.</strong>
-
-                </h1>
-
-
-                <p>
-                    بنبني هويات بصرية متكاملة تخلي العلامة
-                    التجارية واضحة، مميزة، وقابلة للتذكر
-                    في كل نقطة اتصال مع الجمهور.
-                </p>
-
-
-                <a
-                    href="../index.html#contact"
-                    class="outline-btn">
-
-                    ابدأ مشروعك معنا ↗
-
-                </a>
-
+                <span class="section-number">06 / BRANDING & VISUAL IDENTITY</span>
+                <h1>هوية<br><strong>تُميّزك.</strong></h1>
+                <p>بنبني هويات بصرية متكاملة تخلي العلامة التجارية واضحة، مميزة، وقابلة للتذكر في كل نقطة اتصال مع الجمهور.</p>
+                <a href="../index.html#contact" class="outline-btn">ابدأ مشروعك معنا ↗</a>
             </div>
-
         </section>
-
-
 
         <!-- INTRO -->
-
         <section class="service-intro section">
-
             <div class="section-head">
-
                 <div>
-
-                    <span class="section-number">
-                        02 / OUR APPROACH
-                    </span>
-
-
-                    <h2>
-
-                        البراند<br>
-
-                        <strong>مش لوجو.</strong>
-
-                    </h2>
-
+                    <span class="section-number">02 / OUR APPROACH</span>
+                    <h2>البراند<br><strong>مش لوجو.</strong></h2>
                 </div>
-
-
-                <p>
-
-                    الهوية الحقيقية بتبدأ من فهم شخصية
-                    العلامة والجمهور والمكان اللي عايزة
-                    تاخده في السوق. بعدها بنحوّل ده لنظام
-                    بصري متكامل يقدر يعيش ويكبر مع البراند.
-
-                </p>
-
+                <p>الهوية الحقيقية بتبدأ من فهم شخصية العلامة والجمهور والمكان اللي عايزة تاخده في السوق. بعدها بنحوّل ده لنظام بصري متكامل يقدر يعيش ويكبر مع البراند.</p>
             </div>
-
         </section>
-
-
 
         <!-- CAPABILITIES -->
-
         <section class="service-offerings section">
-
             <div class="section-head">
-
                 <div>
-
-                    <span class="section-number">
-                        03 / BRAND CAPABILITIES
-                    </span>
-
-
-                    <h2>
-
-                        نبني شخصية<br>
-
-                        <strong>تُرى وتُحس.</strong>
-
-                    </h2>
-
+                    <span class="section-number">03 / BRAND CAPABILITIES</span>
+                    <h2>نبني شخصية<br><strong>تُرى وتُحس.</strong></h2>
                 </div>
-
-
-                <p>
-
-                    بنشتغل على كل العناصر اللي بتكوّن الصورة
-                    البصرية للعلامة، من الفكرة الأساسية وحتى
-                    طريقة ظهورها في الاستخدام اليومي.
-
-                </p>
-
+                <p>بنشتغل على كل العناصر اللي بتكوّن الصورة البصرية للعلامة، من الفكرة الأساسية وحتى طريقة ظهورها في الاستخدام اليومي.</p>
             </div>
-
-
 
             <div class="service-list">
-
-
-                <!-- 01 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        01
-                    </span>
-
-
+                    <span class="service-item-number">01</span>
                     <div>
-
-                        <span class="service-item-label">
-                            BRAND STRATEGY
-                        </span>
-
-
-                        <h3>
-                            تحديد شخصية ومكانة البراند
-                        </h3>
-
-
-                        <p>
-
-                            بنحدد شخصية العلامة، الجمهور المستهدف،
-                            الـPositioning والرسالة الأساسية عشان
-                            تكون الهوية مبنية على أساس واضح.
-
-                        </p>
-
+                        <span class="service-item-label">BRAND STRATEGY</span>
+                        <h3>تحديد شخصية ومكانة البراند</h3>
+                        <p>بنحدد شخصية العلامة، الجمهور المستهدف، الـPositioning والرسالة الأساسية عشان تكون الهوية مبنية على أساس واضح.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 02 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        02
-                    </span>
-
-
+                    <span class="service-item-number">02</span>
                     <div>
-
-                        <span class="service-item-label">
-                            LOGO DESIGN
-                        </span>
-
-
-                        <h3>
-                            شعار له معنى وحضور
-                        </h3>
-
-
-                        <p>
-
-                            تصميم Logo واضح ومميز وقابل للاستخدام
-                            على مختلف المقاسات والمنصات بدون ما
-                            يفقد شخصيته.
-
-                        </p>
-
+                        <span class="service-item-label">LOGO DESIGN</span>
+                        <h3>شعار له معنى وحضور</h3>
+                        <p>تصميم Logo واضح ومميز وقابل للاستخدام على مختلف المقاسات والمنصات بدون ما يفقد شخصيته.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 03 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        03
-                    </span>
-
-
+                    <span class="service-item-number">03</span>
                     <div>
-
-                        <span class="service-item-label">
-                            VISUAL SYSTEM
-                        </span>
-
-
-                        <h3>
-                            نظام بصري متكامل
-                        </h3>
-
-
-                        <p>
-
-                            ألوان، Typography، أسلوب الصور،
-                            الأشكال والعناصر البصرية التي تجعل
-                            كل ظهور للبراند يحمل نفس الشخصية.
-
-                        </p>
-
+                        <span class="service-item-label">VISUAL SYSTEM</span>
+                        <h3>نظام بصري متكامل</h3>
+                        <p>ألوان، Typography، أسلوب الصور، الأشكال والعناصر البصرية التي تجعل كل ظهور للبراند يحمل نفس الشخصية.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 04 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        04
-                    </span>
-
-
+                    <span class="service-item-number">04</span>
                     <div>
-
-                        <span class="service-item-label">
-                            BRAND GUIDELINES
-                        </span>
-
-
-                        <h3>
-                            قواعد تحافظ على الهوية
-                        </h3>
-
-
-                        <p>
-
-                            بناء Brand Guidelines واضحة توضّح
-                            طريقة استخدام الشعار والألوان والخطوط
-                            والعناصر البصرية في مختلف التطبيقات.
-
-                        </p>
-
+                        <span class="service-item-label">BRAND GUIDELINES</span>
+                        <h3>قواعد تحافظ على الهوية</h3>
+                        <p>بناء Brand Guidelines واضحة توضّح طريقة استخدام الشعار والألوان والخطوط والعناصر البصرية في مختلف التطبيقات.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 05 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        05
-                    </span>
-
-
+                    <span class="service-item-number">05</span>
                     <div>
-
-                        <span class="service-item-label">
-                            BRAND APPLICATION
-                        </span>
-
-
-                        <h3>
-                            تحويل الهوية إلى واقع
-                        </h3>
-
-
-                        <p>
-
-                            تطبيق الهوية على السوشيال ميديا،
-                            المطبوعات، الإعلانات، العروض،
-                            التغليف وغيرها من نقاط التواصل.
-
-                        </p>
-
+                        <span class="service-item-label">BRAND APPLICATION</span>
+                        <h3>تحويل الهوية إلى واقع</h3>
+                        <p>تطبيق الهوية على السوشيال ميديا، المطبوعات، الإعلانات، العروض، التغليف وغيرها من نقاط التواصل.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
-
-
             </div>
-
         </section>
-
-
 
         <!-- PROCESS -->
-
         <section class="service-process section">
-
             <div class="section-head">
-
                 <div>
-
-                    <span class="section-number">
-                        04 / OUR PROCESS
-                    </span>
-
-
-                    <h2>
-
-                        من شخصية<br>
-
-                        <strong>لهوية.</strong>
-
-                    </h2>
-
+                    <span class="section-number">04 / OUR PROCESS</span>
+                    <h2>من شخصية<br><strong>لهوية.</strong></h2>
                 </div>
-
-
-                <p>
-
-                    بنحوّل فهمنا للبراند إلى نظام بصري
-                    واضح ومتماسك، بحيث تقدر تستخدم الهوية
-                    بثبات مهما اختلفت المنصة أو نقطة التواصل.
-
-                </p>
-
+                <p>بنحوّل فهمنا للبراند إلى نظام بصري واضح ومتماسك، بحيث تقدر تستخدم الهوية بثبات مهما اختلفت المنصة أو نقطة التواصل.</p>
             </div>
-
-
 
             <div class="process-grid">
-
-
                 <div class="process-card">
-
-                    <span>
-                        01
-                    </span>
-
-                    <h3>
-                        Discover
-                    </h3>
-
-                    <p>
-                        دراسة البراند والسوق والجمهور
-                        والمنافسة.
-                    </p>
-
+                    <span>01</span>
+                    <h3>Discover</h3>
+                    <p>دراسة البراند والسوق والجمهور والمنافسة.</p>
                 </div>
-
-
-
                 <div class="process-card">
-
-                    <span>
-                        02
-                    </span>
-
-                    <h3>
-                        Define
-                    </h3>
-
-                    <p>
-                        تحديد الشخصية والاتجاه البصري
-                        وموقع العلامة.
-                    </p>
-
+                    <span>02</span>
+                    <h3>Define</h3>
+                    <p>تحديد الشخصية والاتجاه البصري وموقع العلامة.</p>
                 </div>
-
-
-
                 <div class="process-card">
-
-                    <span>
-                        03
-                    </span>
-
-                    <h3>
-                        Design
-                    </h3>
-
-                    <p>
-                        تصميم الهوية والعناصر البصرية
-                        وبناء النظام المتكامل.
-                    </p>
-
+                    <span>03</span>
+                    <h3>Design</h3>
+                    <p>تصميم الهوية والعناصر البصرية وبناء النظام المتكامل.</p>
                 </div>
-
-
-
                 <div class="process-card">
-
-                    <span>
-                        04
-                    </span>
-
-                    <h3>
-                        Apply
-                    </h3>
-
-                    <p>
-                        تطبيق الهوية على مختلف نقاط
-                        التواصل والاستخدامات.
-                    </p>
-
+                    <span>04</span>
+                    <h3>Apply</h3>
+                    <p>تطبيق الهوية على مختلف نقاط التواصل والاستخدامات.</p>
                 </div>
-
-
             </div>
-
         </section>
 
+        <!-- RELATED SERVICES -->
+        <section class="related-services">
+            <div class="related-services-head">
+                <div>
+                    <span>EXPLORE MORE</span>
+                    <h2>خدمات<br><strong>أخرى.</strong></h2>
+                </div>
+            </div>
 
-
-        <!-- CTA -->
-
-        <section class="service-cta section">
-
-            <div class="service-cta-inner">
-
-                <span class="section-number">
-                    BUILD YOUR IDENTITY
-                </span>
-
-
-                <h2>
-
-                    خليه يعرفك<br>
-
-                    <strong>من أول نظرة.</strong>
-
-                </h2>
-
-
-                <p>
-
-                    لو البراند محتاج هوية تعبر عنه بوضوح
-                    وتخليه مختلف عن المنافسين، خلينا نبنيها صح.
-
-                </p>
-
-
-                <a
-                    href="../index.html#contact"
-                    class="gold-btn">
-
-                    تواصل معنا ↗
-
+            <div class="related-services-grid">
+                <a href="production.html" class="related-service-card">
+                    <span class="related-service-number">01</span>
+                    <div>
+                        <h3>تصوير وإنتاج</h3>
+                        <p>تصوير إعلاني، منتجات وReels وإنتاج محتوى متكامل.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
                 </a>
 
-            </div>
+                <a href="video-editing.html" class="related-service-card">
+                    <span class="related-service-number">02</span>
+                    <div>
+                        <h3>مونتاج وصناعة الفيديو</h3>
+                        <p>مونتاج احترافي مع Color Grading وMotion Graphics.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
 
+                <a href="ai.html" class="related-service-card">
+                    <span class="related-service-number">03</span>
+                    <div>
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>حلول بصرية ومحتوى مبتكر باستخدام تقنيات AI.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="social-media.html" class="related-service-card">
+                    <span class="related-service-number">04</span>
+                    <div>
+                        <h3>سوشيال ميديا</h3>
+                        <p>إدارة المحتوى والمنصات وبناء حضور رقمي متناسق.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="paid-ads.html" class="related-service-card">
+                    <span class="related-service-number">05</span>
+                    <div>
+                        <h3>الإعلانات الممولة</h3>
+                        <p>حملات إعلانية مدروسة تستهدف الجمهور المناسب وتحقق نتائج.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="content-strategy.html" class="related-service-card">
+                    <span class="related-service-number">07</span>
+                    <div>
+                        <h3>Content Strategy</h3>
+                        <p>استراتيجية محتوى مصممة لخدمة أهدافك وتحقيق نتائج.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="digital-strategy.html" class="related-service-card">
+                    <span class="related-service-number">08</span>
+                    <div>
+                        <h3>Digital Strategy</h3>
+                        <p>خطة رقمية متكاملة تساعد علامتك على النمو بذكاء.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="../work.html" class="related-service-card">
+                    <span class="related-service-number">WORK</span>
+                    <div>
+                        <h3>شاهد أعمالنا</h3>
+                        <p>استكشف مجموعة مختارة من مشاريع VOX وأعمالنا السابقة.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+            </div>
         </section>
 
+        <!-- CTA -->
+        <section class="service-cta section">
+            <div class="service-cta-inner">
+                <span class="section-number">BUILD YOUR IDENTITY</span>
+                <h2>خليه يعرفك<br><strong>من أول نظرة.</strong></h2>
+                <p>لو البراند محتاج هوية تعبر عنه بوضوح وتخليه مختلف عن المنافسين، خلينا نبنيها صح.</p>
+                <a href="../index.html#contact" class="gold-btn">تواصل معنا ↗</a>
+            </div>
+        </section>
 
     </main>
 
+    <!-- GLOBAL FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="../assets/images/vox-logo.png" alt="VOX Media" class="footer-logo">
+                <p>وكالة إبداعية رقمية تجمع بين الاستراتيجية، المحتوى، التصميم والتكنولوجيا لصناعة علامات أقوى.</p>
+            </div>
+
+            <div class="footer-column">
+                <span class="footer-label">EXPLORE</span>
+                <a href="../index.html#home">الرئيسية</a>
+                <a href="../index.html#services">الخدمات</a>
+                <a href="../work.html">أعمالنا</a>
+                <a href="../index.html#partners">شركاؤنا</a>
+                <a href="../index.html#about">من نحن</a>
+                <a href="../index.html#contact">تواصل معنا</a>
+            </div>
+
+            <div class="footer-column">
+                <span class="footer-label">WHAT WE DO</span>
+                <a href="production.html">تصوير وإنتاج</a>
+                <a href="video-editing.html">مونتاج</a>
+                <a href="ai.html">ذكاء اصطناعي</a>
+                <a href="social-media.html">صناعة المحتوى</a>
+                <a href="branding.html">Branding</a>
+                <a href="paid-ads.html">Digital Marketing</a>
+            </div>
+
+            <div class="footer-column footer-contact">
+                <span class="footer-label">GET IN TOUCH</span>
+                <h3>خلينا نتكلم.</h3>
+                <a href="https://wa.me/201069952664" target="_blank" rel="noopener" class="footer-contact-item">
+                    <span>WhatsApp</span>
+                    <b>↗</b>
+                </a>
+                <a href="mailto:ahmedelhaddad2022@gmail.com" class="footer-contact-item">
+                    <span>Email</span>
+                    <b>↗</b>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-giant">VOX</div>
+
+        <div class="footer-bottom">
+            <span>© 2026 VOX Media</span>
+            <span>CREATIVE DIGITAL AGENCY</span>
+            <a href="#">
+                BACK TO TOP
+                <b>↑</b>
+            </a>
+        </div>
+    </footer>
 
     <script src="../script.js"></script>
-
 </body>
-
 </html>
