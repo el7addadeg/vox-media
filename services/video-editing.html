@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مونتاج الفيديو | VOX Media</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+
+        html,
+        body {
+            background: #050505;
+            color: #fff;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .service-page {
+            min-height: 100vh;
+            background: #050505;
+            color: #fff;
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================== */
+
+        .service-hero {
+            min-height: 72vh;
+            padding: 180px 9% 100px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-hero::before {
+            content: "EDIT";
+            position: absolute;
+            left: -2%;
+            bottom: -90px;
+            font-family: "Inter", sans-serif;
+            font-size: clamp(180px, 29vw, 470px);
+            line-height: .8;
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.045);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .service-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .service-hero .section-number {
+            display: block;
+            margin-bottom: 25px;
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .service-hero h1 {
+            margin: 0 0 30px;
+            font-size: clamp(55px, 8vw, 120px);
+            line-height: .95;
+            letter-spacing: -5px;
+        }
+
+        .service-hero h1 strong {
+            color: var(--gold);
+        }
+
+        .service-hero p {
+            max-width: 720px;
+            color: #85827d;
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================================
+           SECTIONS
+        ========================================== */
+
+        .service-intro,
+        .service-offerings,
+        .service-process,
+        .service-cta {
+            position: relative;
+            background: #050505;
+        }
+
+        .service-intro {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-offerings {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-process {
+            border-bottom: 1px solid var(--line);
+        }
+
+
+        /* =========================================
+           SECTION HEAD
+        ========================================== */
+
+        .service-intro .section-head,
+        .service-offerings .section-head,
+        .service-process .section-head {
+            align-items: end;
+        }
+
+        .service-intro .section-head > p,
+        .service-offerings .section-head > p,
+        .service-process .section-head > p {
+            color: #777;
+            line-height: 2;
+            max-width: 620px;
+        }
+
+
+        /* =========================================
+           SERVICE LIST
+        ========================================== */
+
+        .service-list {
+            margin-top: 70px;
+            border-top: 1px solid rgba(255,255,255,.10);
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 70px 1fr 40px;
+            gap: 30px;
+            align-items: start;
+            padding: 42px 0;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            transition:
+                padding .4s ease,
+                background .4s ease;
+        }
+
+        .service-item:hover {
+            padding-right: 15px;
+            padding-left: 15px;
+            background: rgba(255,255,255,.015);
+        }
+
+        .service-item-number {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            padding-top: 5px;
+        }
+
+        .service-item-label {
+            display: block;
+            color: #666;
+            font-family: "Inter", sans-serif;
+            font-size: 8px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .service-item h3 {
+            margin: 0 0 15px;
+            font-size: 25px;
+            font-weight: 500;
+            color: #eee;
+        }
+
+        .service-item p {
+            max-width: 720px;
+            margin: 0;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .service-item-arrow {
+            color: #555;
+            font-size: 18px;
+            transition: .35s ease;
+        }
+
+        .service-item:hover .service-item-arrow {
+            color: var(--gold);
+            transform: translate(-4px, -4px);
+        }
+
+
+        /* =========================================
+           PROCESS
+        ========================================== */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            margin-top: 65px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .process-card {
+            min-height: 230px;
+            padding: 32px;
+            background: #080808;
+            transition: .35s ease;
+        }
+
+        .process-card:hover {
+            background: #0d0d0d;
+            transform: translateY(-4px);
+        }
+
+        .process-card > span {
+            display: block;
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            margin-bottom: 35px;
+        }
+
+        .process-card h3 {
+            margin: 0 0 15px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .process-card p {
+            margin: 0;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+
+        /* =========================================
+           CTA
+        ========================================== */
+
+        .service-cta {
+            padding-top: 130px !important;
+            padding-bottom: 130px !important;
+            text-align: center;
+        }
+
+        .service-cta-inner {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .service-cta .section-number {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .service-cta h2 {
+            margin: 20px auto 30px;
+            font-size: clamp(42px, 6vw, 85px);
+            line-height: 1;
+        }
+
+        .service-cta h2 strong {
+            color: var(--gold);
+        }
+
+        .service-cta p {
+            max-width: 600px;
+            margin: 0 auto 35px;
+            color: #777;
+            line-height: 2;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+            .service-hero {
+                min-height: 60vh;
+                padding: 150px 7% 90px;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-item {
+                grid-template-columns: 50px 1fr 30px;
+                gap: 20px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .service-hero {
+                min-height: 65vh;
+                padding: 150px 7% 80px;
+            }
+
+            .service-hero::before {
+                left: -10%;
+                bottom: -30px;
+                font-size: 150px;
+            }
+
+            .service-hero h1 {
+                font-size: 54px;
+                letter-spacing: -3px;
+            }
+
+            .service-hero p {
+                font-size: 13px;
+                line-height: 1.9;
+            }
+
+            .service-list {
+                margin-top: 45px;
+            }
+
+            .service-item {
+                grid-template-columns: 35px 1fr 20px;
+                gap: 12px;
+                padding: 30px 0;
+            }
+
+            .service-item:hover {
+                padding-right: 8px;
+                padding-left: 8px;
+            }
+
+            .service-item h3 {
+                font-size: 19px;
+            }
+
+            .service-item p {
+                font-size: 11px;
+                line-height: 1.8;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                margin-top: 45px;
+            }
+
+            .process-card {
+                min-height: 190px;
+                padding: 28px;
+            }
+
+            .service-cta {
+                padding-top: 90px !important;
+                padding-bottom: 90px !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- GLOBAL HEADER -->
+
+    <header class="header">
+
+        <a href="../index.html#home" class="logo">
+
+            <img
+                src="../assets/images/vox-logo.png"
+                alt="VOX Media">
+
+        </a>
+
+
+        <nav class="nav">
+
+            <a href="../index.html#home">
+                الرئيسية
+            </a>
+
+            <a
+                href="../index.html#services"
+                class="active">
+                خدماتنا
+            </a>
+
+            <a href="../work.html">
+                أعمالنا
+            </a>
+
+            <a href="../index.html#about">
+                من نحن
+            </a>
+
+            <a href="../index.html#contact">
+                تواصل معنا
+            </a>
+
+        </nav>
+
+
+        <a
+            href="../index.html#contact"
+            class="header-cta">
+
+            <span>↗</span>
+            ابدأ مشروعك
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            aria-label="القائمة">
+
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+
+    <main class="service-page">
+
+
+        <!-- HERO -->
+
+        <section class="service-hero">
+
+            <div class="service-hero-content">
+
+                <span class="section-number">
+                    03 / VIDEO EDITING
+                </span>
+
+
+                <h1>
+                    مونتاج<br>
+                    <strong>الفيديو.</strong>
+                </h1>
+
+
+                <p>
+                    نحول اللقطات الخام إلى قصة بصرية متماسكة،
+                    بإيقاع محسوب، ألوان دقيقة، صوت متكامل
+                    وتفاصيل تخلي المشاهد يكمل للنهاية.
+                </p>
+
+
+                <a
+                    href="../index.html#contact"
+                    class="outline-btn">
+
+                    ابدأ مشروعك معنا ↗
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- INTRO -->
+
+        <section class="service-intro section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="section-number">
+                        02 / OUR APPROACH
+                    </span>
+
+
+                    <h2>
+                        مش بنقص لقطات.<br>
+                        <strong>بنصنع إيقاع.</strong>
+                    </h2>
+
+                </div>
+
+
+                <p>
+                    المونتاج هو المرحلة اللي بتتحول فيها
+                    اللقطات إلى قصة. بنفهم الرسالة أولًا،
+                    ثم نحدد الإيقاع والبناء البصري والصوتي
+                    المناسب عشان الفيديو يوصل الفكرة
+                    ويشد انتباه المشاهد.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- EXPERTISE -->
+
+        <section class="service-offerings section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="section-number">
+                        03 / WHAT WE CREATE
+                    </span>
+
+
+                    <h2>
+                        كل Cut<br>
+                        <strong>له سبب.</strong>
+                    </h2>
+
+                </div>
+
+
+                <p>
+                    من أول اختيار اللقطة وحتى آخر Sound Effect،
+                    بنهتم بالتفاصيل اللي بتحول المونتاج من مجرد
+                    ترتيب فيديو إلى تجربة بصرية متكاملة.
+                </p>
+
+            </div>
+
+
+
+            <div class="service-list">
+
+
+                <!-- 01 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        01
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            STORYTELLING
+                        </span>
+
+
+                        <h3>
+                            القصة قبل الانتقال
+                        </h3>
+
+
+                        <p>
+                            بنرتب اللقطات ونبني التسلسل البصري
+                            بحيث يكون لكل مشهد دور واضح في
+                            القصة ويحافظ الفيديو على تركيز
+                            المشاهد من البداية للنهاية.
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 02 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        02
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            PACING
+                        </span>
+
+
+                        <h3>
+                            إيقاع يخدم المحتوى
+                        </h3>
+
+
+                        <p>
+                            بنحدد سرعة المونتاج والانتقالات
+                            والتوقيت بناءً على طبيعة المحتوى
+                            والمنصة والجمهور، سواء كان Reel سريع
+                            أو فيلم إعلاني أو محتوى طويل.
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 03 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        03
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            COLOR GRADING
+                        </span>
+
+
+                        <h3>
+                            صورة لها شخصية
+                        </h3>
+
+
+                        <p>
+                            معالجة الألوان والـColor Grading
+                            لإعطاء الفيديو Mood بصري متناسق
+                            ويحافظ على هوية المشروع ويظهر
+                            الصورة بأفضل شكل ممكن.
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 04 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        04
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            SOUND DESIGN
+                        </span>
+
+
+                        <h3>
+                            الصورة لا تكفي وحدها
+                        </h3>
+
+
+                        <p>
+                            بنشتغل على الموسيقى والمؤثرات
+                            والـSound Effects ومستويات الصوت
+                            عشان يكون الجانب السمعي جزءًا
+                            من تجربة المشاهدة.
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 05 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        05
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            MOTION GRAPHICS
+                        </span>
+
+
+                        <h3>
+                            تفاصيل تحرك الرسالة
+                        </h3>
+
+
+                        <p>
+                            عند الحاجة، بنضيف Motion Graphics
+                            وTypography وVisual Effects تساعد
+                            على شرح المعلومات وإبراز الرسالة
+                            بدون ما تشتت عن المحتوى الأساسي.
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROCESS -->
+
+        <section class="service-process section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="section-number">
+                        04 / OUR PROCESS
+                    </span>
+
+
+                    <h2>
+                        من الـRaw<br>
+                        <strong>للنسخة النهائية.</strong>
+                    </h2>
+
+                </div>
+
+
+                <p>
+                    بنشتغل على الفيديو في مراحل واضحة،
+                    من تنظيم المادة الخام إلى الـFinal Export،
+                    مع مراجعة التفاصيل في كل مرحلة.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-grid">
+
+
+                <div class="process-card">
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Select
+                    </h3>
+
+                    <p>
+                        مراجعة وتنظيم الـFootage
+                        واختيار أفضل اللقطات.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Edit
+                    </h3>
+
+                    <p>
+                        بناء القصة والإيقاع
+                        وتكوين النسخة الأساسية.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        Polish
+                    </h3>
+
+                    <p>
+                        ألوان، صوت، موشن
+                        والتفاصيل النهائية.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        Deliver
+                    </h3>
+
+                    <p>
+                        تصدير النسخة النهائية
+                        بالمقاسات والصيغ المناسبة.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CTA -->
+
+        <section class="service-cta section">
+
+            <div class="service-cta-inner">
+
+                <span class="section-number">
+                    READY TO EDIT?
+                </span>
+
+
+                <h2>
+                    عندك Footage؟<br>
+                    <strong>خلّيه يحكي.</strong>
+                </h2>
+
+
+                <p>
+                    ابعتلنا اللقطات، وإحنا نحولها إلى
+                    فيديو له قصة، إيقاع وشخصية.
+                </p>
+
+
+                <a
+                    href="../index.html#contact"
+                    class="gold-btn">
+
+                    تواصل معنا ↗
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>
