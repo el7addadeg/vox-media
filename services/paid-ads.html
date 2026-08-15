@@ -1,1 +1,523 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الإعلانات الممولة | VOX Media</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .service-page {
+            min-height: 100vh;
+            background: #050505;
+            color: #fff;
+        }
+
+        .service-hero {
+            min-height: 72vh;
+            padding: 180px 9% 100px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-hero::before {
+            content: "ADS";
+            position: absolute;
+            left: -3%;
+            bottom: -80px;
+            font-family: "Inter", sans-serif;
+            font-size: clamp(180px, 28vw, 450px);
+            line-height: .8;
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.045);
+            pointer-events: none;
+        }
+
+        .service-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .service-label {
+            display: block;
+            margin-bottom: 25px;
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .service-hero h1 {
+            margin: 0 0 30px;
+            font-size: clamp(55px, 8vw, 120px);
+            line-height: .95;
+            letter-spacing: -5px;
+        }
+
+        .service-hero h1 strong {
+            color: var(--gold);
+        }
+
+        .service-hero p {
+            max-width: 700px;
+            color: #85827d;
+            font-size: 16px;
+            line-height: 2;
+        }
+
+        .service-section {
+            padding: 120px 9%;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-section-head {
+            max-width: 750px;
+            margin-bottom: 60px;
+        }
+
+        .service-section-head span {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .service-section-head h2 {
+            margin: 15px 0 20px;
+            font-size: clamp(38px, 5vw, 70px);
+            line-height: 1;
+        }
+
+        .service-section-head p {
+            color: #777;
+            line-height: 2;
+            font-size: 14px;
+        }
+
+        .service-capabilities {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .capability {
+            min-height: 190px;
+            padding: 35px;
+            background: #080808;
+            transition: .35s ease;
+        }
+
+        .capability:hover {
+            background: #0d0d0d;
+            transform: translateY(-4px);
+        }
+
+        .capability-number {
+            display: block;
+            margin-bottom: 30px;
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+        }
+
+        .capability h3 {
+            margin: 0 0 12px;
+            font-size: 19px;
+            font-weight: 500;
+        }
+
+        .capability p {
+            margin: 0;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .service-process {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .process-item {
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        .process-item strong {
+            display: block;
+            margin-bottom: 25px;
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 11px;
+        }
+
+        .process-item h3 {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .process-item p {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .service-cta {
+            padding: 130px 9%;
+            text-align: center;
+        }
+
+        .service-cta span {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .service-cta h2 {
+            max-width: 850px;
+            margin: 20px auto 40px;
+            font-size: clamp(40px, 6vw, 85px);
+            line-height: 1;
+        }
+
+        .service-cta h2 strong {
+            color: var(--gold);
+        }
+
+        .service-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #999;
+            text-decoration: none;
+            font-size: 11px;
+            transition: .3s ease;
+        }
+
+        .service-back:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 900px) {
+
+            .service-capabilities {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-process {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .service-hero {
+                min-height: 65vh;
+                padding: 150px 7% 80px;
+            }
+
+            .service-hero h1 {
+                font-size: 54px;
+                letter-spacing: -3px;
+            }
+
+            .service-section {
+                padding: 80px 7%;
+            }
+
+            .service-capabilities {
+                grid-template-columns: 1fr;
+            }
+
+            .service-process {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .service-cta {
+                padding: 90px 7%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="service-page">
+
+    <!-- HERO -->
+
+    <section class="service-hero">
+
+        <div class="service-hero-content">
+
+            <span class="service-label">
+                05 / PAID ADVERTISING
+            </span>
+
+            <h1>
+                الإعلانات<br>
+                <strong>الممولة.</strong>
+            </h1>
+
+            <p>
+                نحول ميزانية الإعلان إلى حملات مدروسة،
+                تستهدف الجمهور المناسب وتساعد العلامات التجارية
+                على الوصول وتحقيق نتائج قابلة للقياس.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTRO -->
+
+    <section class="service-section">
+
+        <div class="service-section-head">
+
+            <span>
+                WHAT WE DO
+            </span>
+
+            <h2>
+                الإعلان مش مجرد<br>
+                <strong>Boost.</strong>
+            </h2>
+
+            <p>
+                في VOX بنبني الحملة من أول فهم المنتج والجمهور،
+                مرورًا بالاستراتيجية والإبداع والاستهداف،
+                وحتى تحليل النتائج وتحسين الأداء.
+            </p>
+
+        </div>
+
+
+        <!-- CAPABILITIES -->
+
+        <div class="service-capabilities">
+
+            <article class="capability">
+
+                <span class="capability-number">01</span>
+
+                <h3>Meta Ads</h3>
+
+                <p>
+                    حملات Facebook وInstagram للوصول إلى
+                    الجمهور المناسب وتحقيق أهداف الحملة.
+                </p>
+
+            </article>
+
+
+            <article class="capability">
+
+                <span class="capability-number">02</span>
+
+                <h3>TikTok Ads</h3>
+
+                <p>
+                    حملات تعتمد على المحتوى السريع
+                    واستهداف جمهور TikTok.
+                </p>
+
+            </article>
+
+
+            <article class="capability">
+
+                <span class="capability-number">03</span>
+
+                <h3>Google Ads</h3>
+
+                <p>
+                    الوصول للعملاء أثناء البحث عن المنتجات
+                    والخدمات ذات الصلة.
+                </p>
+
+            </article>
+
+
+            <article class="capability">
+
+                <span class="capability-number">04</span>
+
+                <h3>Audience Targeting</h3>
+
+                <p>
+                    تحديد وتقسيم الجمهور بناءً على
+                    الاهتمامات والسلوك والموقع.
+                </p>
+
+            </article>
+
+
+            <article class="capability">
+
+                <span class="capability-number">05</span>
+
+                <h3>Retargeting</h3>
+
+                <p>
+                    إعادة استهداف الأشخاص الذين تفاعلوا
+                    بالفعل مع العلامة التجارية.
+                </p>
+
+            </article>
+
+
+            <article class="capability">
+
+                <span class="capability-number">06</span>
+
+                <h3>Performance Optimization</h3>
+
+                <p>
+                    متابعة الأداء وتحسين الميزانية
+                    والإعلانات لتحقيق أفضل نتيجة ممكنة.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROCESS -->
+
+    <section class="service-section">
+
+        <div class="service-section-head">
+
+            <span>
+                OUR PROCESS
+            </span>
+
+            <h2>
+                من الفكرة<br>
+                إلى <strong>النتيجة.</strong>
+            </h2>
+
+        </div>
+
+
+        <div class="service-process">
+
+            <article class="process-item">
+
+                <strong>01</strong>
+
+                <h3>تحليل</h3>
+
+                <p>
+                    نفهم النشاط والجمهور والمنافسين
+                    والهدف المطلوب.
+                </p>
+
+            </article>
+
+
+            <article class="process-item">
+
+                <strong>02</strong>
+
+                <h3>استراتيجية</h3>
+
+                <p>
+                    نحدد المنصات والجمهور والميزانية
+                    وهيكل الحملة.
+                </p>
+
+            </article>
+
+
+            <article class="process-item">
+
+                <strong>03</strong>
+
+                <h3>إطلاق</h3>
+
+                <p>
+                    تجهيز الإعلانات والاستهداف
+                    وإطلاق الحملة.
+                </p>
+
+            </article>
+
+
+            <article class="process-item">
+
+                <strong>04</strong>
+
+                <h3>تحسين</h3>
+
+                <p>
+                    نراقب النتائج ونختبر ونعدل
+                    العناصر المؤثرة في الأداء.
+                </p>
+
+            </article>
+
+
+            <article class="process-item">
+
+                <strong>05</strong>
+
+                <h3>تقارير</h3>
+
+                <p>
+                    نحلل النتائج ونوضح ما تم تحقيقه
+                    وما يمكن تطويره.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="service-cta">
+
+        <span>
+            READY TO GROW?
+        </span>
+
+        <h2>
+            عندك منتج يستحق<br>
+            <strong>الوصول لجمهوره؟</strong>
+        </h2>
+
+        <a href="../index.html#contact" class="service-back">
+            ابدأ مشروعك معنا ↗
+        </a>
+
+    </section>
+
+</div>
+
+
+<script src="../script.js"></script>
+
+</body>
+</html>
