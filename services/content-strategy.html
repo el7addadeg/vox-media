@@ -2,18 +2,19 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Content Strategy | VOX Media</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
 
     <style>
-
-        html,
-        body {
+        html, body {
             background: #050505;
             color: #fff;
         }
@@ -24,8 +25,6 @@
             color: #fff;
             overflow: hidden;
         }
-
-        /* HERO */
 
         .service-hero {
             min-height: 72vh;
@@ -86,11 +85,10 @@
             margin-bottom: 35px;
         }
 
-        /* SECTIONS */
-
         .service-intro,
         .service-offerings,
         .service-process,
+        .related-services,
         .service-cta {
             position: relative;
             background: #050505;
@@ -98,7 +96,8 @@
 
         .service-intro,
         .service-offerings,
-        .service-process {
+        .service-process,
+        .related-services {
             border-bottom: 1px solid var(--line);
         }
 
@@ -115,8 +114,6 @@
             line-height: 2;
             max-width: 620px;
         }
-
-        /* SERVICE LIST */
 
         .service-list {
             margin-top: 70px;
@@ -181,8 +178,6 @@
             transform: translate(-4px, -4px);
         }
 
-        /* PROCESS */
-
         .process-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -225,17 +220,131 @@
             line-height: 1.9;
         }
 
-        /* CTA */
+        .related-services {
+            padding: 120px 9%;
+        }
+
+        .related-services-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 55px;
+        }
+
+        .related-services-head span {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .related-services-head h2 {
+            margin: 15px 0 0;
+            font-size: clamp(38px, 5vw, 70px);
+            line-height: 1;
+        }
+
+        .related-services-head h2 strong {
+            color: var(--gold);
+        }
+
+        .related-services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .related-service-card {
+            position: relative;
+            min-height: 230px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #080808;
+            color: #fff;
+            text-decoration: none;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .related-service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: translateY(100%);
+            transition: transform .4s cubic-bezier(.16,1,.3,1);
+            z-index: 0;
+        }
+
+        .related-service-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .related-service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .related-service-number {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+        }
+
+        .related-service-card:hover .related-service-number {
+            color: #111;
+        }
+
+        .related-service-card h3 {
+            margin: 35px 0 10px;
+            font-size: 21px;
+            font-weight: 500;
+        }
+
+        .related-service-card p {
+            margin: 0;
+            color: #666;
+            font-size: 11px;
+            line-height: 1.8;
+            transition: color .35s ease;
+        }
+
+        .related-service-card:hover p {
+            color: rgba(17,17,17,.7);
+        }
+
+        .related-service-arrow {
+            align-self: flex-start;
+            color: #777;
+            font-size: 18px;
+            transition: .35s ease;
+        }
+
+        .related-service-card:hover .related-service-arrow {
+            color: #111;
+            transform: translate(-4px,-4px);
+        }
 
         .service-cta {
-            padding-top: 130px !important;
-            padding-bottom: 130px !important;
+            padding: 130px 9% !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
         .service-cta-inner {
             max-width: 900px;
-            margin: auto;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .service-cta .section-number {
@@ -263,10 +372,7 @@
             font-size: 14px;
         }
 
-        /* MOBILE */
-
         @media (max-width: 900px) {
-
             .service-hero {
                 min-height: 60vh;
                 padding: 150px 7% 90px;
@@ -281,10 +387,12 @@
                 gap: 20px;
             }
 
+            .related-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 600px) {
-
             .service-hero {
                 min-height: 65vh;
                 padding: 150px 7% 80px;
@@ -334,581 +442,327 @@
                 padding: 28px;
             }
 
-            .service-cta {
-                padding-top: 90px !important;
-                padding-bottom: 90px !important;
+            .related-services {
+                padding: 85px 7%;
             }
 
+            .related-services-head {
+                display: block;
+                margin-bottom: 35px;
+            }
+
+            .related-services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .related-service-card {
+                min-height: 190px;
+                padding: 25px;
+            }
+
+            .service-cta {
+                padding: 90px 7% !important;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- GLOBAL HEADER -->
-
     <header class="header">
-
         <a href="../index.html#home" class="logo">
-
-            <img
-                src="../assets/images/vox-logo.png"
-                alt="VOX Media">
-
+            <img src="../assets/images/vox-logo.png" alt="VOX Media">
         </a>
-
 
         <nav class="nav">
-
-            <a href="../index.html#home">
-                الرئيسية
-            </a>
-
-            <a
-                href="../index.html#services"
-                class="active">
-
-                خدماتنا
-
-            </a>
-
-            <a href="../work.html">
-                أعمالنا
-            </a>
-
-            <a href="../index.html#about">
-                من نحن
-            </a>
-
-            <a href="../index.html#contact">
-                تواصل معنا
-            </a>
-
+            <a href="../index.html#home">الرئيسية</a>
+            <a href="../index.html#services" class="active">خدماتنا</a>
+            <a href="../work.html">أعمالنا</a>
+            <a href="../index.html#about">من نحن</a>
+            <a href="../index.html#contact">تواصل معنا</a>
         </nav>
 
-
-        <a
-            href="../index.html#contact"
-            class="header-cta">
-
+        <a href="../index.html#contact" class="header-cta">
             <span>↗</span>
             ابدأ مشروعك
-
         </a>
 
-
-        <button
-            class="menu-btn"
-            aria-label="القائمة">
-
+        <button class="menu-btn" aria-label="القائمة">
             <span></span>
             <span></span>
-
         </button>
-
     </header>
-
 
     <main class="service-page">
 
-
         <!-- HERO -->
-
         <section class="service-hero">
-
             <div class="service-hero-content">
-
-                <span class="section-number">
-                    07 / CONTENT STRATEGY
-                </span>
-
-
-                <h1>
-
-                    محتوى<br>
-
-                    <strong>له هدف.</strong>
-
-                </h1>
-
-
-                <p>
-
-                    بنحوّل أهداف البراند إلى استراتيجية محتوى
-                    واضحة، تحدد ماذا نقول، ولمن، ولماذا،
-                    وكيف يتحول المحتوى من مجرد نشر إلى أداة
-                    حقيقية للنمو.
-
-                </p>
-
-
-                <a
-                    href="../index.html#contact"
-                    class="outline-btn">
-
-                    ابدأ مشروعك معنا ↗
-
-                </a>
-
+                <span class="section-number">07 / CONTENT STRATEGY</span>
+                <h1>محتوى<br><strong>له هدف.</strong></h1>
+                <p>بنحوّل أهداف البراند إلى استراتيجية محتوى واضحة، تحدد ماذا نقول، ولمن، ولماذا، وكيف يتحول المحتوى من مجرد نشر إلى أداة حقيقية للنمو.</p>
+                <a href="../index.html#contact" class="outline-btn">ابدأ مشروعك معنا ↗</a>
             </div>
-
         </section>
-
-
 
         <!-- INTRO -->
-
         <section class="service-intro section">
-
             <div class="section-head">
-
                 <div>
-
-                    <span class="section-number">
-                        02 / OUR APPROACH
-                    </span>
-
-
-                    <h2>
-
-                        مش كل محتوى<br>
-
-                        <strong>ينفع للبراند.</strong>
-
-                    </h2>
-
+                    <span class="section-number">02 / OUR APPROACH</span>
+                    <h2>مش كل محتوى<br><strong>ينفع للبراند.</strong></h2>
                 </div>
-
-
-                <p>
-
-                    قبل ما نفكر في التصميم أو الـReel،
-                    بنفهم البراند والجمهور والمنافسة والهدف.
-                    بعدها بنبني نظام محتوى يخلي كل قطعة
-                    محتوى لها دور واضح داخل الصورة الأكبر.
-
-                </p>
-
+                <p>قبل ما نفكر في التصميم أو الـReel، بنفهم البراند والجمهور والمنافسة والهدف. بعدها بنبني نظام محتوى يخلي كل قطعة محتوى لها دور واضح داخل الصورة الأكبر.</p>
             </div>
-
         </section>
-
-
 
         <!-- CAPABILITIES -->
-
         <section class="service-offerings section">
-
             <div class="section-head">
-
                 <div>
-
-                    <span class="section-number">
-                        03 / STRATEGIC CAPABILITIES
-                    </span>
-
-
-                    <h2>
-
-                        بنبني<br>
-
-                        <strong>منظومة محتوى.</strong>
-
-                    </h2>
-
+                    <span class="section-number">03 / STRATEGIC CAPABILITIES</span>
+                    <h2>بنبني<br><strong>منظومة محتوى.</strong></h2>
                 </div>
-
-
-                <p>
-
-                    من البحث وتحديد الجمهور إلى بناء الـContent
-                    Pillars وتخطيط الأفكار وقياس الأداء،
-                    كل خطوة مبنية على منطق واضح.
-
-                </p>
-
+                <p>من البحث وتحديد الجمهور إلى بناء الـContent Pillars وتخطيط الأفكار وقياس الأداء، كل خطوة مبنية على منطق واضح.</p>
             </div>
-
-
 
             <div class="service-list">
-
-
-                <!-- 01 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        01
-                    </span>
-
-
+                    <span class="service-item-number">01</span>
                     <div>
-
-                        <span class="service-item-label">
-                            RESEARCH & INSIGHTS
-                        </span>
-
-
-                        <h3>
-                            نفهم السوق قبل ما نتكلم
-                        </h3>
-
-
-                        <p>
-
-                            دراسة السوق والمنافسين والجمهور
-                            وسلوكهم واحتياجاتهم لاكتشاف الفرص
-                            التي يمكن للبراند أن يبني عليها محتواه.
-
-                        </p>
-
+                        <span class="service-item-label">RESEARCH & INSIGHTS</span>
+                        <h3>نفهم السوق قبل ما نتكلم</h3>
+                        <p>دراسة السوق والمنافسين والجمهور وسلوكهم واحتياجاتهم لاكتشاف الفرص التي يمكن للبراند أن يبني عليها محتواه.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 02 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        02
-                    </span>
-
-
+                    <span class="service-item-number">02</span>
                     <div>
-
-                        <span class="service-item-label">
-                            AUDIENCE STRATEGY
-                        </span>
-
-
-                        <h3>
-                            نعرف مين بنخاطب
-                        </h3>
-
-
-                        <p>
-
-                            تحديد الشرائح المستهدفة، دوافعها،
-                            مشاكلها وطريقة تفاعلها مع المحتوى
-                            لبناء رسائل أكثر دقة وتأثيرًا.
-
-                        </p>
-
+                        <span class="service-item-label">AUDIENCE STRATEGY</span>
+                        <h3>نعرف مين بنخاطب</h3>
+                        <p>تحديد الشرائح المستهدفة، دوافعها، مشاكلها وطريقة تفاعلها مع المحتوى لبناء رسائل أكثر دقة وتأثيرًا.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 03 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        03
-                    </span>
-
-
+                    <span class="service-item-number">03</span>
                     <div>
-
-                        <span class="service-item-label">
-                            CONTENT PILLARS
-                        </span>
-
-
-                        <h3>
-                            بنحدد ماذا يجب أن نقول
-                        </h3>
-
-
-                        <p>
-
-                            بناء Content Pillars واضحة تنظم
-                            أنواع المحتوى وتضمن تنوع الرسائل
-                            مع الحفاظ على شخصية البراند.
-
-                        </p>
-
+                        <span class="service-item-label">CONTENT PILLARS</span>
+                        <h3>بنحدد ماذا يجب أن نقول</h3>
+                        <p>بناء Content Pillars واضحة تنظم أنواع المحتوى وتضمن تنوع الرسائل مع الحفاظ على شخصية البراند.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 04 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        04
-                    </span>
-
-
+                    <span class="service-item-number">04</span>
                     <div>
-
-                        <span class="service-item-label">
-                            CONTENT PLANNING
-                        </span>
-
-
-                        <h3>
-                            نحول الاستراتيجية إلى خطة
-                        </h3>
-
-
-                        <p>
-
-                            تخطيط الأفكار والموضوعات والصيغ
-                            ومواعيد النشر بما يخلق تدفقًا مستمرًا
-                            ومنظمًا للمحتوى.
-
-                        </p>
-
+                        <span class="service-item-label">CONTENT PLANNING</span>
+                        <h3>نحول الاستراتيجية إلى خطة</h3>
+                        <p>تخطيط الأفكار والموضوعات والصيغ ومواعيد النشر بما يخلق تدفقًا مستمرًا ومنظمًا للمحتوى.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
 
-
-
-                <!-- 05 -->
-
                 <article class="service-item">
-
-                    <span class="service-item-number">
-                        05
-                    </span>
-
-
+                    <span class="service-item-number">05</span>
                     <div>
-
-                        <span class="service-item-label">
-                            PERFORMANCE & OPTIMIZATION
-                        </span>
-
-
-                        <h3>
-                            نعرف إيه اللي نجح وليه
-                        </h3>
-
-
-                        <p>
-
-                            تحليل أداء المحتوى واكتشاف الأنماط
-                            والفرص وتطوير الاستراتيجية بناءً على
-                            البيانات والنتائج الفعلية.
-
-                        </p>
-
+                        <span class="service-item-label">PERFORMANCE & OPTIMIZATION</span>
+                        <h3>نعرف إيه اللي نجح وليه</h3>
+                        <p>تحليل أداء المحتوى واكتشاف الأنماط والفرص وتطوير الاستراتيجية بناءً على البيانات والنتائج الفعلية.</p>
                     </div>
-
-
-                    <span class="service-item-arrow">
-                        ↗
-                    </span>
-
+                    <span class="service-item-arrow">↗</span>
                 </article>
-
-
             </div>
-
         </section>
-
-
 
         <!-- PROCESS -->
-
         <section class="service-process section">
-
             <div class="section-head">
-
                 <div>
-
-                    <span class="section-number">
-                        04 / OUR PROCESS
-                    </span>
-
-
-                    <h2>
-
-                        نفكر.<br>
-
-                        <strong>نخطط. ننفذ.</strong>
-
-                    </h2>
-
+                    <span class="section-number">04 / OUR PROCESS</span>
+                    <h2>نفكر.<br><strong>نخطط. ننفذ.</strong></h2>
                 </div>
-
-
-                <p>
-
-                    الاستراتيجية عندنا مش ملف بيتحط على الرف.
-                    هي الأساس اللي بيقود صناعة المحتوى
-                    وبيتم تطويره مع النتائج.
-
-                </p>
-
+                <p>الاستراتيجية عندنا مش ملف بيتحط على الرف. هي الأساس اللي بيقود صناعة المحتوى وبيتم تطويره مع النتائج.</p>
             </div>
-
-
 
             <div class="process-grid">
-
-
                 <div class="process-card">
-
-                    <span>
-                        01
-                    </span>
-
-                    <h3>
-                        Research
-                    </h3>
-
-                    <p>
-                        فهم السوق والجمهور والمنافسين
-                        والفرص المتاحة.
-                    </p>
-
+                    <span>01</span>
+                    <h3>Research</h3>
+                    <p>فهم السوق والجمهور والمنافسين والفرص المتاحة.</p>
                 </div>
-
-
-
                 <div class="process-card">
-
-                    <span>
-                        02
-                    </span>
-
-                    <h3>
-                        Strategy
-                    </h3>
-
-                    <p>
-                        تحديد الرسائل وContent Pillars
-                        والاتجاهات المناسبة.
-                    </p>
-
+                    <span>02</span>
+                    <h3>Strategy</h3>
+                    <p>تحديد الرسائل وContent Pillars والاتجاهات المناسبة.</p>
                 </div>
-
-
-
                 <div class="process-card">
-
-                    <span>
-                        03
-                    </span>
-
-                    <h3>
-                        Plan
-                    </h3>
-
-                    <p>
-                        تحويل الاستراتيجية إلى أفكار
-                        وخطة محتوى قابلة للتنفيذ.
-                    </p>
-
+                    <span>03</span>
+                    <h3>Plan</h3>
+                    <p>تحويل الاستراتيجية إلى أفكار وخطة محتوى قابلة للتنفيذ.</p>
                 </div>
-
-
-
                 <div class="process-card">
-
-                    <span>
-                        04
-                    </span>
-
-                    <h3>
-                        Measure
-                    </h3>
-
-                    <p>
-                        قياس الأداء وتطوير الاستراتيجية
-                        بناءً على النتائج.
-                    </p>
-
+                    <span>04</span>
+                    <h3>Measure</h3>
+                    <p>قياس الأداء وتطوير الاستراتيجية بناءً على النتائج.</p>
                 </div>
-
-
             </div>
-
         </section>
 
+        <!-- RELATED SERVICES -->
+        <section class="related-services">
+            <div class="related-services-head">
+                <div>
+                    <span>EXPLORE MORE</span>
+                    <h2>خدمات<br><strong>أخرى.</strong></h2>
+                </div>
+            </div>
 
-
-        <!-- CTA -->
-
-        <section class="service-cta section">
-
-            <div class="service-cta-inner">
-
-                <span class="section-number">
-                    CONTENT WITH PURPOSE
-                </span>
-
-
-                <h2>
-
-                    متخليش البراند<br>
-
-                    <strong>يتكلم وخلاص.</strong>
-
-                </h2>
-
-
-                <p>
-
-                    خلّي كل كلمة وكل فكرة وكل قطعة محتوى
-                    تخدم هدف واضح وتقرّب البراند من جمهوره.
-
-                </p>
-
-
-                <a
-                    href="../index.html#contact"
-                    class="gold-btn">
-
-                    تواصل معنا ↗
-
+            <div class="related-services-grid">
+                <a href="production.html" class="related-service-card">
+                    <span class="related-service-number">01</span>
+                    <div>
+                        <h3>تصوير وإنتاج</h3>
+                        <p>تصوير إعلاني، منتجات وReels وإنتاج محتوى متكامل.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
                 </a>
 
-            </div>
+                <a href="video-editing.html" class="related-service-card">
+                    <span class="related-service-number">02</span>
+                    <div>
+                        <h3>مونتاج وصناعة الفيديو</h3>
+                        <p>مونتاج احترافي مع Color Grading وMotion Graphics.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
 
+                <a href="ai.html" class="related-service-card">
+                    <span class="related-service-number">03</span>
+                    <div>
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>حلول بصرية ومحتوى مبتكر باستخدام تقنيات AI.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="social-media.html" class="related-service-card">
+                    <span class="related-service-number">04</span>
+                    <div>
+                        <h3>سوشيال ميديا</h3>
+                        <p>إدارة المحتوى والمنصات وبناء حضور رقمي متناسق.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="paid-ads.html" class="related-service-card">
+                    <span class="related-service-number">05</span>
+                    <div>
+                        <h3>الإعلانات الممولة</h3>
+                        <p>حملات إعلانية مدروسة تستهدف الجمهور المناسب وتحقق نتائج.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="branding.html" class="related-service-card">
+                    <span class="related-service-number">06</span>
+                    <div>
+                        <h3>Branding وهوية بصرية</h3>
+                        <p>بناء هوية بصرية تعبر عن شخصية العلامة التجارية.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="digital-strategy.html" class="related-service-card">
+                    <span class="related-service-number">08</span>
+                    <div>
+                        <h3>Digital Strategy</h3>
+                        <p>خطة رقمية متكاملة تساعد علامتك على النمو بذكاء.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+
+                <a href="../work.html" class="related-service-card">
+                    <span class="related-service-number">WORK</span>
+                    <div>
+                        <h3>شاهد أعمالنا</h3>
+                        <p>استكشف مجموعة مختارة من مشاريع VOX وأعمالنا السابقة.</p>
+                    </div>
+                    <span class="related-service-arrow">↗</span>
+                </a>
+            </div>
         </section>
 
+        <!-- CTA -->
+        <section class="service-cta section">
+            <div class="service-cta-inner">
+                <span class="section-number">CONTENT WITH PURPOSE</span>
+                <h2>متخليش البراند<br><strong>يتكلم وخلاص.</strong></h2>
+                <p>خلّي كل كلمة وكل فكرة وكل قطعة محتوى تخدم هدف واضح وتقرّب البراند من جمهوره.</p>
+                <a href="../index.html#contact" class="gold-btn">تواصل معنا ↗</a>
+            </div>
+        </section>
 
     </main>
 
+    <!-- GLOBAL FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="../assets/images/vox-logo.png" alt="VOX Media" class="footer-logo">
+                <p>وكالة إبداعية رقمية تجمع بين الاستراتيجية، المحتوى، التصميم والتكنولوجيا لصناعة علامات أقوى.</p>
+            </div>
+
+            <div class="footer-column">
+                <span class="footer-label">EXPLORE</span>
+                <a href="../index.html#home">الرئيسية</a>
+                <a href="../index.html#services">الخدمات</a>
+                <a href="../work.html">أعمالنا</a>
+                <a href="../index.html#partners">شركاؤنا</a>
+                <a href="../index.html#about">من نحن</a>
+                <a href="../index.html#contact">تواصل معنا</a>
+            </div>
+
+            <div class="footer-column">
+                <span class="footer-label">WHAT WE DO</span>
+                <a href="production.html">تصوير وإنتاج</a>
+                <a href="video-editing.html">مونتاج</a>
+                <a href="ai.html">ذكاء اصطناعي</a>
+                <a href="social-media.html">صناعة المحتوى</a>
+                <a href="branding.html">Branding</a>
+                <a href="paid-ads.html">Digital Marketing</a>
+            </div>
+
+            <div class="footer-column footer-contact">
+                <span class="footer-label">GET IN TOUCH</span>
+                <h3>خلينا نتكلم.</h3>
+                <a href="https://wa.me/201069952664" target="_blank" rel="noopener" class="footer-contact-item">
+                    <span>WhatsApp</span>
+                    <b>↗</b>
+                </a>
+                <a href="mailto:ahmedelhaddad2022@gmail.com" class="footer-contact-item">
+                    <span>Email</span>
+                    <b>↗</b>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-giant">VOX</div>
+
+        <div class="footer-bottom">
+            <span>© 2026 VOX Media</span>
+            <span>CREATIVE DIGITAL AGENCY</span>
+            <a href="#">
+                BACK TO TOP
+                <b>↑</b>
+            </a>
+        </div>
+    </footer>
 
     <script src="../script.js"></script>
-
 </body>
-
 </html>
