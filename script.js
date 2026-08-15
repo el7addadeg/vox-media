@@ -355,16 +355,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!quoteModal) return;
 
-    // Open Modal when clicking on CTA buttons (مثل "ابدأ مشروعك")
-    document.querySelectorAll('a[href="#contact"], .header-cta, .footer-cta-btn').forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            // لو كان الرابط يحمل كلاس فتح المودال أو كان CTA في الهيدر
-            if (btn.classList.contains("header-cta") || btn.classList.contains("open-quote-modal")) {
-                e.preventDefault();
-                openQuoteModal();
-            }
-        });
+    // Open Quote Modal from any trigger button
+document.querySelectorAll('.header-cta, .open-quote-modal, .footer-cta-btn').forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        openQuoteModal();
     });
+});
 
     function openQuoteModal() {
         quoteModal.classList.add("active");
