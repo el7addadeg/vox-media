@@ -344,3 +344,105 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+/* =====================================================
+   INTERACTIVE QUOTE MODAL ENGINE
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const quoteModal = document.getElementById("quoteModal");
+    const quoteModalClose = document.getElementById("quoteModalClose");
+    const quoteModalBackdrop = document.getElementById("quoteModalBackdrop");
+    const quoteForm = document.getElementById("quoteForm");
+
+    if (!quoteModal) return;
+
+    // Open Modal when clicking on CTA buttons (مثل "ابدأ مشروعك")
+    document.querySelectorAll('a[href="#contact"], .header-cta, .footer-cta-btn').forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            // لو كان الرابط يحمل كلاس فتح المودال أو كان CTA في الهيدر
+            if (btn.classList.contains("header-cta") || btn.classList.contains("open-quote-modal")) {
+                e.preventDefault();
+                openQuoteModal();
+            }
+        });
+    });
+
+    function openQuoteModal() {
+        quoteModal.classList.add("active");
+        quoteModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeQuoteModal() {
+        quoteModal.classList.remove("active");
+        quoteModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
+    if (quoteModalClose) quoteModalClose.addEventListener("click", closeQuoteModal);
+    if (quoteModalBackdrop) quoteModalBackdrop.addEventListener("click", closeQuoteModal);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && quoteModal.classList.contains("active")) {
+            closeQuoteModal();
+        }
+    });
+
+    // Step Navigation
+    const steps = quoteModal.querySelectorAll(".quote-step");
+    
+    quoteModal.querySelectorAll(".next-step-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const nextStep = btn.dataset.next;
+            steps.forEach(s => s.classList.remove("active"));
+            quoteModal.querySelector(`.quote-step[data-step="${nextStep}"]`).classList.add("active");
+        });
+    });
+
+    quoteModal.querySelectorAll(".prev-step-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const prevStep = btn.dataset.prev;
+            steps.forEach(s => s.classList.remove("active"));
+            quoteModal.querySelector(`.quote-step[data-step="${prevStep}"]`).classList.add("active");
+        });
+    });
+
+    // Handle Form Submit to WhatsApp
+    if (quoteForm) {
+        quoteForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const selectedServices = Array.from(quoteForm.querySelectorAll('input[name="services"]:checked'))
+                .map(cb => "• " + cb.value)
+                .join("\n");
+
+            const budget = quoteForm.querySelector('input[name="budget"]:checked')?.value || "غير محدد";
+            const goal = document.getElementById("projectGoal").value.trim() || "لم يتم التحديد";
+            const name = document.getElementById("clientName").value.trim();
+            const brand = document.getElementById("brandName").value.trim() || "غير محدد";
+            const phone = document.getElementById("clientPhone").value.trim();
+
+            if (!name || !phone) {
+                alert("يرجى إدخال الاسم ورقم الهاتف.");
+                return;
+            }
+
+            const message = `👋 مرحباً VOX Media، أرغب في طلب عرض سعر لمشروع جديد:\n\n` +
+                `👤 *الاسم:* ${name}\n` +
+                `🏢 *البراند / النشاط:* ${brand}\n` +
+                `📞 *رقم التواصل:* ${phone}\n\n` +
+                `🎯 *الخدمات المطلوبة:*\n${selectedServices || "• لم يتم تحديد خدمة بعينها"}\n\n` +
+                `💰 *الميزانية المقترحة:* ${budget}\n` +
+                `📝 *تفاصيل الفكرة:* ${goal}`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/201069952664?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, "_blank");
+            closeQuoteModal();
+            quoteForm.reset();
+            // ارجاع النموذج للخطوة الأولى
+            steps.forEach(s => s.classList.remove("active"));
+            quoteModal.querySelector(`.quote-step[data-step="1"]`).classList.add("active");
+        });
+    }
+});
