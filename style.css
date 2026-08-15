@@ -1986,3 +1986,60 @@ button {
         text-align: center;
     }
 }
+/* =====================================================
+   EMERGENCY FIX FOR PARTNERS LOGOS ON MOBILE
+===================================================== */
+.partners {
+    position: relative;
+    z-index: 5;
+    background: #050505 !important;
+}
+
+.partners-showcase {
+    position: relative !important;
+    width: 100% !important;
+    min-height: 80px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 20px 0 !important;
+    direction: ltr !important; /* فرض الاتجاه من اليسار لليمين لمنع اختفاء الأنيميشن */
+}
+
+.partners-track {
+    display: flex !important;
+    align-items: center !important;
+    width: max-content !important;
+    gap: 35px !important;
+    animation: partnersMoveMobile 18s linear infinite !important;
+    will-change: transform;
+}
+
+.partner-logo {
+    width: 110px !important;
+    height: 50px !important;
+    flex: 0 0 110px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.partner-logo img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100px !important;
+    max-height: 45px !important;
+    object-fit: contain !important;
+    opacity: 0.85 !important;
+    filter: none !important; /* إلغاء أي فلتر قد يجعل الصورة سوداء بالكامل */
+}
+
+@keyframes partnersMoveMobile {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
