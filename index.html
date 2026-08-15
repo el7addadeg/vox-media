@@ -1836,7 +1836,145 @@
 
     <script src="script.js"></script>
 
+<!-- =====================================================
+     INTERACTIVE QUOTE MODAL
+====================================================== -->
+<div class="quote-modal" id="quoteModal" aria-hidden="true">
+    <div class="quote-modal-backdrop" id="quoteModalBackdrop"></div>
 
+    <div class="quote-modal-dialog" role="dialog" aria-modal="true">
+        <button class="quote-modal-close" id="quoteModalClose" type="button" aria-label="إغلاق">×</button>
+
+        <div class="quote-header">
+            <span class="quote-badge">START A PROJECT</span>
+            <h2>طلب عرض سعر <strong>لمشروعك</strong></h2>
+            <p>اختر متطلبات مشروعك وسنقوم بالتواصل معك بالخطة والتكلفة المناسبة.</p>
+        </div>
+
+        <form id="quoteForm" class="quote-form">
+            
+            <!-- STEP 1: SERVICES -->
+            <div class="quote-step active" data-step="1">
+                <span class="step-indicator">الخطوة 1 من 3 : اختر الخدمات المطلوبة</span>
+                
+                <div class="quote-options-grid">
+                    <label class="quote-option">
+                        <input type="checkbox" name="services" value="تصوير وإنتاج فيديو">
+                        <span class="option-card">
+                            <span class="option-icon">📹</span>
+                            <span class="option-title">تصوير وإنتاج</span>
+                        </span>
+                    </label>
+
+                    <label class="quote-option">
+                        <input type="checkbox" name="services" value="مونتاج وصناعة محتوى">
+                        <span class="option-card">
+                            <span class="option-icon">✂️</span>
+                            <span class="option-title">مونتاج وفيديو</span>
+                        </span>
+                    </label>
+
+                    <label class="quote-option">
+                        <input type="checkbox" name="services" value="ذكاء اصطناعي AI">
+                        <span class="option-card">
+                            <span class="option-icon">⚡</span>
+                            <span class="option-title">ذكاء اصطناعي AI</span>
+                        </span>
+                    </label>
+
+                    <label class="quote-option">
+                        <input type="checkbox" name="services" value="إدارة سوشيال ميديا">
+                        <span class="option-card">
+                            <span class="option-icon">📱</span>
+                            <span class="option-title">سوشيال ميديا</span>
+                        </span>
+                    </label>
+
+                    <label class="quote-option">
+                        <input type="checkbox" name="services" value="هوية بصرية Branding">
+                        <span class="option-card">
+                            <span class="option-icon">🎨</span>
+                            <span class="option-title">Branding وهويات</span>
+                        </span>
+                    </label>
+
+                    <label class="quote-option">
+                        <input type="checkbox" name="services" value="إعلانات ممولة Paid Ads">
+                        <span class="option-card">
+                            <span class="option-icon">🎯</span>
+                            <span class="option-title">إعلانات ممولة</span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="quote-actions">
+                    <button type="button" class="gold-btn next-step-btn" data-next="2">المتابعة (تفاصيل المشروع) ↗</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: BUDGET & TIMELINE -->
+            <div class="quote-step" data-step="2">
+                <span class="step-indicator">الخطوة 2 من 3 : الميزانية والموعد المتوقع</span>
+
+                <div class="form-group">
+                    <label class="input-label">الميزانية التقديرية للمشروع</label>
+                    <div class="budget-options">
+                        <label class="budget-radio">
+                            <input type="radio" name="budget" value="مشروع ناشئ / تجريبي" checked>
+                            <span>مشروع ناشئ / تجريبي</span>
+                        </label>
+                        <label class="budget-radio">
+                            <input type="radio" name="budget" value="متوسط / انطلاقة قوية">
+                            <span>متوسط / انطلاقة قوية</span>
+                        </label>
+                        <label class="budget-radio">
+                            <input type="radio" name="budget" value="شامل / حملة متكاملة">
+                            <span>شامل / حملة متكاملة</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="input-label" for="projectGoal">نبذة عن الفكرة أو الهدف من المشروع</label>
+                    <textarea id="projectGoal" name="goal" rows="3" class="quote-input" placeholder="مثال: محتاجين تصوير Reels ومنتجات لإطلاق براند جديد خلال الشهر القادم..."></textarea>
+                </div>
+
+                <div class="quote-actions flex-between">
+                    <button type="button" class="outline-btn prev-step-btn" data-prev="1">← السابق</button>
+                    <button type="button" class="gold-btn next-step-btn" data-next="3">المتابعة (بيانات التواصل) ↗</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: CONTACT INFO -->
+            <div class="quote-step" data-step="3">
+                <span class="step-indicator">الخطوة 3 من 3 : بيانات التواصل</span>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="input-label" for="clientName">الاسم الكريم *</label>
+                        <input type="text" id="clientName" name="name" class="quote-input" placeholder="اسمك" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="brandName">اسم الشركة أو النشاط</label>
+                        <input type="text" id="brandName" name="brand" class="quote-input" placeholder="مثال: مطعم / متجر / شركة...">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="input-label" for="clientPhone">رقم الواتساب / الهاتف *</label>
+                    <input type="tel" id="clientPhone" name="phone" class="quote-input" placeholder="010xxxxxxxx" required>
+                </div>
+
+                <div class="quote-actions flex-between">
+                    <button type="button" class="outline-btn prev-step-btn" data-prev="2">← السابق</button>
+                    <button type="submit" class="gold-btn submit-quote-btn">إرسال عبر واتساب مباشرة ↗</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+    
 </body>
 
 </html>
