@@ -443,3 +443,16 @@ document.querySelectorAll('.header-cta, .open-quote-modal, .footer-cta-btn').for
         });
     }
 });
+/* =====================================================
+   FLOATING WHATSAPP VISIBILITY ON SCROLL
+===================================================== */
+window.addEventListener("scroll", () => {
+    const floatingBtn = document.querySelector(".floating-whatsapp");
+    if (!floatingBtn) return;
+
+    if (window.scrollY > 250) {
+        floatingBtn.classList.add("visible");
+    } else {
+        floatingBtn.classList.remove("visible");
+    }
+});
