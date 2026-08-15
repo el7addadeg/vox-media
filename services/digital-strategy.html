@@ -1,27 +1,932 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-<!-- GLOBAL HEADER — use this inside every file in /services/ -->
-<header class="header">
+<head>
 
-    <a href="../index.html#home" class="logo">
-        <img src="../assets/images/vox-logo.png" alt="VOX Media">
-    </a>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <nav class="nav">
-        <a href="../index.html#home">الرئيسية</a>
-        <a href="../index.html#services" class="active">خدماتنا</a>
-        <a href="../work.html">أعمالنا</a>
-        <a href="../index.html#about">من نحن</a>
-        <a href="../index.html#contact">تواصل معنا</a>
-    </nav>
+    <title>Digital Strategy | VOX Media</title>
 
-    <a href="../index.html#contact" class="header-cta">
-        <span>↗</span>
-        ابدأ مشروعك
-    </a>
+    <link rel="stylesheet" href="../style.css">
 
-    <button class="menu-btn" aria-label="القائمة">
-        <span></span>
-        <span></span>
-    </button>
+    <style>
 
-</header>
+        html,
+        body {
+            background: #050505;
+            color: #fff;
+        }
+
+        .service-page {
+            min-height: 100vh;
+            background: #050505;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .service-hero {
+            min-height: 72vh;
+            padding: 180px 9% 100px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-hero::before {
+            content: "DIGITAL";
+            position: absolute;
+            left: -5%;
+            bottom: -75px;
+            font-family: "Inter", sans-serif;
+            font-size: clamp(130px, 22vw, 370px);
+            line-height: .8;
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.045);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .service-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 950px;
+        }
+
+        .service-hero .section-number {
+            display: block;
+            margin-bottom: 25px;
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .service-hero h1 {
+            margin: 0 0 30px;
+            font-size: clamp(55px, 8vw, 120px);
+            line-height: .95;
+            letter-spacing: -5px;
+        }
+
+        .service-hero h1 strong {
+            color: var(--gold);
+        }
+
+        .service-hero p {
+            max-width: 720px;
+            color: #85827d;
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        .service-intro,
+        .service-offerings,
+        .service-process,
+        .service-cta {
+            position: relative;
+            background: #050505;
+        }
+
+        .service-intro,
+        .service-offerings,
+        .service-process {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .service-intro .section-head,
+        .service-offerings .section-head,
+        .service-process .section-head {
+            align-items: end;
+        }
+
+        .service-intro .section-head > p,
+        .service-offerings .section-head > p,
+        .service-process .section-head > p {
+            color: #777;
+            line-height: 2;
+            max-width: 620px;
+        }
+
+
+        /* =========================
+           SERVICE LIST
+        ========================== */
+
+        .service-list {
+            margin-top: 70px;
+            border-top: 1px solid rgba(255,255,255,.10);
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 70px 1fr 40px;
+            gap: 30px;
+            align-items: start;
+            padding: 42px 0;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            transition: .4s ease;
+        }
+
+        .service-item:hover {
+            padding-right: 15px;
+            padding-left: 15px;
+            background: rgba(255,255,255,.015);
+        }
+
+        .service-item-number {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            padding-top: 5px;
+        }
+
+        .service-item-label {
+            display: block;
+            color: #666;
+            font-family: "Inter", sans-serif;
+            font-size: 8px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .service-item h3 {
+            margin: 0 0 15px;
+            font-size: 25px;
+            font-weight: 500;
+            color: #eee;
+        }
+
+        .service-item p {
+            max-width: 720px;
+            margin: 0;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .service-item-arrow {
+            color: #555;
+            font-size: 18px;
+            transition: .35s ease;
+        }
+
+        .service-item:hover .service-item-arrow {
+            color: var(--gold);
+            transform: translate(-4px, -4px);
+        }
+
+
+        /* =========================
+           PROCESS
+        ========================== */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            margin-top: 65px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .process-card {
+            min-height: 230px;
+            padding: 32px;
+            background: #080808;
+            transition: .35s ease;
+        }
+
+        .process-card:hover {
+            background: #0d0d0d;
+            transform: translateY(-4px);
+        }
+
+        .process-card > span {
+            display: block;
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            margin-bottom: 35px;
+        }
+
+        .process-card h3 {
+            margin: 0 0 15px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .process-card p {
+            margin: 0;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+
+        /* =========================
+           CTA
+        ========================== */
+
+        .service-cta {
+            padding-top: 130px !important;
+            padding-bottom: 130px !important;
+            text-align: center;
+        }
+
+        .service-cta-inner {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .service-cta .section-number {
+            color: var(--gold);
+            font-family: "Inter", sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .service-cta h2 {
+            margin: 20px auto 30px;
+            font-size: clamp(42px, 6vw, 85px);
+            line-height: 1;
+        }
+
+        .service-cta h2 strong {
+            color: var(--gold);
+        }
+
+        .service-cta p {
+            max-width: 600px;
+            margin: 0 auto 35px;
+            color: #777;
+            line-height: 2;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .service-hero {
+                min-height: 60vh;
+                padding: 150px 7% 90px;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-item {
+                grid-template-columns: 50px 1fr 30px;
+                gap: 20px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .service-hero {
+                min-height: 65vh;
+                padding: 150px 7% 80px;
+            }
+
+            .service-hero::before {
+                font-size: 125px;
+                bottom: -20px;
+            }
+
+            .service-hero h1 {
+                font-size: 54px;
+                letter-spacing: -3px;
+            }
+
+            .service-hero p {
+                font-size: 13px;
+                line-height: 1.9;
+            }
+
+            .service-list {
+                margin-top: 45px;
+            }
+
+            .service-item {
+                grid-template-columns: 35px 1fr 20px;
+                gap: 12px;
+                padding: 30px 0;
+            }
+
+            .service-item h3 {
+                font-size: 19px;
+            }
+
+            .service-item p {
+                font-size: 11px;
+                line-height: 1.8;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                margin-top: 45px;
+            }
+
+            .process-card {
+                min-height: 190px;
+                padding: 28px;
+            }
+
+            .service-cta {
+                padding-top: 90px !important;
+                padding-bottom: 90px !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- GLOBAL HEADER -->
+
+    <header class="header">
+
+        <a href="../index.html#home" class="logo">
+
+            <img
+                src="../assets/images/vox-logo.png"
+                alt="VOX Media">
+
+        </a>
+
+
+        <nav class="nav">
+
+            <a href="../index.html#home">
+                الرئيسية
+            </a>
+
+            <a
+                href="../index.html#services"
+                class="active">
+
+                خدماتنا
+
+            </a>
+
+            <a href="../work.html">
+                أعمالنا
+            </a>
+
+            <a href="../index.html#about">
+                من نحن
+            </a>
+
+            <a href="../index.html#contact">
+                تواصل معنا
+            </a>
+
+        </nav>
+
+
+        <a
+            href="../index.html#contact"
+            class="header-cta">
+
+            <span>↗</span>
+            ابدأ مشروعك
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            aria-label="القائمة">
+
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+
+    <main class="service-page">
+
+
+        <!-- HERO -->
+
+        <section class="service-hero">
+
+            <div class="service-hero-content">
+
+                <span class="section-number">
+                    08 / DIGITAL STRATEGY
+                </span>
+
+
+                <h1>
+
+                    رؤية<br>
+
+                    <strong>تقود النمو.</strong>
+
+                </h1>
+
+
+                <p>
+
+                    بنبني استراتيجيات رقمية تربط بين البراند،
+                    الجمهور، المحتوى، الإعلانات والمنصات،
+                    عشان كل جزء من المنظومة يشتغل في نفس الاتجاه.
+
+                </p>
+
+
+                <a
+                    href="../index.html#contact"
+                    class="outline-btn">
+
+                    ابدأ مشروعك معنا ↗
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- INTRO -->
+
+        <section class="service-intro section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="section-number">
+                        02 / OUR APPROACH
+                    </span>
+
+
+                    <h2>
+
+                        مش بنعمل<br>
+
+                        <strong>حملات عشوائية.</strong>
+
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    الاستراتيجية الرقمية القوية بتبدأ بفهم
+                    الصورة كاملة: أين البراند الآن، أين يريد
+                    أن يصل، ومن هو الجمهور الذي يجب أن نصل إليه.
+                    بعدها نحدد القنوات والخطوات التي تخدم الهدف.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CAPABILITIES -->
+
+        <section class="service-offerings section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="section-number">
+                        03 / STRATEGIC CAPABILITIES
+                    </span>
+
+
+                    <h2>
+
+                        نربط كل<br>
+
+                        <strong>النقاط معًا.</strong>
+
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    بنحول أهداف البيزنس إلى منظومة رقمية
+                    واضحة تشمل الجمهور، القنوات، الرسائل،
+                    المحتوى، الإعلانات ومؤشرات الأداء.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="service-list">
+
+
+                <!-- 01 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        01
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            DIGITAL AUDIT
+                        </span>
+
+
+                        <h3>
+                            نعرف البراند واقف فين
+                        </h3>
+
+
+                        <p>
+
+                            مراجعة الحضور الرقمي الحالي،
+                            المنصات، المحتوى، الإعلانات ونقاط
+                            التواصل لاكتشاف المشاكل والفرص.
+
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 02 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        02
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            MARKET & AUDIENCE
+                        </span>
+
+
+                        <h3>
+                            نحدد أين توجد الفرصة
+                        </h3>
+
+
+                        <p>
+
+                            تحليل السوق والمنافسين والجمهور
+                            لتحديد الشرائح الأكثر أهمية والرسائل
+                            والقنوات المناسبة للوصول إليها.
+
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 03 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        03
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            CHANNEL STRATEGY
+                        </span>
+
+
+                        <h3>
+                            كل منصة لها دور
+                        </h3>
+
+
+                        <p>
+
+                            تحديد وظيفة كل قناة رقمية داخل
+                            الاستراتيجية بدل التعامل مع كل
+                            المنصات بنفس الطريقة.
+
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 04 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        04
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            CAMPAIGN STRATEGY
+                        </span>
+
+
+                        <h3>
+                            من الوصول إلى التحويل
+                        </h3>
+
+
+                        <p>
+
+                            بناء مسار واضح للحملات الرقمية
+                            يربط بين الوعي بالعلامة، التفاعل،
+                            الزيارات والتحويلات حسب الهدف.
+
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- 05 -->
+
+                <article class="service-item">
+
+                    <span class="service-item-number">
+                        05
+                    </span>
+
+
+                    <div>
+
+                        <span class="service-item-label">
+                            KPIs & OPTIMIZATION
+                        </span>
+
+
+                        <h3>
+                            نقيس ما يهم فعلًا
+                        </h3>
+
+
+                        <p>
+
+                            تحديد مؤشرات الأداء المناسبة ومراجعة
+                            النتائج بشكل مستمر لمعرفة ما يحتاج
+                            إلى تطوير أو إعادة توجيه.
+
+                        </p>
+
+                    </div>
+
+
+                    <span class="service-item-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROCESS -->
+
+        <section class="service-process section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="section-number">
+                        04 / OUR PROCESS
+                    </span>
+
+
+                    <h2>
+
+                        نفهم.<br>
+
+                        <strong>نخطط. نوجّه.</strong>
+
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    الاستراتيجية الرقمية عندنا مش مجموعة
+                    أفكار نظرية؛ هي إطار واضح يساعد كل قرار
+                    تسويقي بعد ذلك على أن يكون أكثر دقة.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="process-grid">
+
+
+                <div class="process-card">
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Audit
+                    </h3>
+
+                    <p>
+                        تحليل الوضع الحالي والحضور الرقمي
+                        والأداء السابق.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Insight
+                    </h3>
+
+                    <p>
+                        فهم الجمهور والسوق والمنافسين
+                        وتحديد الفرص.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        Strategy
+                    </h3>
+
+                    <p>
+                        بناء الخطة والقنوات والرسائل
+                        ومؤشرات الأداء.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        Optimize
+                    </h3>
+
+                    <p>
+                        متابعة النتائج وتطوير القرارات
+                        بناءً على البيانات.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CTA -->
+
+        <section class="service-cta section">
+
+            <div class="service-cta-inner">
+
+                <span class="section-number">
+                    THINK BIGGER
+                </span>
+
+
+                <h2>
+
+                    خلّي التسويق<br>
+
+                    <strong>يخدم البيزنس.</strong>
+
+                </h2>
+
+
+                <p>
+
+                    لو محتاج استراتيجية تربط كل جهودك الرقمية
+                    بهدف واضح، نقدر نبني المسار المناسب لعلامتك.
+
+                </p>
+
+
+                <a
+                    href="../index.html#contact"
+                    class="gold-btn">
+
+                    تواصل معنا ↗
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>
